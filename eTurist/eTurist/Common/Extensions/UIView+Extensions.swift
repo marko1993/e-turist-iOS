@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 public struct AnchoredConstraints {
     public var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
@@ -201,5 +203,18 @@ extension UIView {
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
     }
+    
+    func onTap(disposeBag: DisposeBag, completionHandler: @escaping () -> Void) {
+        isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer()
+        tap
+            .rx
+            .event
+            .subscribe(onNext: { _ in
+                completionHandler()
+            }).disposed(by: disposeBag)
+        self.addGestureRecognizer(tap)
+    }
+    
 }
 

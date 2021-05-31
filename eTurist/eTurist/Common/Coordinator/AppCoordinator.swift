@@ -22,6 +22,11 @@ class AppCoordinator: Coordinator {
     
     func start() {
         let viewController = Assembler.sharedAssembler.resolver.resolve(HomeViewController.self, argument: self)!
+        viewController.tabBarItems = [
+            TabBarItem(viewController: Assembler.sharedAssembler.resolver.resolve(RoutesViewController.self, argument: self)!, title: "Route", image: "route", position: 0, isSelected: true),
+            TabBarItem(viewController: Assembler.sharedAssembler.resolver.resolve(HistoryViewController.self, argument: self)!, title: "History", image: "history", position: 1, isSelected: false),
+            TabBarItem(viewController: Assembler.sharedAssembler.resolver.resolve(ProfileViewController.self, argument: self)!, title: "Profile", image: "profile", position: 2, isSelected: false)
+        ]
         self.currentViewController = viewController
         self.navigationController.pushViewController(viewController, animated: false)
     }

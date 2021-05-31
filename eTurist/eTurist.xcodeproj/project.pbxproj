@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7FBA12718D71341FCB30B847 /* Pods_eTurist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D64A30EC32407D02DB89C5D7 /* Pods_eTurist.framework */; };
+		AD27F5D1266558F800268AA2 /* StackItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD27F5CC266558F800268AA2 /* StackItemView.xib */; };
+		AD27F5D2266558F800268AA2 /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27F5CD266558F800268AA2 /* UIView+Helper.swift */; };
+		AD27F5D5266558F800268AA2 /* StackItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27F5D0266558F800268AA2 /* StackItemView.swift */; };
+		AD27F5DA2665596400268AA2 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27F5D92665596400268AA2 /* UIColor+Extensions.swift */; };
+		AD27F5DF266559A500268AA2 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27F5DE266559A500268AA2 /* NSObject+Extensions.swift */; };
+		AD27F5F02665623200268AA2 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD27F5EF2665623200268AA2 /* TabBarItem.swift */; };
 		AD3D18552663F1EB00F853CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18542663F1EB00F853CC /* AppDelegate.swift */; };
 		AD3D18572663F1EB00F853CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18562663F1EB00F853CC /* SceneDelegate.swift */; };
 		AD3D185E2663F1EC00F853CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3D185D2663F1EC00F853CC /* Assets.xcassets */; };
@@ -18,8 +24,6 @@
 		AD3D18B92663F7D700F853CC /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18B82663F7D700F853CC /* UIView+Extensions.swift */; };
 		AD3D18C82663FC0B00F853CC /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18C72663FC0B00F853CC /* UIButton+Extensions.swift */; };
 		AD3D18CD2663FC5400F853CC /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18CC2663FC5400F853CC /* UITextField+Extensions.swift */; };
-		AD3D18D22663FC9300F853CC /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18D12663FC9300F853CC /* UILabel+Extensions.swift */; };
-		AD3D18D72663FCC700F853CC /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18D62663FCC700F853CC /* UIImageView+Extensions.swift */; };
 		AD3D18DE2663FDFD00F853CC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18DD2663FDFD00F853CC /* Coordinator.swift */; };
 		AD3D18E32663FE6200F853CC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18E22663FE6200F853CC /* AppCoordinator.swift */; };
 		AD3D18E82663FEBD00F853CC /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D18E72663FEBD00F853CC /* AppAssembly.swift */; };
@@ -31,9 +35,18 @@
 		AD3D1918266401C100F853CC /* MainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D1917266401C100F853CC /* MainRepository.swift */; };
 		AD3D191F266403B100F853CC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D191E266403B100F853CC /* HomeViewModel.swift */; };
 		AD3D1924266403E800F853CC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D1923266403E800F853CC /* HomeViewController.swift */; };
-		AD3D19292664043200F853CC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D19282664043200F853CC /* HomeView.swift */; };
 		AD3D192E2664053A00F853CC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D192D2664053A00F853CC /* NetworkService.swift */; };
 		AD3D19342664129100F853CC /* TestRouteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3D19332664129100F853CC /* TestRouteResponse.swift */; };
+		AD7B740F2665709E0062F86B /* HomeViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B740E2665709E0062F86B /* HomeViewController+Extensions.swift */; };
+		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
+		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
+		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
+		AD8914212665152800B960FD /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8914202665152800B960FD /* HistoryViewController.swift */; };
+		AD8914262665154C00B960FD /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8914252665154C00B960FD /* HistoryViewModel.swift */; };
+		AD89142C2665157300B960FD /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89142B2665157300B960FD /* HistoryView.swift */; };
+		AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD891431266515DD00B960FD /* ProfileViewController.swift */; };
+		AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8914362665160100B960FD /* ProfileViewModel.swift */; };
+		AD89143D2665162000B960FD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89143C2665162000B960FD /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +68,12 @@
 
 /* Begin PBXFileReference section */
 		703F936134A68E31F54B1586 /* Pods-eTurist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eTurist.debug.xcconfig"; path = "Target Support Files/Pods-eTurist/Pods-eTurist.debug.xcconfig"; sourceTree = "<group>"; };
+		AD27F5CC266558F800268AA2 /* StackItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackItemView.xib; sourceTree = "<group>"; };
+		AD27F5CD266558F800268AA2 /* UIView+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Helper.swift"; sourceTree = "<group>"; };
+		AD27F5D0266558F800268AA2 /* StackItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackItemView.swift; sourceTree = "<group>"; };
+		AD27F5D92665596400268AA2 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		AD27F5DE266559A500268AA2 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		AD27F5EF2665623200268AA2 /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		AD3D18512663F1EB00F853CC /* eTurist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eTurist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD3D18542663F1EB00F853CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD3D18562663F1EB00F853CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,8 +90,6 @@
 		AD3D18B82663F7D700F853CC /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AD3D18C72663FC0B00F853CC /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		AD3D18CC2663FC5400F853CC /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
-		AD3D18D12663FC9300F853CC /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
-		AD3D18D62663FCC700F853CC /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		AD3D18DD2663FDFD00F853CC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AD3D18E22663FE6200F853CC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AD3D18E72663FEBD00F853CC /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
@@ -84,9 +101,18 @@
 		AD3D1917266401C100F853CC /* MainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepository.swift; sourceTree = "<group>"; };
 		AD3D191E266403B100F853CC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AD3D1923266403E800F853CC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		AD3D19282664043200F853CC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AD3D192D2664053A00F853CC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AD3D19332664129100F853CC /* TestRouteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRouteResponse.swift; sourceTree = "<group>"; };
+		AD7B740E2665709E0062F86B /* HomeViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extensions.swift"; sourceTree = "<group>"; };
+		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
+		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
+		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
+		AD8914202665152800B960FD /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		AD8914252665154C00B960FD /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		AD89142B2665157300B960FD /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		AD891431266515DD00B960FD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AD8914362665160100B960FD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		AD89143C2665162000B960FD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D64A30EC32407D02DB89C5D7 /* Pods_eTurist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eTurist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80E4094506AA5CE3235B5BE /* Pods-eTurist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eTurist.release.xcconfig"; path = "Target Support Files/Pods-eTurist/Pods-eTurist.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +158,17 @@
 				D64A30EC32407D02DB89C5D7 /* Pods_eTurist.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD27F5CB266558B900268AA2 /* BottomTaskBar */ = {
+			isa = PBXGroup;
+			children = (
+				AD27F5EF2665623200268AA2 /* TabBarItem.swift */,
+				AD27F5D0266558F800268AA2 /* StackItemView.swift */,
+				AD27F5CC266558F800268AA2 /* StackItemView.xib */,
+				AD27F5CD266558F800268AA2 /* UIView+Helper.swift */,
+			);
+			path = BottomTaskBar;
 			sourceTree = "<group>";
 		};
 		AD3D18482663F1EB00F853CC = {
@@ -248,6 +285,9 @@
 			isa = PBXGroup;
 			children = (
 				AD3D191C2664039200F853CC /* Home */,
+				AD89140E26650F0E00B960FD /* Routes */,
+				AD89141F266514FA00B960FD /* History */,
+				AD891430266515BF00B960FD /* Profile */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -258,8 +298,8 @@
 				AD3D18B82663F7D700F853CC /* UIView+Extensions.swift */,
 				AD3D18C72663FC0B00F853CC /* UIButton+Extensions.swift */,
 				AD3D18CC2663FC5400F853CC /* UITextField+Extensions.swift */,
-				AD3D18D12663FC9300F853CC /* UILabel+Extensions.swift */,
-				AD3D18D62663FCC700F853CC /* UIImageView+Extensions.swift */,
+				AD27F5D92665596400268AA2 /* UIColor+Extensions.swift */,
+				AD27F5DE266559A500268AA2 /* NSObject+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,7 +345,8 @@
 		AD3D191D266403A100F853CC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD3D19282664043200F853CC /* HomeView.swift */,
+				AD27F5CB266558B900268AA2 /* BottomTaskBar */,
+				AD7B740E2665709E0062F86B /* HomeViewController+Extensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +357,60 @@
 				AD3D19332664129100F853CC /* TestRouteResponse.swift */,
 			);
 			path = NetworkResponseModel;
+			sourceTree = "<group>";
+		};
+		AD89140E26650F0E00B960FD /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				AD89140F26650F4000B960FD /* RoutesViewController.swift */,
+				AD89141426650F8600B960FD /* RoutesViewModel.swift */,
+				AD89141926650F9600B960FD /* View */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		AD89141926650F9600B960FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD89141A26650FA900B960FD /* RoutesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD89141F266514FA00B960FD /* History */ = {
+			isa = PBXGroup;
+			children = (
+				AD8914202665152800B960FD /* HistoryViewController.swift */,
+				AD8914252665154C00B960FD /* HistoryViewModel.swift */,
+				AD89142A2665155C00B960FD /* View */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		AD89142A2665155C00B960FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD89142B2665157300B960FD /* HistoryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD891430266515BF00B960FD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AD891431266515DD00B960FD /* ProfileViewController.swift */,
+				AD8914362665160100B960FD /* ProfileViewModel.swift */,
+				AD89143B2665160D00B960FD /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		AD89143B2665160D00B960FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD89143C2665162000B960FD /* ProfileView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +520,7 @@
 			files = (
 				AD3D18612663F1EC00F853CC /* LaunchScreen.storyboard in Resources */,
 				AD3D185E2663F1EC00F853CC /* Assets.xcassets in Resources */,
+				AD27F5D1266558F800268AA2 /* StackItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,25 +590,37 @@
 				AD3D18552663F1EB00F853CC /* AppDelegate.swift in Sources */,
 				AD3D191F266403B100F853CC /* HomeViewModel.swift in Sources */,
 				AD3D19342664129100F853CC /* TestRouteResponse.swift in Sources */,
+				AD89142C2665157300B960FD /* HistoryView.swift in Sources */,
+				AD27F5D5266558F800268AA2 /* StackItemView.swift in Sources */,
 				AD3D1924266403E800F853CC /* HomeViewController.swift in Sources */,
 				AD3D19042664008C00F853CC /* BaseView.swift in Sources */,
 				AD3D18572663F1EB00F853CC /* SceneDelegate.swift in Sources */,
+				AD8914212665152800B960FD /* HistoryViewController.swift in Sources */,
 				AD3D18E32663FE6200F853CC /* AppCoordinator.swift in Sources */,
 				AD3D18B92663F7D700F853CC /* UIView+Extensions.swift in Sources */,
+				AD89141B26650FA900B960FD /* RoutesView.swift in Sources */,
 				AD3D1909266400FC00F853CC /* BaseViewController.swift in Sources */,
+				AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */,
+				AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */,
+				AD7B740F2665709E0062F86B /* HomeViewController+Extensions.swift in Sources */,
+				AD27F5DF266559A500268AA2 /* NSObject+Extensions.swift in Sources */,
+				AD27F5D2266558F800268AA2 /* UIView+Helper.swift in Sources */,
+				AD27F5DA2665596400268AA2 /* UIColor+Extensions.swift in Sources */,
 				AD3D18CD2663FC5400F853CC /* UITextField+Extensions.swift in Sources */,
 				AD3D1918266401C100F853CC /* MainRepository.swift in Sources */,
 				AD3D18C82663FC0B00F853CC /* UIButton+Extensions.swift in Sources */,
 				AD3D18ED2663FEFF00F853CC /* Assembler+Extensions.swift in Sources */,
 				AD3D18E82663FEBD00F853CC /* AppAssembly.swift in Sources */,
 				AD3D192E2664053A00F853CC /* NetworkService.swift in Sources */,
-				AD3D19292664043200F853CC /* HomeView.swift in Sources */,
 				AD3D18B42663F40B00F853CC /* Constants.swift in Sources */,
 				AD3D19132664019800F853CC /* Repository.swift in Sources */,
+				AD89143D2665162000B960FD /* ProfileView.swift in Sources */,
 				AD3D190E2664014100F853CC /* BaseViewModel.swift in Sources */,
-				AD3D18D72663FCC700F853CC /* UIImageView+Extensions.swift in Sources */,
-				AD3D18D22663FC9300F853CC /* UILabel+Extensions.swift in Sources */,
+				AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */,
+				AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */,
+				AD27F5F02665623200268AA2 /* TabBarItem.swift in Sources */,
 				AD3D18DE2663FDFD00F853CC /* Coordinator.swift in Sources */,
+				AD8914262665154C00B960FD /* HistoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GKTGSB5FH;
 				INFOPLIST_FILE = eTurist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -704,6 +813,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GKTGSB5FH;
 				INFOPLIST_FILE = eTurist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

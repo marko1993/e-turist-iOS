@@ -1,15 +1,13 @@
 //
-//  HomeView.swift
+//  HistoryView.swift
 //  eTurist
 //
-//  Created by Marko on 30.05.2021..
+//  Created by Marko on 31.05.2021..
 //
 
 import UIKit
 
-class HomeView: UIView, BaseView {
-    
-    let tvTitle = UILabel()
+class HistoryView: UIView, BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,15 +19,15 @@ class HomeView: UIView, BaseView {
     }
     
     func addSubviews() {
-        addSubview(tvTitle)
+        
     }
     
     func styleSubviews() {
-        backgroundColor = .white
-        tvTitle.text = "HOME"
+        backgroundColor = .systemPurple
     }
     
     func positionSubviews() {
-        tvTitle.centerInSuperview()
+        
     }
+    
 }
