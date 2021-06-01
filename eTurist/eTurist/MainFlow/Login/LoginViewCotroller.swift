@@ -27,8 +27,8 @@ class LoginViewCotroller: BaseViewController {
             }
         }
         
-        loginView.dontHaveAccountLabel.onTap(disposeBag: disposeBag) {
-            
+        loginView.dontHaveAccountLabel.onTap(disposeBag: disposeBag) { [weak self] in
+            self?.viewModel.presentRegistrationScreen()
         }
         
         viewModel.loginSuccesObservable.subscribe(onNext: { [weak self] isSuccessful in

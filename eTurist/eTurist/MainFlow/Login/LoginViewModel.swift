@@ -30,4 +30,8 @@ class LoginViewModel: BaseViewModel {
         self.coordinator?.presentHomeScreen()
     }
     
+    func presentRegistrationScreen() {
+        self.coordinator?.presentRegistrationScreen()
+    }
+    
 }

@@ -47,6 +47,9 @@
 		AD7B7454266689C60062F86B /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B7453266689C60062F86B /* LoginRequestModel.swift */; };
 		AD7B745926668AA20062F86B /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B745826668AA20062F86B /* NetworkResponse.swift */; };
 		AD7B745E26668B310062F86B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B745D26668B310062F86B /* LoginResponse.swift */; };
+		AD7B74672666C8B10062F86B /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74662666C8B10062F86B /* RegistrationViewController.swift */; };
+		AD7B746C2666C8DC0062F86B /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B746B2666C8DC0062F86B /* RegistrationViewModel.swift */; };
+		AD7B74732666C9060062F86B /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74722666C9060062F86B /* RegistrationView.swift */; };
 		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
 		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
 		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
@@ -122,6 +125,9 @@
 		AD7B7453266689C60062F86B /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		AD7B745826668AA20062F86B /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		AD7B745D26668B310062F86B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		AD7B74662666C8B10062F86B /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		AD7B746B2666C8DC0062F86B /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		AD7B74722666C9060062F86B /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 				AD89141F266514FA00B960FD /* History */,
 				AD891430266515BF00B960FD /* Profile */,
 				AD7B742626665B500062F86B /* Login */,
+				AD7B74652666A0050062F86B /* Registration */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -416,6 +423,24 @@
 				AD7B7453266689C60062F86B /* LoginRequestModel.swift */,
 			);
 			path = NetworkRequestModel;
+			sourceTree = "<group>";
+		};
+		AD7B74652666A0050062F86B /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B74662666C8B10062F86B /* RegistrationViewController.swift */,
+				AD7B746B2666C8DC0062F86B /* RegistrationViewModel.swift */,
+				AD7B74702666C8EC0062F86B /* View */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		AD7B74702666C8EC0062F86B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B74722666C9060062F86B /* RegistrationView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AD89140E26650F0E00B960FD /* Routes */ = {
@@ -656,10 +681,12 @@
 				AD7B74492666659D0062F86B /* UserSingleton.swift in Sources */,
 				AD7B742D26665BE40062F86B /* LoginViewModel.swift in Sources */,
 				AD8914212665152800B960FD /* HistoryViewController.swift in Sources */,
+				AD7B746C2666C8DC0062F86B /* RegistrationViewModel.swift in Sources */,
 				AD3D18E32663FE6200F853CC /* AppCoordinator.swift in Sources */,
 				AD7B743826665EC30062F86B /* TextField.swift in Sources */,
 				AD3D18B92663F7D700F853CC /* UIView+Extensions.swift in Sources */,
 				AD89141B26650FA900B960FD /* RoutesView.swift in Sources */,
+				AD7B74672666C8B10062F86B /* RegistrationViewController.swift in Sources */,
 				AD7B743326665C2C0062F86B /* LoginView.swift in Sources */,
 				AD3D1909266400FC00F853CC /* BaseViewController.swift in Sources */,
 				AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */,
@@ -669,6 +696,7 @@
 				AD27F5D2266558F800268AA2 /* UIView+Helper.swift in Sources */,
 				AD27F5DA2665596400268AA2 /* UIColor+Extensions.swift in Sources */,
 				AD3D18CD2663FC5400F853CC /* UITextField+Extensions.swift in Sources */,
+				AD7B74732666C9060062F86B /* RegistrationView.swift in Sources */,
 				AD3D1918266401C100F853CC /* MainRepository.swift in Sources */,
 				AD3D18C82663FC0B00F853CC /* UIButton+Extensions.swift in Sources */,
 				AD7B744E26667BC00062F86B /* ButtonGradient.swift in Sources */,

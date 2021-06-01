@@ -17,6 +17,7 @@ final class AppAssembly: Assembly {
         self.assembleHistoryViewController(container)
         self.assembleProfileViewController(container)
         self.assembleLoginViewController(container)
+        self.assembleRegistrationViewController(container)
     }
     
     private func assembleRepository(_ container: Container) {
@@ -107,6 +108,21 @@ final class AppAssembly: Assembly {
         container.register(LoginViewCotroller.self) { (resolver, coordinator: AppCoordinator) in
             let controller = LoginViewCotroller()
             controller.viewModel = container.resolve(LoginViewModel.self, argument: coordinator)
+            return controller
+        }.inObjectScope(.transient)
+    }
+    
+    private func assembleRegistrationViewController(_ container: Container) {
+        container.register(RegistrationViewModel.self) { (resolver, coordinator: AppCoordinator) in
+            let viewModel = RegistrationViewModel()
+            viewModel.coordinator = coordinator
+            viewModel.repository = container.resolve(Repository.self, name: "main") as? MainRepository
+            return viewModel
+        }.inObjectScope(.transient)
+        
+        container.register(RegistrationViewController.self) { (resolver, coordinator: AppCoordinator) in
+            let controller = RegistrationViewController()
+            controller.viewModel = container.resolve(RegistrationViewModel.self, argument: coordinator)
             return controller
         }.inObjectScope(.transient)
     }

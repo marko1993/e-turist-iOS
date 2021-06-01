@@ -53,7 +53,7 @@ class LoginView: UIView, BaseView {
         passwordTextField.anchor(top: emailTextField.bottomAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16))
         
         loginButton.centerX(inView: self)
-        loginButton.anchor(top: passwordTextField.bottomAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16))
+        loginButton.anchor(leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: dontHaveAccountLabel.topAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 16, bottom: 10, right: 16))
         loginButton.constrainHeight(50)
         
         dontHaveAccountLabel.anchor(bottom: self.safeAreaLayoutGuide.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 20, bottom: 16, right: 20))

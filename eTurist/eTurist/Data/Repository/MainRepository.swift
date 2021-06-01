@@ -10,13 +10,10 @@ import RxSwift
 import RxCocoa
 
 class MainRepository: Repository {
+    
     var networkService: NetworkService!
     var userSingleton: UserSingleton!
     let disposeBag = DisposeBag()
-    
-    init() {
-        
-    }
     
     func logUserIn(email: String, password: String, completion: @escaping (String?) -> Void) {
         let body = LoginRequestModel(email: email, password: password)

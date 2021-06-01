@@ -12,9 +12,12 @@ struct K {
     struct Strings {
         static let baseUrl = "https://www.eturist.site/"
         static let dontHaveAccount = "Don't have an account. Register"
+        static let alreadyHaveAccount = "Already have an account. Log In"
         static let email = "Email"
         static let password = "Password"
+        static let repeatPassword = "Repeated password"
         static let logIn = "Log In"
+        static let register = "Register"
     }
     
     struct Endpoints {
