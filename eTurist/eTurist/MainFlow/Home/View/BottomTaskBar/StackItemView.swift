@@ -18,7 +18,7 @@ class StackItemView: UIView {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var highlightView: UIView!
     
-    private let higlightBGColor = UIColor(hexString: "FF018786")
+    private let higlightBGColor = UIColor(named: K.Color.main)
     
     static var newInstance: StackItemView {
         return Bundle.main.loadNibNamed(

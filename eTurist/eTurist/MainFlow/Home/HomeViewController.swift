@@ -90,6 +90,14 @@ extension HomeViewController: UIPageViewControllerDelegate, UIPageViewController
         index += 1
         return tabBarItems[index].viewController
     }
+
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            guard let index = getViewControllersIndex(self.viewControllers?.first as? BaseViewController) else { return }
+            self.tabs.forEach{$0.isSelected = false}
+            self.tabs[index].isSelected = true
+        }
+    }
     
 }
 

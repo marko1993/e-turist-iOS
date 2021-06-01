@@ -16,11 +16,23 @@ final class AppAssembly: Assembly {
         self.assembleRoutesViewController(container)
         self.assembleHistoryViewController(container)
         self.assembleProfileViewController(container)
+        self.assembleLoginViewController(container)
     }
     
     private func assembleRepository(_ container: Container) {
+        container.register(UserSingleton.self) { r in
+            return UserSingleton()
+        }.inObjectScope(.container)
+        
+        container.register(NetworkService.self) { r in
+            return NetworkService()
+        }.inObjectScope(.container)
+        
         container.register(Repository.self, name: "main") { r in
-            return MainRepository()
+            let repository = MainRepository()
+            repository.userSingleton = container.resolve(UserSingleton.self)
+            repository.networkService = container.resolve(NetworkService.self)
+            return repository
         }.inObjectScope(.container)
     }
     
@@ -80,6 +92,21 @@ final class AppAssembly: Assembly {
         container.register(ProfileViewController.self) { (resolver, coordinator: AppCoordinator) in
             let controller = ProfileViewController()
             controller.viewModel = container.resolve(ProfileViewModel.self, argument: coordinator)
+            return controller
+        }.inObjectScope(.transient)
+    }
+    
+    private func assembleLoginViewController(_ container: Container) {
+        container.register(LoginViewModel.self) { (resolver, coordinator: AppCoordinator) in
+            let viewModel = LoginViewModel()
+            viewModel.coordinator = coordinator
+            viewModel.repository = container.resolve(Repository.self, name: "main") as? MainRepository
+            return viewModel
+        }.inObjectScope(.transient)
+        
+        container.register(LoginViewCotroller.self) { (resolver, coordinator: AppCoordinator) in
+            let controller = LoginViewCotroller()
+            controller.viewModel = container.resolve(LoginViewModel.self, argument: coordinator)
             return controller
         }.inObjectScope(.transient)
     }

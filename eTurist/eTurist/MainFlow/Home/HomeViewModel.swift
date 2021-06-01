@@ -11,9 +11,5 @@ import RxCocoa
 
 class HomeViewModel: BaseViewModel {
     
-    func getTestRoute(identifier: String?) -> Observable<TestRouteResponse>? {
-        return repository?.getTestRoute(identifier: identifier)
-    }
-    
 }
 

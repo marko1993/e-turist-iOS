@@ -10,19 +10,31 @@ import RxSwift
 import RxCocoa
 
 class MainRepository: Repository {
+    var networkService: NetworkService!
+    var userSingleton: UserSingleton!
+    let disposeBag = DisposeBag()
     
     init() {
         
     }
     
-    func getTestRoute(identifier: String?) -> Observable<TestRouteResponse> {
-        var queryParams: [String: String]? = nil
-        if let identifier = identifier {
-            queryParams = [K.ApiParams.identifier: identifier]
-        }
-        let resources = Resources<TestRouteResponse, String>(path: K.Endpoints.testApi, requestType: .GET, bodyParameters: nil, httpHeaderFields: nil, queryParameters: queryParams)
-        
-        return NetworkService.performRequest(resources: resources, retryCount: 2)
+    func logUserIn(email: String, password: String, completion: @escaping (String?) -> Void) {
+        let body = LoginRequestModel(email: email, password: password)
+        let resources = Resources<NetworkResponse<LoginResponse>, LoginRequestModel>(path: K.Endpoints.logInRoute, requestType: .POST, bodyParameters: body, httpHeaderFields: nil, queryParameters: nil)
+        networkService.performRequest(resources: resources, retryCount: 2, needsAuthorization: false)
+            .subscribe(onNext: { [weak self] response in
+                if let error = response.error {
+                    completion(error)
+                } else if response.status >= 200 && response.status < 300 {
+                    if let data = response.data {
+                        self?.userSingleton.saveUser(user: data.user)
+                        self?.userSingleton.saveToken(token: data.token)
+                    }
+                    completion(nil)
+                }
+            }, onError: { error in
+                completion(error.localizedDescription)
+            }).disposed(by: disposeBag)
     }
     
 }

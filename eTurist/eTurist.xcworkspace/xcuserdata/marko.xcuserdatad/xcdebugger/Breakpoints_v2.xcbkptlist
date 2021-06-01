@@ -14,9 +14,9 @@
             filePath = "eTurist/Data/Networking/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "performRequest(resources:retryCount:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "performRequest(resources:retryCount:needsAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

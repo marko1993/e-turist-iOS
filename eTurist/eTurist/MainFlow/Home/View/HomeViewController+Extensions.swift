@@ -10,6 +10,8 @@ import UIKit
 extension HomeViewController {
     
     func configurePageViewController() {
+        self.delegate = nil
+        self.delegate = self
         self.dataSource = nil;
         self.dataSource = self;
         self.setViewControllers([tabBarItems[0].viewController], direction: .forward, animated: true)
@@ -18,7 +20,7 @@ extension HomeViewController {
     func configureBotomNavigation() {
         view.addSubview(bottomTabContainer)
         view.addSubview(bottomBarTab)
-        bottomTabContainer.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        bottomTabContainer.anchor(leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         bottomTabContainer.constrainHeight(80)
         bottomTabContainer.constrainWidth(UIScreen.main.bounds.size.width)
         bottomTabContainer.backgroundColor = .white
@@ -28,7 +30,7 @@ extension HomeViewController {
         bottomBarTab.contentMode = .scaleToFill
         bottomBarTab.distribution = .equalSpacing
         bottomBarTab.spacing = 0
-        bottomBarTab.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 25))
+        bottomBarTab.anchor(leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 25))
         bottomBarTab.constrainHeight(70)
         bottomBarTab.constrainWidth(UIScreen.main.bounds.size.width)
         self.setupTabs()

@@ -32,7 +32,7 @@ struct Resources<T: Decodable, P: Encodable> {
 
 class NetworkService {
     
-    public static func performRequest<T: Decodable, P: Encodable>(resources: Resources<T, P>, retryCount: Int) -> Observable<T> {
+    public func performRequest<T: Decodable, P: Encodable>(resources: Resources<T, P>, retryCount: Int, needsAuthorization: Bool = true) -> Observable<T> {
         
         let pathWithQueryParameters = addQueryParametersToPath(path: resources.path, queryParameters: resources.queryParameters)
         
@@ -53,7 +53,15 @@ class NetworkService {
                     request.allHTTPHeaderFields = headerFields
                 }
                 
+                if needsAuthorization {
+                    if let token = UserDefaults.standard.value(forKey: K.UserDefaultsKeys.token) as? String {
+                        request.addValue(token, forHTTPHeaderField: "user-token")
+                    }
+                }
+                
                 request.httpMethod = resources.requestType.rawValue
+                request.addValue("application/json", forHTTPHeaderField:
+                              "Content-Type")
                 return URLSession.shared.rx.response(request: request)
             }.map { response, data -> T in
                 if 200..<300 ~= response.statusCode {
@@ -69,7 +77,7 @@ class NetworkService {
             .asObservable()
     }
     
-    private static func addQueryParametersToPath(path: String, queryParameters: [String : String]?) -> String {
+    private func addQueryParametersToPath(path: String, queryParameters: [String : String]?) -> String {
         var newPath = path
         if let queryParameters = queryParameters {
             newPath.append("?")
