@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,7 +32,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="b5M-hn-2oS" firstAttribute="centerY" secondItem="yPH-WF-bP0" secondAttribute="centerY" id="FJs-qH-ciY"/>
                                 <constraint firstItem="ZBs-qa-BYN" firstAttribute="leading" secondItem="yPH-WF-bP0" secondAttribute="leading" constant="15" id="Fpa-HY-xFE"/>
@@ -49,7 +48,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="yPH-WF-bP0" firstAttribute="top" secondItem="Rym-fr-0sr" secondAttribute="top" constant="10" id="0Yc-FE-a2T"/>
                         <constraint firstAttribute="bottom" secondItem="yPH-WF-bP0" secondAttribute="bottom" constant="10" id="7bU-6e-yUI"/>
@@ -58,7 +57,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Rym-fr-0sr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5H2-ep-XGu"/>
                 <constraint firstAttribute="trailing" secondItem="Rym-fr-0sr" secondAttribute="trailing" id="FBy-Ht-KnJ"/>
@@ -78,8 +77,5 @@
     </objects>
     <resources>
         <image name="tray.2" catalog="system" width="128" height="114"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

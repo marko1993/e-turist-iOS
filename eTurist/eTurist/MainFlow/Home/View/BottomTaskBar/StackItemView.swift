@@ -66,7 +66,7 @@ class StackItemView: UIView {
                        options: options,
                        animations: {
                         self.titleLabel.text = isSelected ? model.title : ""
-                        let color = isSelected ? self.higlightBGColor : UIColor.white
+                        let color = isSelected ? self.higlightBGColor : UIColor.clear
                         self.highlightView.backgroundColor = color
                         self.titleLabel.textColor = isSelected ? .white : self.higlightBGColor
                         self.imgView.tintColor = isSelected ? .white : self.higlightBGColor
