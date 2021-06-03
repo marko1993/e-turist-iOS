@@ -35,6 +35,8 @@ class LoginView: UIView, BaseView {
     func styleSubviews() {
         backgroundColor = .white
         
+        passwordTextField.isSecureTextEntry = true
+        
         loginButton.setTitle(K.Strings.logIn, for: .normal)
         loginButton.titleLabel?.font = .systemFont(ofSize: 24)
         

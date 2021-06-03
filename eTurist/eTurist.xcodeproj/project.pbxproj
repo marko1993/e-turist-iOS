@@ -50,6 +50,15 @@
 		AD7B74672666C8B10062F86B /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74662666C8B10062F86B /* RegistrationViewController.swift */; };
 		AD7B746C2666C8DC0062F86B /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B746B2666C8DC0062F86B /* RegistrationViewModel.swift */; };
 		AD7B74732666C9060062F86B /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74722666C9060062F86B /* RegistrationView.swift */; };
+		AD7B747C2667C9070062F86B /* CodeValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B747B2667C9070062F86B /* CodeValidationViewController.swift */; };
+		AD7B74842667C9320062F86B /* CodeValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74832667C9320062F86B /* CodeValidationViewModel.swift */; };
+		AD7B748A2667C9590062F86B /* CodeValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74892667C9590062F86B /* CodeValidationView.swift */; };
+		AD7B749326691D060062F86B /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B749226691D060062F86B /* PinView.swift */; };
+		AD7B749B26691D430062F86B /* PinTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B749A26691D430062F86B /* PinTextField.swift */; };
+		AD7B74A026691F310062F86B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B749F26691F310062F86B /* String+Extensions.swift */; };
+		AD7B74A526695EA70062F86B /* NSMutableData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74A426695EA70062F86B /* NSMutableData+Extensions.swift */; };
+		AD7B74AA266968770062F86B /* EmptyNetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74A9266968770062F86B /* EmptyNetworkResponse.swift */; };
+		AD7B74AF26696CCB0062F86B /* ValidateCodeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74AE26696CCB0062F86B /* ValidateCodeRequestModel.swift */; };
 		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
 		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
 		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
@@ -128,6 +137,15 @@
 		AD7B74662666C8B10062F86B /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		AD7B746B2666C8DC0062F86B /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		AD7B74722666C9060062F86B /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		AD7B747B2667C9070062F86B /* CodeValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeValidationViewController.swift; sourceTree = "<group>"; };
+		AD7B74832667C9320062F86B /* CodeValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeValidationViewModel.swift; sourceTree = "<group>"; };
+		AD7B74892667C9590062F86B /* CodeValidationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeValidationView.swift; sourceTree = "<group>"; };
+		AD7B749226691D060062F86B /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		AD7B749A26691D430062F86B /* PinTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTextField.swift; sourceTree = "<group>"; };
+		AD7B749F26691F310062F86B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		AD7B74A426695EA70062F86B /* NSMutableData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableData+Extensions.swift"; sourceTree = "<group>"; };
+		AD7B74A9266968770062F86B /* EmptyNetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNetworkResponse.swift; sourceTree = "<group>"; };
+		AD7B74AE26696CCB0062F86B /* ValidateCodeRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCodeRequestModel.swift; sourceTree = "<group>"; };
 		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -284,6 +302,7 @@
 				AD3D19322664127500F853CC /* NetworkResponseModel */,
 				AD3D192D2664053A00F853CC /* NetworkService.swift */,
 				AD7B745826668AA20062F86B /* NetworkResponse.swift */,
+				AD7B74A9266968770062F86B /* EmptyNetworkResponse.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -318,6 +337,7 @@
 				AD891430266515BF00B960FD /* Profile */,
 				AD7B742626665B500062F86B /* Login */,
 				AD7B74652666A0050062F86B /* Registration */,
+				AD7B747A2667C8E00062F86B /* CodeValidation */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -330,6 +350,8 @@
 				AD3D18CC2663FC5400F853CC /* UITextField+Extensions.swift */,
 				AD27F5D92665596400268AA2 /* UIColor+Extensions.swift */,
 				AD27F5DE266559A500268AA2 /* NSObject+Extensions.swift */,
+				AD7B749F26691F310062F86B /* String+Extensions.swift */,
+				AD7B74A426695EA70062F86B /* NSMutableData+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +359,7 @@
 		AD3D18B02663F3E600F853CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD7B749126691CAC0062F86B /* PinView */,
 				AD7B743726665EC30062F86B /* TextField.swift */,
 				AD7B744D26667BC00062F86B /* ButtonGradient.swift */,
 			);
@@ -421,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				AD7B7453266689C60062F86B /* LoginRequestModel.swift */,
+				AD7B74AE26696CCB0062F86B /* ValidateCodeRequestModel.swift */,
 			);
 			path = NetworkRequestModel;
 			sourceTree = "<group>";
@@ -441,6 +465,33 @@
 				AD7B74722666C9060062F86B /* RegistrationView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AD7B747A2667C8E00062F86B /* CodeValidation */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B747B2667C9070062F86B /* CodeValidationViewController.swift */,
+				AD7B74832667C9320062F86B /* CodeValidationViewModel.swift */,
+				AD7B74882667C9400062F86B /* View */,
+			);
+			path = CodeValidation;
+			sourceTree = "<group>";
+		};
+		AD7B74882667C9400062F86B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B74892667C9590062F86B /* CodeValidationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD7B749126691CAC0062F86B /* PinView */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B749226691D060062F86B /* PinView.swift */,
+				AD7B749A26691D430062F86B /* PinTextField.swift */,
+			);
+			path = PinView;
 			sourceTree = "<group>";
 		};
 		AD89140E26650F0E00B960FD /* Routes */ = {
@@ -672,6 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD3D18552663F1EB00F853CC /* AppDelegate.swift in Sources */,
+				AD7B74AF26696CCB0062F86B /* ValidateCodeRequestModel.swift in Sources */,
 				AD3D191F266403B100F853CC /* HomeViewModel.swift in Sources */,
 				AD89142C2665157300B960FD /* HistoryView.swift in Sources */,
 				AD27F5D5266558F800268AA2 /* StackItemView.swift in Sources */,
@@ -683,6 +735,7 @@
 				AD8914212665152800B960FD /* HistoryViewController.swift in Sources */,
 				AD7B746C2666C8DC0062F86B /* RegistrationViewModel.swift in Sources */,
 				AD3D18E32663FE6200F853CC /* AppCoordinator.swift in Sources */,
+				AD7B748A2667C9590062F86B /* CodeValidationView.swift in Sources */,
 				AD7B743826665EC30062F86B /* TextField.swift in Sources */,
 				AD3D18B92663F7D700F853CC /* UIView+Extensions.swift in Sources */,
 				AD89141B26650FA900B960FD /* RoutesView.swift in Sources */,
@@ -692,21 +745,27 @@
 				AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */,
 				AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */,
 				AD7B740F2665709E0062F86B /* HomeViewController+Extensions.swift in Sources */,
+				AD7B749B26691D430062F86B /* PinTextField.swift in Sources */,
 				AD27F5DF266559A500268AA2 /* NSObject+Extensions.swift in Sources */,
 				AD27F5D2266558F800268AA2 /* UIView+Helper.swift in Sources */,
 				AD27F5DA2665596400268AA2 /* UIColor+Extensions.swift in Sources */,
 				AD3D18CD2663FC5400F853CC /* UITextField+Extensions.swift in Sources */,
 				AD7B74732666C9060062F86B /* RegistrationView.swift in Sources */,
+				AD7B74842667C9320062F86B /* CodeValidationViewModel.swift in Sources */,
 				AD3D1918266401C100F853CC /* MainRepository.swift in Sources */,
 				AD3D18C82663FC0B00F853CC /* UIButton+Extensions.swift in Sources */,
+				AD7B74A526695EA70062F86B /* NSMutableData+Extensions.swift in Sources */,
+				AD7B749326691D060062F86B /* PinView.swift in Sources */,
 				AD7B744E26667BC00062F86B /* ButtonGradient.swift in Sources */,
 				AD7B7454266689C60062F86B /* LoginRequestModel.swift in Sources */,
 				AD3D18ED2663FEFF00F853CC /* Assembler+Extensions.swift in Sources */,
 				AD7B7441266664AB0062F86B /* User.swift in Sources */,
+				AD7B74AA266968770062F86B /* EmptyNetworkResponse.swift in Sources */,
 				AD3D18E82663FEBD00F853CC /* AppAssembly.swift in Sources */,
 				AD3D192E2664053A00F853CC /* NetworkService.swift in Sources */,
 				AD7B745926668AA20062F86B /* NetworkResponse.swift in Sources */,
 				AD3D18B42663F40B00F853CC /* Constants.swift in Sources */,
+				AD7B74A026691F310062F86B /* String+Extensions.swift in Sources */,
 				AD3D19132664019800F853CC /* Repository.swift in Sources */,
 				AD89143D2665162000B960FD /* ProfileView.swift in Sources */,
 				AD3D190E2664014100F853CC /* BaseViewModel.swift in Sources */,
@@ -716,6 +775,7 @@
 				AD7B742826665BB70062F86B /* LoginViewCotroller.swift in Sources */,
 				AD3D18DE2663FDFD00F853CC /* Coordinator.swift in Sources */,
 				AD7B745E26668B310062F86B /* LoginResponse.swift in Sources */,
+				AD7B747C2667C9070062F86B /* CodeValidationViewController.swift in Sources */,
 				AD8914262665154C00B960FD /* HistoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

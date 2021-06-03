@@ -11,18 +11,27 @@ struct K {
     
     struct Strings {
         static let baseUrl = "https://www.eturist.site/"
-        static let dontHaveAccount = "Don't have an account. Register"
-        static let alreadyHaveAccount = "Already have an account. Log In"
+        static let dontHaveAccount = "Don't have an account. Register."
+        static let alreadyHaveAccount = "Already have an account. Log In."
+        static let codeSend = "Verification code was send to your emal."
+        static let enterCode = "Please enter code."
         static let email = "Email"
+        static let fullName = "Full name"
         static let password = "Password"
         static let repeatPassword = "Repeated password"
         static let logIn = "Log In"
         static let register = "Register"
+        static let confirm = "Confirm"
+        static let allFieldRequired = "All fields required."
+        static let repeatedPasswordMustMatch = "Repeated password must match."
+        static let codeMustContainAllDigits = "Code must contain 6 digits."
     }
     
     struct Endpoints {
         static let testApi = "api/user/test-route"
         static let logInRoute = "api/user/authentication/login"
+        static let registerUserRoute = "api/user/authentication/register"
+        static let validateCodeRoute = "api/user/authentication/validate-account"
     }
     
     struct ApiParams {

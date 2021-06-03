@@ -35,7 +35,7 @@ extension HomeViewController {
         bottomBarTab.contentMode = .scaleToFill
         bottomBarTab.distribution = .equalSpacing
         bottomBarTab.spacing = 0
-        bottomBarTab.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 25))
+        bottomBarTab.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 25))
         bottomBarTab.constrainHeight(70)
         bottomBarTab.centerY(inView: bottomTabContainer)
         bottomBarTab.constrainWidth(UIScreen.main.bounds.size.width)

@@ -24,18 +24,14 @@ class LoginViewCotroller: BaseViewController {
             guard let self = self else { return }
             if self.isFormValid() {
                 self.viewModel.logUserIn(email: self.loginView.emailTextField.text!, password: self.loginView.passwordTextField.text!)
+            } else {
+                self.presentInfoDialog(message: K.Strings.allFieldRequired)
             }
         }
         
         loginView.dontHaveAccountLabel.onTap(disposeBag: disposeBag) { [weak self] in
             self?.viewModel.presentRegistrationScreen()
         }
-        
-        viewModel.loginSuccesObservable.subscribe(onNext: { [weak self] isSuccessful in
-            if isSuccessful {
-                self?.viewModel.presentHomeScreen()
-            }
-        }).disposed(by: disposeBag)
         
         viewModel.errorRelay.asObservable().subscribe(onNext: { [weak self] error in
             if let error = error {

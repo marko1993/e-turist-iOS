@@ -216,5 +216,13 @@ extension UIView {
         self.addGestureRecognizer(tap)
     }
     
+    func dropShadow( shadowRadius: CGFloat = 2.0, offsetSize: CGSize = CGSize(width: 2, height: 5), shadowOpacity: Float = 0.5, shadowColor: UIColor = UIColor.lightGray ) {
+        layer.masksToBounds = false
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowOffset = offsetSize
+        layer.shadowRadius = shadowRadius
+    }
+    
 }
 
