@@ -20,11 +20,15 @@ struct K {
         static let password = "Password"
         static let repeatPassword = "Repeated password"
         static let logIn = "Log In"
+        static let logOut = "Log Out"
+        static let save = "Save"
         static let register = "Register"
         static let confirm = "Confirm"
         static let allFieldRequired = "All fields required."
         static let repeatedPasswordMustMatch = "Repeated password must match."
         static let codeMustContainAllDigits = "Code must contain 6 digits."
+        static let changePassword = "Change password"
+        static let deleteData = "Delete data"
     }
     
     struct Endpoints {
@@ -32,10 +36,15 @@ struct K {
         static let logInRoute = "api/user/authentication/login"
         static let registerUserRoute = "api/user/authentication/register"
         static let validateCodeRoute = "api/user/authentication/validate-account"
+        static let imageEndpoint = K.Strings.baseUrl + "uploads/"
+        static let logOutRoute = "api/user/authentication/logout"
     }
     
     struct ApiParams {
         static let identifier = "identifier"
+        static let email = "email"
+        static let fullName = "fullName"
+        static let password = "password"
     }
     
     struct Color {

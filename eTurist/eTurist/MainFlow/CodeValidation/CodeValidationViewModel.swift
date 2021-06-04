@@ -20,7 +20,7 @@ class CodeValidationViewModel: BaseViewModel {
     func varifyCode(code: String) {
         self.repository?.validateCode(email: self.email, password: self.password, validationCode: code, completion: { [weak self] errorMessage in
             if let error = errorMessage {
-                self?.errorRelay.accept(error)
+                self?.handleNetworkError(error: error)
             } else {
                 self?.presentHomeScreen()
             }

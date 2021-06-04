@@ -14,7 +14,7 @@ class LoginViewModel: BaseViewModel {
     func logUserIn(email: String, password: String) {
         self.repository?.logUserIn(email: email, password: password, completion: { [weak self] errorMessage in
             if let error = errorMessage {
-                self?.errorRelay.accept(error)
+                self?.handleNetworkError(error: error)
             } else {
                 self?.presentHomeScreen()
             }

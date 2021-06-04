@@ -44,8 +44,8 @@ class RegistrationView: UIView, BaseView {
         profileImageView.borderWidth = 5
         profileImageView.borderColor = UIColor(named: K.Color.main)!
         
-        passwordTextField.isSecureTextEntry = true
-        repeatPasswordTextField.isSecureTextEntry = true
+        passwordTextField.isSecureTextEntry = false
+        repeatPasswordTextField.isSecureTextEntry = false
         
         registerButton.setTitle(K.Strings.register, for: .normal)
         registerButton.titleLabel?.font = .systemFont(ofSize: 24)

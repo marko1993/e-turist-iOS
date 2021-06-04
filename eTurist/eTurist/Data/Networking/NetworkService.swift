@@ -17,7 +17,7 @@ enum NetworkError: Error {
     case badURL, requestFailed, unknown
 }
 
-struct BodyParameters: Encodable {
+struct Empty: Encodable {
     
 }
 

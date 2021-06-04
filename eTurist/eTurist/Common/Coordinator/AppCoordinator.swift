@@ -41,10 +41,13 @@ class AppCoordinator: Coordinator {
         self.navigationController.setViewControllers([currentViewController!], animated: true)
     }
     
-    func presentLoginScreen() {
+    func presentLoginScreen(error: String? = nil) {
         let viewController = Assembler.sharedAssembler.resolver.resolve(LoginViewCotroller.self, argument: self)!
         self.currentViewController = viewController
         self.navigationController.setViewControllers([currentViewController!], animated: true)
+        if let error = error {
+            (currentViewController as? LoginViewCotroller)?.viewModel.errorRelay.accept(error)
+        }
     }
     
     func presentRegistrationScreen() {

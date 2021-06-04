@@ -15,6 +15,19 @@ class BaseViewModel {
     var repository: MainRepository?
     let errorRelay: BehaviorRelay<String?> = BehaviorRelay(value: nil)
     
+    func logUserOut(error: String? = nil) {
+        repository?.removeUserData()
+        coordinator?.presentLoginScreen(error: error)
+    }
+    
+    func handleNetworkError(error: String, responseCode: Int? = nil) {
+        if responseCode == 401 {
+            self.logUserOut(error: error)
+        } else {
+            self.errorRelay.accept(error)
+        }
+    }
+    
     
 }
 

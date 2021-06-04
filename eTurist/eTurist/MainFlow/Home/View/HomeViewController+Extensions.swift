@@ -23,18 +23,23 @@ extension HomeViewController {
         bottomTabContainer.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         bottomTabContainer.constrainHeight(80)
         bottomTabContainer.constrainWidth(UIScreen.main.bounds.size.width)
-        bottomTabContainer.cornerRadius = 30
+        bottomTabContainer.layer.cornerRadius = 30
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
+
         blurEffectView.frame = bottomTabContainer.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.layer.cornerRadius = 30
+        blurEffectView.cornerRadius = 30
         bottomTabContainer.addSubview(blurEffectView)
+        bottomTabContainer.dropShadow()
         
         bottomBarTab.axis = .horizontal
         bottomBarTab.alignment = .fill
         bottomBarTab.contentMode = .scaleToFill
         bottomBarTab.distribution = .equalSpacing
         bottomBarTab.spacing = 0
+        bottomBarTab.layer.cornerRadius = 30
         bottomBarTab.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 25))
         bottomBarTab.constrainHeight(70)
         bottomBarTab.centerY(inView: bottomTabContainer)
