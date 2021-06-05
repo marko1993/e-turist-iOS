@@ -62,4 +62,12 @@ class AppCoordinator: Coordinator {
         self.navigationController.pushViewController(viewController, animated: true)
     }
     
+    func presentChangePasswordViewController(delegate: ChangePasswordDialogDelegate) {
+        let viewController = Assembler.sharedAssembler.resolver.resolve(ChangePasswordViewController.self, arguments: self, delegate)!
+        viewController.modalPresentationStyle = .custom
+        viewController.modalTransitionStyle = .crossDissolve
+        self.currentViewController?.present(viewController, animated: false, completion: nil)
+        
+    }
+    
 }

@@ -19,6 +19,7 @@ final class AppAssembly: Assembly {
         self.assembleLoginViewController(container)
         self.assembleRegistrationViewController(container)
         self.assembleCodeValidationViewController(container)
+        self.assembleCodeChangePasswordViewController(container)
     }
     
     private func assembleRepository(_ container: Container) {
@@ -139,6 +140,22 @@ final class AppAssembly: Assembly {
         container.register(CodeValidationViewController.self) { (resolver, coordinator: AppCoordinator, email: String, password: String) in
             let controller = CodeValidationViewController()
             controller.viewModel = container.resolve(CodeValidationViewModel.self, arguments: coordinator, email, password)
+            return controller
+        }.inObjectScope(.transient)
+    }
+    
+    private func assembleCodeChangePasswordViewController(_ container: Container) {
+        container.register(ChangePasswordViewModel.self) { (resolver, coordinator: AppCoordinator) in
+            let viewModel = ChangePasswordViewModel()
+            viewModel.coordinator = coordinator
+            viewModel.repository = container.resolve(Repository.self, name: "main") as? MainRepository
+            return viewModel
+        }.inObjectScope(.transient)
+        
+        container.register(ChangePasswordViewController.self) { (resolver, coordinator: AppCoordinator, delegate: ChangePasswordDialogDelegate) in
+            let controller = ChangePasswordViewController()
+            controller.delegate = delegate
+            controller.viewModel = container.resolve(ChangePasswordViewModel.self, argument: coordinator)
             return controller
         }.inObjectScope(.transient)
     }

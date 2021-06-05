@@ -23,4 +23,18 @@ class ProfileViewModel: BaseViewModel {
         })
     }
     
+    func anonymizeUser() {
+        self.repository?.anonymizeUser(completion: { [weak self] error, responseCode in
+            if let error = error {
+                self?.handleNetworkError(error: error, responseCode: responseCode)
+            } else {
+                self?.logUserOut()
+            }
+        })
+    }
+    
+    func presentChangePasswordDialog(delegate: ChangePasswordDialogDelegate) {
+        coordinator?.presentChangePasswordViewController(delegate: delegate)
+    }
+    
 }

@@ -7,23 +7,15 @@
 
 import UIKit
 
-class RegistrationViewController: BaseViewController {
+class RegistrationViewController: ImagePickerController {
     
     private let registrationView = RegistrationView()
     var viewModel: RegistrationViewModel!
-    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(registrationView)
-        setupImagePicker()
         setupBindings()
-    }
-    
-    private func setupImagePicker() {
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
     }
     
     private func setupBindings() {
@@ -34,9 +26,7 @@ class RegistrationViewController: BaseViewController {
         }
         
         registrationView.profileImageView.onTap(disposeBag: disposeBag) { [weak self] in
-            if let imagePicker = self?.imagePicker {
-                self?.present(imagePicker, animated: true, completion: nil)
-            }
+            self?.presentImagePicker()
         }
         
         registrationView.registerButton.onTap(disposeBag: disposeBag) { [weak self] in
@@ -76,13 +66,8 @@ class RegistrationViewController: BaseViewController {
         return password == repeatPassword
     }
     
-}
-
-extension RegistrationViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            registrationView.profileImageView.image = image
-        }
-        imagePicker.dismiss(animated: true, completion: nil)
+    override func onImageSelected(image: UIImage) {
+        registrationView.profileImageView.image = image
     }
+    
 }

@@ -115,5 +115,25 @@ class MainRepository: Repository {
             }).disposed(by: disposeBag)
     }
     
+    func anonymizeUser(completion: @escaping (String?, Int?) -> Void) {
+        let resources = Resources<EmptyNetworkResponse, Empty>(
+            path: K.Endpoints.deleteUserDataRoute,
+            requestType: .PUT,
+            bodyParameters: nil,
+            httpHeaderFields: nil,
+            queryParameters: nil
+        )
+        networkService.performRequest(resources: resources, retryCount: 1, needsAuthorization: true)
+            .subscribe(onNext: { response in
+                if let error = response.error {
+                    completion(error, response.status)
+                } else if response.status >= 200 && response.status < 300 {
+                    completion(nil, response.status)
+                }
+            }, onError: { error in
+                completion(error.localizedDescription, nil)
+            }).disposed(by: disposeBag)
+    }
+    
 }
 

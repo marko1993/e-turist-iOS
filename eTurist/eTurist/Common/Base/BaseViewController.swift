@@ -30,9 +30,26 @@ class BaseViewController: UIViewController {
     }
     
     func presentInfoDialog(message: String) {
-        let alert = UIAlertController(title: "eTurist", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: nil))
+        let alert = UIAlertController(title: K.Strings.appName, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: K.Strings.ok, style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func presentConfirmationDialog(title: String = K.Strings.appName,
+                                   description: String = "",
+                                   positiveButtonText: String = K.Strings.ok,
+                                   completion: @escaping () -> Void) {
+        
+        let refreshAlert = UIAlertController(title: title, message: description, preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: positiveButtonText, style: .default, handler: { (action: UIAlertAction!) in
+            completion()
+            refreshAlert.dismiss(animated: true, completion: nil)
+        }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(refreshAlert, animated: true, completion: nil)
     }
     
 }

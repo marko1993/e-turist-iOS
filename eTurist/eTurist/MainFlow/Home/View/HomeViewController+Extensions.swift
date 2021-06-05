@@ -22,7 +22,6 @@ extension HomeViewController {
         view.addSubview(bottomBarTab)
         bottomTabContainer.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         bottomTabContainer.constrainHeight(80)
-        bottomTabContainer.constrainWidth(UIScreen.main.bounds.size.width)
         bottomTabContainer.layer.cornerRadius = 30
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -43,7 +42,6 @@ extension HomeViewController {
         bottomBarTab.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 25))
         bottomBarTab.constrainHeight(70)
         bottomBarTab.centerY(inView: bottomTabContainer)
-        bottomBarTab.constrainWidth(UIScreen.main.bounds.size.width)
         self.setupTabs()
     }
     

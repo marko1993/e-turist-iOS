@@ -10,6 +10,7 @@ import Foundation
 struct K {
     
     struct Strings {
+        static let appName = "eTurist"
         static let baseUrl = "https://www.eturist.site/"
         static let dontHaveAccount = "Don't have an account. Register."
         static let alreadyHaveAccount = "Already have an account. Log In."
@@ -19,6 +20,8 @@ struct K {
         static let fullName = "Full name"
         static let password = "Password"
         static let repeatPassword = "Repeated password"
+        static let oldPassword = "Old password"
+        static let newPassword = "New password"
         static let logIn = "Log In"
         static let logOut = "Log Out"
         static let save = "Save"
@@ -28,7 +31,11 @@ struct K {
         static let repeatedPasswordMustMatch = "Repeated password must match."
         static let codeMustContainAllDigits = "Code must contain 6 digits."
         static let changePassword = "Change password"
-        static let deleteData = "Delete data"
+        static let deleteData = "Delete my data"
+        static let ok = "Ok"
+        static let cancel = "Cancel"
+        static let deleteUserMessage = "User data will be deleted. Are you sure you want to continue?"
+        static let passwordSaved = "Password saved successfully"
     }
     
     struct Endpoints {
@@ -38,6 +45,7 @@ struct K {
         static let validateCodeRoute = "api/user/authentication/validate-account"
         static let imageEndpoint = K.Strings.baseUrl + "uploads/"
         static let logOutRoute = "api/user/authentication/logout"
+        static let deleteUserDataRoute = "api/user/profile/anonymize-user"
     }
     
     struct ApiParams {
@@ -52,6 +60,8 @@ struct K {
         static let mainTransparent = "mainTransparent"
         static let mainLight = "mainLight"
         static let mainLightTransparent = "mainLightTransparent"
+        static let backgroundDarkTransparent = "backgroundDarkTransparent"
+        static let backgroundLightTransparent = "backgroundLightTransparent"
     }
     
     struct UserDefaultsKeys {

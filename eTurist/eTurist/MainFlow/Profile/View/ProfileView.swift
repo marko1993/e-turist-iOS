@@ -92,7 +92,9 @@ class ProfileView: UIView, BaseView {
     func setupView(with user: User) {
         emailLabel.text = user.email
         fullNameTextField.text = user.fullName
-        profileImageView.sd_setImage(with: URL(string: K.Endpoints.imageEndpoint + (user.picturePath ?? "")))
+        if let picturePath = user.picturePath {
+            profileImageView.sd_setImage(with: URL(string: K.Endpoints.imageEndpoint + picturePath))
+        }
     }
     
 }
