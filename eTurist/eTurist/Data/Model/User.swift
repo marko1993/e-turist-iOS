@@ -11,7 +11,7 @@ class User: Codable {
     var id: Int
     var email: String
     var picturePath: String?
-    var isValidated: Bool
+    var isValidated: Bool?
     var modifiedAt: String?
     var createdAt: String?
     let fullName: String

@@ -64,6 +64,9 @@
 		AD7B74CA266AF1FA0062F86B /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74C9266AF1FA0062F86B /* ChangePasswordViewController.swift */; };
 		AD7B74D9266AF22B0062F86B /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74D8266AF22B0062F86B /* ChangePasswordViewModel.swift */; };
 		AD7B74DF266AF24E0062F86B /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74DE266AF24E0062F86B /* ChangePasswordView.swift */; };
+		AD7B74EB266BCD430062F86B /* ChangePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74EA266BCD430062F86B /* ChangePasswordRequestModel.swift */; };
+		AD7B74F0266BD1330062F86B /* MainRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74EF266BD1330062F86B /* MainRepository+User.swift */; };
+		AD7B74F5266BDB510062F86B /* UserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B74F4266BDB510062F86B /* UserResponseModel.swift */; };
 		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
 		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
 		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
@@ -156,6 +159,9 @@
 		AD7B74C9266AF1FA0062F86B /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		AD7B74D8266AF22B0062F86B /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		AD7B74DE266AF24E0062F86B /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		AD7B74EA266BCD430062F86B /* ChangePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordRequestModel.swift; sourceTree = "<group>"; };
+		AD7B74EF266BD1330062F86B /* MainRepository+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRepository+User.swift"; sourceTree = "<group>"; };
+		AD7B74F4266BDB510062F86B /* UserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponseModel.swift; sourceTree = "<group>"; };
 		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -301,6 +307,7 @@
 			children = (
 				AD3D19122664019800F853CC /* Repository.swift */,
 				AD3D1917266401C100F853CC /* MainRepository.swift */,
+				AD7B74EF266BD1330062F86B /* MainRepository+User.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -423,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				AD7B745D26668B310062F86B /* LoginResponse.swift */,
+				AD7B74F4266BDB510062F86B /* UserResponseModel.swift */,
 			);
 			path = NetworkResponseModel;
 			sourceTree = "<group>";
@@ -458,6 +466,7 @@
 			children = (
 				AD7B7453266689C60062F86B /* LoginRequestModel.swift */,
 				AD7B74AE26696CCB0062F86B /* ValidateCodeRequestModel.swift */,
+				AD7B74EA266BCD430062F86B /* ChangePasswordRequestModel.swift */,
 			);
 			path = NetworkRequestModel;
 			sourceTree = "<group>";
@@ -767,6 +776,7 @@
 				AD89142C2665157300B960FD /* HistoryView.swift in Sources */,
 				AD27F5D5266558F800268AA2 /* StackItemView.swift in Sources */,
 				AD3D1924266403E800F853CC /* HomeViewController.swift in Sources */,
+				AD7B74F5266BDB510062F86B /* UserResponseModel.swift in Sources */,
 				AD3D19042664008C00F853CC /* BaseView.swift in Sources */,
 				AD7B74DF266AF24E0062F86B /* ChangePasswordView.swift in Sources */,
 				AD3D18572663F1EB00F853CC /* SceneDelegate.swift in Sources */,
@@ -774,6 +784,7 @@
 				AD7B742D26665BE40062F86B /* LoginViewModel.swift in Sources */,
 				AD7B74B9266A900F0062F86B /* ImagePickerController.swift in Sources */,
 				AD8914212665152800B960FD /* HistoryViewController.swift in Sources */,
+				AD7B74F0266BD1330062F86B /* MainRepository+User.swift in Sources */,
 				AD7B746C2666C8DC0062F86B /* RegistrationViewModel.swift in Sources */,
 				AD3D18E32663FE6200F853CC /* AppCoordinator.swift in Sources */,
 				AD7B748A2667C9590062F86B /* CodeValidationView.swift in Sources */,
@@ -786,6 +797,7 @@
 				AD3D1909266400FC00F853CC /* BaseViewController.swift in Sources */,
 				AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */,
 				AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */,
+				AD7B74EB266BCD430062F86B /* ChangePasswordRequestModel.swift in Sources */,
 				AD7B740F2665709E0062F86B /* HomeViewController+Extensions.swift in Sources */,
 				AD7B749B26691D430062F86B /* PinTextField.swift in Sources */,
 				AD27F5DF266559A500268AA2 /* NSObject+Extensions.swift in Sources */,

@@ -42,9 +42,21 @@ class ProfileViewController: ImagePickerController {
             self?.viewModel.logOut()
         }
         
+        self.profileView.saveButton.onTap(disposeBag: disposeBag) { [weak self] in
+            self?.viewModel.updateUser(
+                fullName: self?.profileView.fullNameTextField.text,
+                image: self?.profileView.profileImageView.image)
+        }
+        
         self.viewModel.errorRelay.asObservable().subscribe(onNext: { [weak self] error in
             if let error = error {
                 self?.presentInfoDialog(message: error)
+            }
+        }).disposed(by: disposeBag)
+        
+        self.viewModel.userUpdateSuccess.asObservable().subscribe(onNext: { [weak self] isSuccesfull in
+            if isSuccesfull {
+                self?.presentInfoDialog(message: K.Strings.userUpdatedSuccessfully)
             }
         }).disposed(by: disposeBag)
     }

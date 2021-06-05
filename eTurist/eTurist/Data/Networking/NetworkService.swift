@@ -14,7 +14,16 @@ enum RequestType: String {
 }
 
 enum NetworkError: Error {
-    case badURL, requestFailed, unknown
+    case badURL, requestFailed, fileTooLarge, unknown
+
+    var description : String {
+        switch self {
+        case .badURL: return "Bad URL."
+        case .requestFailed: return "Request Failed."
+        case .fileTooLarge: return "File too large."
+        case .unknown: return "Unknown error."
+        }
+  }
 }
 
 struct Empty: Encodable {
@@ -105,7 +114,7 @@ class NetworkService {
                     }
                 }
                 
-                if let imageData = resources.image?.jpegData(compressionQuality: 0.5) {
+                if let imageData = resources.image?.jpegData(compressionQuality: 0.1) {
                     httpBody.append(self.convertFileData(fieldName: "files",
                                                     fileName: "imagename.jpg",
                                                     mimeType: "image/jpg",
@@ -130,6 +139,9 @@ class NetworkService {
                     } catch {
                         throw RxCocoaURLError.httpRequestFailed(response: response, data: data)
                     }
+                }
+                if response.statusCode == 413 {
+                    throw NetworkError.fileTooLarge
                 }
                 throw RxCocoaURLError.httpRequestFailed(response: response, data: data)
             }.observeOn(MainScheduler.instance)

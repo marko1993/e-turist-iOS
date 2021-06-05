@@ -36,6 +36,7 @@ struct K {
         static let cancel = "Cancel"
         static let deleteUserMessage = "User data will be deleted. Are you sure you want to continue?"
         static let passwordSaved = "Password saved successfully"
+        static let userUpdatedSuccessfully = "User successfully updated"
     }
     
     struct Endpoints {
@@ -46,6 +47,8 @@ struct K {
         static let imageEndpoint = K.Strings.baseUrl + "uploads/"
         static let logOutRoute = "api/user/authentication/logout"
         static let deleteUserDataRoute = "api/user/profile/anonymize-user"
+        static let changePasswordRoute = "api/user/profile/change-password"
+        static let updateUserRoute = "api/user/profile/update"
     }
     
     struct ApiParams {
