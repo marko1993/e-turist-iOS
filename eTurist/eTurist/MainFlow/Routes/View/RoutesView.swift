@@ -9,6 +9,8 @@ import UIKit
 
 class RoutesView: UIView, BaseView {
     
+    let mapButton = UIButton()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -19,15 +21,18 @@ class RoutesView: UIView, BaseView {
     }
     
     func addSubviews() {
-        
+        addSubview(mapButton)
     }
     
     func styleSubviews() {
-        backgroundColor = .systemTeal
+        backgroundColor = .white
+        
+        mapButton.setTitle("MAP", for: .normal)
+        mapButton.setTitleColor(.black, for: .normal)
     }
     
     func positionSubviews() {
-        
+        mapButton.centerInSuperview()
     }
     
 }

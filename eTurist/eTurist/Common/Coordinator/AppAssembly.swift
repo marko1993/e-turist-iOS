@@ -20,6 +20,7 @@ final class AppAssembly: Assembly {
         self.assembleRegistrationViewController(container)
         self.assembleCodeValidationViewController(container)
         self.assembleCodeChangePasswordViewController(container)
+        self.assembleMapViewController(container)
     }
     
     private func assembleRepository(_ container: Container) {
@@ -156,6 +157,21 @@ final class AppAssembly: Assembly {
             let controller = ChangePasswordViewController()
             controller.delegate = delegate
             controller.viewModel = container.resolve(ChangePasswordViewModel.self, argument: coordinator)
+            return controller
+        }.inObjectScope(.transient)
+    }
+    
+    private func assembleMapViewController(_ container: Container) {
+        container.register(MapViewModel.self) { (resolver, coordinator: AppCoordinator) in
+            let viewModel = MapViewModel()
+            viewModel.coordinator = coordinator
+            viewModel.repository = container.resolve(Repository.self, name: "main") as? MainRepository
+            return viewModel
+        }.inObjectScope(.transient)
+        
+        container.register(MapViewController.self) { (resolver, coordinator: AppCoordinator) in
+            let controller = MapViewController()
+            controller.viewModel = container.resolve(MapViewModel.self, argument: coordinator)
             return controller
         }.inObjectScope(.transient)
     }

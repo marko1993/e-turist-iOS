@@ -37,6 +37,7 @@ struct K {
         static let deleteUserMessage = "User data will be deleted. Are you sure you want to continue?"
         static let passwordSaved = "Password saved successfully"
         static let userUpdatedSuccessfully = "User successfully updated"
+        static let enableLocation = "Please enable location services in your settings."
     }
     
     struct Endpoints {
@@ -76,6 +77,10 @@ struct K {
         static let isValidated = "isValidated"
         static let modifiedAt = "modifiedAt"
         static let createdAt = "createdAt"
+    }
+    
+    struct MapKeys {
+        static let zoomRadius: Double = 5000
     }
     
 }

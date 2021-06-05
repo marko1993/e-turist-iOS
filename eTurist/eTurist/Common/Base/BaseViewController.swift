@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
     func presentInfoDialog(message: String) {
         let alert = UIAlertController(title: K.Strings.appName, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: K.Strings.ok, style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        navigationController?.present(alert, animated: true, completion: nil)
     }
     
     func presentConfirmationDialog(title: String = K.Strings.appName,

@@ -9,4 +9,12 @@ import Foundation
 
 class RoutesViewModel: BaseViewModel {
     
+    func presentMapScreen() {
+        coordinator?.presentMapScreen()
+    }
+    
+    func getRoutesForCity(_ city: String) {
+        print(city)
+    }
+    
 }

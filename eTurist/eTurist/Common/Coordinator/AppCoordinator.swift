@@ -67,7 +67,12 @@ class AppCoordinator: Coordinator {
         viewController.modalPresentationStyle = .custom
         viewController.modalTransitionStyle = .crossDissolve
         self.currentViewController?.present(viewController, animated: false, completion: nil)
-        
+    }
+    
+    func presentMapScreen() {
+        let viewController = Assembler.sharedAssembler.resolver.resolve(MapViewController.self, argument: self)!
+        self.currentViewController = viewController
+        self.navigationController.pushViewController(viewController, animated: true)
     }
     
 }
