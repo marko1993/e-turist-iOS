@@ -38,6 +38,21 @@ class MainRepository: Repository {
         
     }
     
+    func performRequest<T: Decodable, P: Encodable>(resources: Resources<NetworkResponse<T>, P>, retryCount: Int, needsAuthorization: Bool, completion: @escaping (T?, String?) -> Void) {
+        
+        networkService.performRequest(resources: resources, retryCount: 1, needsAuthorization: true)
+            .subscribe(onNext: { response in
+                if let error = response.error {
+                    completion(nil, error)
+                } else if response.status >= 200 && response.status < 300 {
+                    completion(response.data, nil)
+                }
+            }, onError: { error in
+                completion(nil, error.localizedDescription)
+            }).disposed(by: disposeBag)
+        
+    }
+    
     func performRequest<P: Encodable>(resources: Resources<EmptyNetworkResponse, P>, retryCount: Int, needsAuthorization: Bool, completion: @escaping (String?, Int?) -> Void) {
         
         networkService.performRequest(resources: resources, retryCount: 1, needsAuthorization: true)

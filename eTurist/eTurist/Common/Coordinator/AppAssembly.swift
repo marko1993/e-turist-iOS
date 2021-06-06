@@ -169,9 +169,10 @@ final class AppAssembly: Assembly {
             return viewModel
         }.inObjectScope(.transient)
         
-        container.register(MapViewController.self) { (resolver, coordinator: AppCoordinator) in
+        container.register(MapViewController.self) { (resolver, coordinator: AppCoordinator, route: Route) in
             let controller = MapViewController()
             controller.viewModel = container.resolve(MapViewModel.self, argument: coordinator)
+            controller.viewModel.route = route
             return controller
         }.inObjectScope(.transient)
     }

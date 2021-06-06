@@ -9,7 +9,7 @@ import UIKit
 
 class RoutesView: UIView, BaseView {
     
-    let mapButton = UIButton()
+    var routesTableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,18 +21,28 @@ class RoutesView: UIView, BaseView {
     }
     
     func addSubviews() {
-        addSubview(mapButton)
+        addSubview(routesTableView)
     }
     
     func styleSubviews() {
         backgroundColor = .white
         
-        mapButton.setTitle("MAP", for: .normal)
-        mapButton.setTitleColor(.black, for: .normal)
+        routesTableView.backgroundColor = .clear
+        routesTableView.rowHeight = RoutesTableViewCell.rowHeight
+        routesTableView.separatorStyle = .none
+        routesTableView.showsVerticalScrollIndicator = false
+        routesTableView.contentInsetAdjustmentBehavior = .never
+        routesTableView.allowsSelection = false
+        
+        routesTableView.tableHeaderView = nil
+        routesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
+        
+        routesTableView.register(RoutesTableViewCell.self, forCellReuseIdentifier: RoutesTableViewCell.cellIdentifier)
+        
     }
     
     func positionSubviews() {
-        mapButton.centerInSuperview()
+        routesTableView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 70, left: 16, bottom: 0, right: 16))
     }
     
 }

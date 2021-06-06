@@ -50,10 +50,12 @@ struct K {
         static let deleteUserDataRoute = "api/user/profile/anonymize-user"
         static let changePasswordRoute = "api/user/profile/change-password"
         static let updateUserRoute = "api/user/profile/update"
+        static let getRoutesForCityRoute = "api/user/initial-data"
     }
     
     struct ApiParams {
         static let identifier = "identifier"
+        static let limit = "limit"
         static let email = "email"
         static let fullName = "fullName"
         static let password = "password"

@@ -35,7 +35,7 @@ struct Resources<T: Decodable, P: Encodable> {
     let requestType: RequestType
     let bodyParameters: P?
     let httpHeaderFields: [String : String]?
-    let queryParameters: [String : String]?
+    let queryParameters: [String : Codable]?
 }
 
 struct FormDataResources<T: Decodable> {
@@ -43,7 +43,7 @@ struct FormDataResources<T: Decodable> {
     let requestType: RequestType
     let bodyParameters: [String : String]?
     let httpHeaderFields: [String : String]?
-    let queryParameters: [String : String]?
+    let queryParameters: [String : Codable]?
     let image: UIImage?
 }
 
@@ -170,7 +170,7 @@ class NetworkService {
         return data as Data
     }
     
-    private func getUrl(path: String, queryParameters: [String : String]?) -> URL? {
+    private func getUrl(path: String, queryParameters: [String : Codable]?) -> URL? {
         let pathWithQueryParameters = addQueryParametersToPath(path: path, queryParameters: queryParameters)
         
         guard let url = URL(string: K.Strings.baseUrl + pathWithQueryParameters) else {
@@ -179,7 +179,7 @@ class NetworkService {
         return url
     }
     
-    private func addQueryParametersToPath(path: String, queryParameters: [String : String]?) -> String {
+    private func addQueryParametersToPath(path: String, queryParameters: [String : Codable]?) -> String {
         var newPath = path
         if let queryParameters = queryParameters {
             newPath.append("?")

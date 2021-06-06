@@ -69,8 +69,8 @@ class AppCoordinator: Coordinator {
         self.currentViewController?.present(viewController, animated: false, completion: nil)
     }
     
-    func presentMapScreen() {
-        let viewController = Assembler.sharedAssembler.resolver.resolve(MapViewController.self, argument: self)!
+    func presentMapScreen(route: Route) {
+        let viewController = Assembler.sharedAssembler.resolver.resolve(MapViewController.self, arguments: self, route)!
         self.currentViewController = viewController
         self.navigationController.pushViewController(viewController, animated: true)
     }

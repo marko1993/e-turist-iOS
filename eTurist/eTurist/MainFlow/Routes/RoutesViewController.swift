@@ -7,11 +7,34 @@
 
 import UIKit
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 class RoutesViewController: LocationViewController {
     
     private let routesView = RoutesView()
     var viewModel: RoutesViewModel!
+    var firstLoad = true
+    
+    override func viewDidLayoutSubviews() {
+        if firstLoad {
+            firstLoad = false
+            viewModel?
+                .routesObservable
+                .observeOn(MainScheduler.instance)
+                .bind(to:
+                        routesView.routesTableView
+                        .rx
+                        .items(
+                            cellIdentifier: RoutesTableViewCell.cellIdentifier,
+                            cellType: RoutesTableViewCell.self)) { index, data, cell in
+                    
+                    cell.setup(with: data, delegate: self)
+                    cell.setupBindings(disposeBag: self.disposeBag)
+            }.disposed(by: disposeBag)
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +45,23 @@ class RoutesViewController: LocationViewController {
     }
     
     private func setupBinding() {
-        routesView.mapButton.onTap(disposeBag: disposeBag) {
-            self.viewModel.presentMapScreen()
-        }
+       self.viewModel.errorRelay.asObservable().subscribe(onNext: { [weak self] error in
+            if let error = error {
+                self?.presentInfoDialog(message: error)
+            }
+        }).disposed(by: disposeBag)
     }
     
+}
+
+extension RoutesViewController: RoutesTableViewCellProtocol {
+    func routesTableViewCell(_ cell: RoutesTableViewCell, didPressPlayButtonFor route: Route) {
+        self.viewModel.presentMapScreen(route: route)
+    }
+    
+    func routesTableViewCell(_ cell: RoutesTableViewCell, didSelectCellFor route: Route) {
+        
+    }
 }
 
 extension RoutesViewController: LocationViewControllerProtocol {
