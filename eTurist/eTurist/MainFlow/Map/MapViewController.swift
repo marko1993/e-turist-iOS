@@ -18,10 +18,18 @@ class MapViewController: LocationViewController {
         super.viewDidLoad()
         setupView(mapView)
         mapView.setMapViewDelegate(delegate: self)
+        locationViewControlleDelegate = self
         checkLocationServices()
     }
+   
+}
+
+extension MapViewController: MKMapViewDelegate {
     
-    override func onPermissionAuthorized() {
+}
+
+extension MapViewController: LocationViewControllerProtocol {
+    func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?) {
         mapView.setupMapView()
         if let userLocation = getUserLocation()?.coordinate {
             mapView.zoomInToLocation(location: userLocation, radius: K.MapKeys.zoomRadius)
@@ -29,14 +37,10 @@ class MapViewController: LocationViewController {
         startUpdatingLocation()
     }
     
-    override func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
+    func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
         guard let location = location else { return }
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         mapView.zoomInToLocation(location: center, radius: K.MapKeys.zoomRadius)
     }
-    
-}
-
-extension MapViewController: MKMapViewDelegate {
     
 }

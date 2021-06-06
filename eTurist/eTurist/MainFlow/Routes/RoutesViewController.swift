@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class RoutesViewController: LocationViewController {
     
@@ -16,10 +17,25 @@ class RoutesViewController: LocationViewController {
         super.viewDidLoad()
         setupView(routesView)
         setupBinding()
+        locationViewControlleDelegate = self
         checkLocationServices()
     }
     
-    override func onPermissionAuthorized() {
+    private func setupBinding() {
+        routesView.mapButton.onTap(disposeBag: disposeBag) {
+            self.viewModel.presentMapScreen()
+        }
+    }
+    
+}
+
+extension RoutesViewController: LocationViewControllerProtocol {
+    
+    func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
+        
+    }
+    
+    func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?) {
         if let userLocation = getUserLocation() {
             geoCoder.reverseGeocodeLocation(userLocation) { [weak self] placemarks, error in
                 guard let self = self else { return }
@@ -34,12 +50,6 @@ class RoutesViewController: LocationViewController {
                     }
                 }
             }
-        }
-    }
-    
-    private func setupBinding() {
-        routesView.mapButton.onTap(disposeBag: disposeBag) {
-            self.viewModel.presentMapScreen()
         }
     }
     

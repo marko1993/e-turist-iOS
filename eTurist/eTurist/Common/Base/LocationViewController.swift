@@ -8,10 +8,17 @@
 import UIKit
 import CoreLocation
 
+protocol LocationViewControllerProtocol {
+    func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?)
+    func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?)
+}
+
 class LocationViewController: BaseViewController {
     
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
+    
+    var locationViewControlleDelegate: LocationViewControllerProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +42,15 @@ class LocationViewController: BaseViewController {
             presentInfoDialog(message: K.Strings.enableLocation)
             break
         case .denied:
+            locationViewControlleDelegate?.locationViewController(self, didGetAuthorized: false)
             presentInfoDialog(message: K.Strings.enableLocation)
             break
         case .authorizedAlways:
-            onPermissionAuthorized()
+            locationViewControlleDelegate?.locationViewController(self, didGetAuthorized: true)
             locationManager.startUpdatingLocation()
             break
         case .authorizedWhenInUse:
-            onPermissionAuthorized()
+            locationViewControlleDelegate?.locationViewController(self, didGetAuthorized: true)
             break
         @unknown default:
             break
@@ -52,14 +60,6 @@ class LocationViewController: BaseViewController {
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
-        
-    }
-    
-    func onPermissionAuthorized() {
-        
     }
     
     func getUserLocation() -> CLLocation? {
@@ -79,7 +79,7 @@ class LocationViewController: BaseViewController {
 extension LocationViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationViewController(self, didReceive: locations.last)
+        locationViewControlleDelegate?.locationViewController(self, didReceive: locations.last)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
