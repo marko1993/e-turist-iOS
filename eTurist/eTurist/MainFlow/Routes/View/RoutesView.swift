@@ -9,6 +9,7 @@ import UIKit
 
 class RoutesView: UIView, BaseView {
     
+    var searchBar = SearchBar()
     var routesTableView = UITableView()
     
     override init(frame: CGRect) {
@@ -21,6 +22,7 @@ class RoutesView: UIView, BaseView {
     }
     
     func addSubviews() {
+        addSubview(searchBar)
         addSubview(routesTableView)
     }
     
@@ -42,7 +44,9 @@ class RoutesView: UIView, BaseView {
     }
     
     func positionSubviews() {
-        routesTableView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 70, left: 16, bottom: 0, right: 16))
+        searchBar.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor)
+        
+        routesTableView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 50, left: 8, bottom: 0, right: 8))
     }
     
 }

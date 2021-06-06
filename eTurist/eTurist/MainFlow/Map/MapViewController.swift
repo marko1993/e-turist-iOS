@@ -28,7 +28,7 @@ extension MapViewController: MKMapViewDelegate {
     
 }
 
-extension MapViewController: LocationViewControllerProtocol {
+extension MapViewController: LocationViewControllerDelegate {
     func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?) {
         mapView.setupMapView()
         if let userLocation = getUserLocation()?.coordinate {

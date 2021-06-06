@@ -41,6 +41,7 @@ class RoutesViewController: LocationViewController {
         setupView(routesView)
         setupBinding()
         locationViewControlleDelegate = self
+        routesView.searchBar.delegate = self
         checkLocationServices()
     }
     
@@ -54,7 +55,7 @@ class RoutesViewController: LocationViewController {
     
 }
 
-extension RoutesViewController: RoutesTableViewCellProtocol {
+extension RoutesViewController: RoutesTableViewCellDelegate {
     func routesTableViewCell(_ cell: RoutesTableViewCell, didPressPlayButtonFor route: Route) {
         self.viewModel.presentMapScreen(route: route)
     }
@@ -64,7 +65,15 @@ extension RoutesViewController: RoutesTableViewCellProtocol {
     }
 }
 
-extension RoutesViewController: LocationViewControllerProtocol {
+extension RoutesViewController: SearchBarDelegate {
+    func searchBar(_ searchBar: SearchBar, valueDidChange value: String?) {
+        if let value = value {
+            self.viewModel.filterRoutes(filter: value)
+        }
+    }
+}
+
+extension RoutesViewController: LocationViewControllerDelegate {
     
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
         

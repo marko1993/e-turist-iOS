@@ -78,6 +78,7 @@
 		AD7B752F266CFA520062F86B /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B752E266CFA520062F86B /* Point.swift */; };
 		AD7B7534266CFAA90062F86B /* MainRepository+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B7533266CFAA90062F86B /* MainRepository+Routes.swift */; };
 		AD7B753C266D04830062F86B /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B753B266D04830062F86B /* RoutesTableViewCell.swift */; };
+		AD7B7541266D461C0062F86B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B7540266D461C0062F86B /* SearchBar.swift */; };
 		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
 		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
 		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
@@ -184,6 +185,7 @@
 		AD7B752E266CFA520062F86B /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		AD7B7533266CFAA90062F86B /* MainRepository+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRepository+Routes.swift"; sourceTree = "<group>"; };
 		AD7B753B266D04830062F86B /* RoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewCell.swift; sourceTree = "<group>"; };
+		AD7B7540266D461C0062F86B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				AD7B743726665EC30062F86B /* TextField.swift */,
 				AD7B744D26667BC00062F86B /* ButtonGradient.swift */,
 				AD7B74B3266A7BB90062F86B /* UnderlinedLabel.swift */,
+				AD7B7540266D461C0062F86B /* SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				AD7B743326665C2C0062F86B /* LoginView.swift in Sources */,
 				AD7B7509266C0BD50062F86B /* MapView.swift in Sources */,
 				AD3D1909266400FC00F853CC /* BaseViewController.swift in Sources */,
+				AD7B7541266D461C0062F86B /* SearchBar.swift in Sources */,
 				AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */,
 				AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */,
 				AD7B74EB266BCD430062F86B /* ChangePasswordRequestModel.swift in Sources */,

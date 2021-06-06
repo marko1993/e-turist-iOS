@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-protocol LocationViewControllerProtocol {
+protocol LocationViewControllerDelegate {
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?)
     func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?)
 }
@@ -18,7 +18,7 @@ class LocationViewController: BaseViewController {
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     
-    var locationViewControlleDelegate: LocationViewControllerProtocol?
+    var locationViewControlleDelegate: LocationViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

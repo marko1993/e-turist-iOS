@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol RoutesTableViewCellProtocol {
+protocol RoutesTableViewCellDelegate {
     func routesTableViewCell(_ cell: RoutesTableViewCell, didPressPlayButtonFor route: Route)
     func routesTableViewCell(_ cell: RoutesTableViewCell, didSelectCellFor route: Route)
 }
@@ -23,7 +23,7 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
     let routeDescriptrion = UILabel()
     
     var route : Route!
-    var delegate: RoutesTableViewCellProtocol?
+    var delegate: RoutesTableViewCellDelegate?
     
     static let cellIdentifier = "RoutesTableViewCell"
     static let rowHeight: CGFloat = 300.0
@@ -97,7 +97,7 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
         }
     }
     
-    func setup(with route: Route, delegate: RoutesTableViewCellProtocol? = nil) {
+    func setup(with route: Route, delegate: RoutesTableViewCellDelegate? = nil) {
         self.route = route
         self.delegate = delegate
         self.routeName.text = route.name

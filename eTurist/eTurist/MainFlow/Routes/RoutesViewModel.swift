@@ -11,6 +11,7 @@ import RxCocoa
 
 class RoutesViewModel: BaseViewModel {
     
+    private var routes: [Route] = []
     private let routesRelay: BehaviorRelay<[Route]> = BehaviorRelay(value: [])
     var routesObservable: Observable<[Route]> {
         return routesRelay.asObservable()
@@ -28,6 +29,7 @@ class RoutesViewModel: BaseViewModel {
                 self?.errorRelay.accept(error)
             }
             if let response = responseModel {
+                self?.routes = response.cityRoutes
                 self?.routesRelay.accept(response.cityRoutes)
                 self?.city = response.city
             }
@@ -36,6 +38,14 @@ class RoutesViewModel: BaseViewModel {
     
     func updateRoutes(routes: [Route]) {
         self.routesRelay.accept(routes)
+    }
+    
+    func filterRoutes(filter: String) {
+        if filter.isEmpty {
+            routesRelay.accept(routes)
+        } else {
+            routesRelay.accept(routes.filter{ $0.name.lowercased().contains(filter.lowercased()) })
+        }
     }
     
 }
