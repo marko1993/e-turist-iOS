@@ -20,9 +20,11 @@ class SearchBar: UIView, BaseView {
     let citiesImage = UIImageView(image: UIImage(named: "location")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor(named: K.Color.main)!))
     
     var delegate: SearchBarDelegate?
+    let shouldShowLocationImage: Bool
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(shouldShowLocationImage: Bool = true) {
+        self.shouldShowLocationImage = shouldShowLocationImage
+        super.init(frame: .zero)
         setupView()
         setupBindings()
     }
@@ -32,7 +34,9 @@ class SearchBar: UIView, BaseView {
     }
     
     func addSubviews() {
-        addSubview(citiesImage)
+        if self.shouldShowLocationImage {
+            addSubview(citiesImage)
+        }
         addSubview(searchView)
         searchView.addSubview(searchImage)
         searchView.addSubview(searchTextField)
@@ -45,6 +49,8 @@ class SearchBar: UIView, BaseView {
         
         deleteImage.isHidden = true
         
+        searchTextField.textColor = UIColor(named: K.Color.main)
+        
         searchView.backgroundColor = .white
         searchView.cornerRadius = 20
         searchView.borderColor = UIColor(named: K.Color.main)!
@@ -54,10 +60,14 @@ class SearchBar: UIView, BaseView {
     func positionSubviews() {
         self.constrainHeight(50)
         
-        citiesImage.anchor(trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16), size: CGSize(width: 40, height: 40))
-        citiesImage.centerY(inView: self)
-        
-        searchView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: citiesImage.leadingAnchor, padding: UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 8))
+        if shouldShowLocationImage {
+            citiesImage.anchor(trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16), size: CGSize(width: 40, height: 40))
+            citiesImage.centerY(inView: self)
+            
+            searchView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: citiesImage.leadingAnchor, padding: UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 8))
+        } else {
+            searchView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16))
+        }
         
         searchImage.anchor(leading: searchView.leadingAnchor, padding: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
         searchImage.constrainHeight(16)

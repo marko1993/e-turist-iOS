@@ -9,8 +9,8 @@ import UIKit
 
 class RoutesView: UIView, BaseView {
     
-    var searchBar = SearchBar()
-    var routesTableView = UITableView()
+    let searchBar = SearchBar()
+    let routesTableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

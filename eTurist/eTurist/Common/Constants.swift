@@ -51,6 +51,7 @@ struct K {
         static let changePasswordRoute = "api/user/profile/change-password"
         static let updateUserRoute = "api/user/profile/update"
         static let getRoutesForCityRoute = "api/user/initial-data"
+        static let getVisistedDestinationsRoute = "api/user/destinations/visited-by-user"
     }
     
     struct ApiParams {

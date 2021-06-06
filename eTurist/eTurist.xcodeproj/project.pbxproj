@@ -79,6 +79,9 @@
 		AD7B7534266CFAA90062F86B /* MainRepository+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B7533266CFAA90062F86B /* MainRepository+Routes.swift */; };
 		AD7B753C266D04830062F86B /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B753B266D04830062F86B /* RoutesTableViewCell.swift */; };
 		AD7B7541266D461C0062F86B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B7540266D461C0062F86B /* SearchBar.swift */; };
+		AD7B7546266D62760062F86B /* VisitedDestinationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B7545266D62760062F86B /* VisitedDestinationsResponseModel.swift */; };
+		AD7B754B266D62C60062F86B /* MainRepository+Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B754A266D62C60062F86B /* MainRepository+Destinations.swift */; };
+		AD7B75A7266D6E390062F86B /* DestinationCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75A6266D6E390062F86B /* DestinationCollectionsViewCell.swift */; };
 		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
 		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
 		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
@@ -186,6 +189,9 @@
 		AD7B7533266CFAA90062F86B /* MainRepository+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRepository+Routes.swift"; sourceTree = "<group>"; };
 		AD7B753B266D04830062F86B /* RoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewCell.swift; sourceTree = "<group>"; };
 		AD7B7540266D461C0062F86B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		AD7B7545266D62760062F86B /* VisitedDestinationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedDestinationsResponseModel.swift; sourceTree = "<group>"; };
+		AD7B754A266D62C60062F86B /* MainRepository+Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRepository+Destinations.swift"; sourceTree = "<group>"; };
+		AD7B75A6266D6E390062F86B /* DestinationCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCollectionsViewCell.swift; sourceTree = "<group>"; };
 		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -333,6 +339,7 @@
 				AD3D1917266401C100F853CC /* MainRepository.swift */,
 				AD7B74EF266BD1330062F86B /* MainRepository+User.swift */,
 				AD7B7533266CFAA90062F86B /* MainRepository+Routes.swift */,
+				AD7B754A266D62C60062F86B /* MainRepository+Destinations.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -464,6 +471,7 @@
 				AD7B745D26668B310062F86B /* LoginResponse.swift */,
 				AD7B74F4266BDB510062F86B /* UserResponseModel.swift */,
 				AD7B751A266CF8770062F86B /* RoutesResponseModel.swift */,
+				AD7B7545266D62760062F86B /* VisitedDestinationsResponseModel.swift */,
 			);
 			path = NetworkResponseModel;
 			sourceTree = "<group>";
@@ -626,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				AD89142B2665157300B960FD /* HistoryView.swift */,
+				AD7B75A6266D6E390062F86B /* DestinationCollectionsViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -843,6 +852,7 @@
 				AD7B7511266C236B0062F86B /* LocationViewController.swift in Sources */,
 				AD7B74FB266C0B900062F86B /* MapViewController.swift in Sources */,
 				AD7B746C2666C8DC0062F86B /* RegistrationViewModel.swift in Sources */,
+				AD7B754B266D62C60062F86B /* MainRepository+Destinations.swift in Sources */,
 				AD3D18E32663FE6200F853CC /* AppCoordinator.swift in Sources */,
 				AD7B752F266CFA520062F86B /* Point.swift in Sources */,
 				AD7B748A2667C9590062F86B /* CodeValidationView.swift in Sources */,
@@ -888,10 +898,12 @@
 				AD3D19132664019800F853CC /* Repository.swift in Sources */,
 				AD89143D2665162000B960FD /* ProfileView.swift in Sources */,
 				AD3D190E2664014100F853CC /* BaseViewModel.swift in Sources */,
+				AD7B75A7266D6E390062F86B /* DestinationCollectionsViewCell.swift in Sources */,
 				AD7B7503266C0BB40062F86B /* MapViewModel.swift in Sources */,
 				AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */,
 				AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */,
 				AD27F5F02665623200268AA2 /* TabBarItem.swift in Sources */,
+				AD7B7546266D62760062F86B /* VisitedDestinationsResponseModel.swift in Sources */,
 				AD7B742826665BB70062F86B /* LoginViewCotroller.swift in Sources */,
 				AD3D18DE2663FDFD00F853CC /* Coordinator.swift in Sources */,
 				AD7B745E26668B310062F86B /* LoginResponse.swift in Sources */,

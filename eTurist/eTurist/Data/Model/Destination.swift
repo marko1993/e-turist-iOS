@@ -13,7 +13,7 @@ struct Destination: Codable {
     let description: String?
     let picturePath: String?
     let routeId: Int
-    var userVisited: Bool
+    var userVisited: Bool?
     let coordinates: Point
     var myRating: Double? = 0.0
     var averageRating: Double?

@@ -16,6 +16,7 @@ class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barStyle = .default
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        UITextField.appearance().tintColor = UIColor(named: K.Color.mainLight)
         
     }
     
