@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol ChangePasswordDialogDelegate {
-    func ChangePasswordDialog(_ dialog: ChangePasswordViewController, didFinishChangingPassword didFinish: Bool, errorMessage: String?)
-}
-
 class ChangePasswordViewController: BaseViewController {
     
     private let changePasswordView = ChangePasswordView()

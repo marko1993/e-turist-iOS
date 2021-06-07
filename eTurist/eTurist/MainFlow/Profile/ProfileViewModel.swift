@@ -40,10 +40,6 @@ class ProfileViewModel: BaseViewModel {
         })
     }
     
-    func presentChangePasswordDialog(delegate: ChangePasswordDialogDelegate) {
-        coordinator?.presentChangePasswordViewController(delegate: delegate)
-    }
-    
     func updateUser(fullName: String?, image: UIImage?) {
         self.repository?.updateUser(fullName: fullName, image: image, completion: { [weak self] error, responseCode in
             if let error = error {
@@ -52,6 +48,10 @@ class ProfileViewModel: BaseViewModel {
                 self?.userUpdateSuccess.accept(true)
             }
         })
+    }
+    
+    func presentChangePasswordDialog(delegate: ChangePasswordDialogDelegate) {
+        coordinator?.presentChangePasswordViewController(delegate: delegate)
     }
     
 }

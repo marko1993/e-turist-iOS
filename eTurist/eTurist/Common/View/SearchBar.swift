@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchBarDelegate {
     func searchBar(_ searchBar: SearchBar, valueDidChange value: String?)
+    func searchBar(_ searchBar: SearchBar, didSelectCityPicker value: Bool)
 }
 
 class SearchBar: UIView, BaseView {
@@ -21,9 +22,11 @@ class SearchBar: UIView, BaseView {
     
     var delegate: SearchBarDelegate?
     let shouldShowLocationImage: Bool
+    var placeholder: String = ""
     
-    init(shouldShowLocationImage: Bool = true) {
+    init(shouldShowLocationImage: Bool = true, placeholder: String = "") {
         self.shouldShowLocationImage = shouldShowLocationImage
+        self.placeholder = placeholder
         super.init(frame: .zero)
         setupView()
         setupBindings()
@@ -50,6 +53,8 @@ class SearchBar: UIView, BaseView {
         deleteImage.isHidden = true
         
         searchTextField.textColor = UIColor(named: K.Color.main)
+        searchTextField.attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: K.Color.mainTransparent)!])
         
         searchView.backgroundColor = .white
         searchView.cornerRadius = 20
@@ -84,15 +89,23 @@ class SearchBar: UIView, BaseView {
     }
     
     func setupBindings() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteTapped(tapGestureRecognizer:)))
+        let deleteTap = UITapGestureRecognizer(target: self, action: #selector(deleteTapped(tapGestureRecognizer:)))
         deleteImage.isUserInteractionEnabled = true
-        deleteImage.addGestureRecognizer(tapGestureRecognizer)
+        deleteImage.addGestureRecognizer(deleteTap)
+        
+        let pickCityTap = UITapGestureRecognizer(target: self, action: #selector(cityPickerTapped(tapGestureRecognizer:)))
+        citiesImage.isUserInteractionEnabled = true
+        citiesImage.addGestureRecognizer(pickCityTap)
         
         searchTextField.addTarget(self, action: #selector(SearchBar.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func deleteTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         self.clearTextField()
+    }
+    
+    @objc func cityPickerTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        self.delegate?.searchBar(self, didSelectCityPicker: true)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

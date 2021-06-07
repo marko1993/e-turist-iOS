@@ -69,6 +69,13 @@ class AppCoordinator: Coordinator {
         self.currentViewController?.present(viewController, animated: false, completion: nil)
     }
     
+    func presentCityPickerViewController(currentCity: City? = nil, cities: [City], delegate: CityPickerDialogDelegate) {
+        let viewController = Assembler.sharedAssembler.resolver.resolve(CityPickerViewController.self, arguments: self, currentCity, cities, delegate)!
+        viewController.modalPresentationStyle = .custom
+        viewController.modalTransitionStyle = .crossDissolve
+        self.currentViewController?.present(viewController, animated: true, completion: nil)
+    }
+    
     func presentMapScreen(route: Route) {
         let viewController = Assembler.sharedAssembler.resolver.resolve(MapViewController.self, arguments: self, route)!
         self.currentViewController = viewController

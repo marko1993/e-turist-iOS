@@ -9,7 +9,7 @@ import UIKit
 
 class RoutesView: UIView, BaseView {
     
-    let searchBar = SearchBar()
+    let searchBar = SearchBar(placeholder: K.Strings.searchRoutesPlaceholder)
     let routesTableView = UITableView()
     
     override init(frame: CGRect) {

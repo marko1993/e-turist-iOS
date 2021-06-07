@@ -9,7 +9,7 @@ import UIKit
 
 class HistoryView: UIView, BaseView {
     
-    let searchBar = SearchBar(shouldShowLocationImage: false)
+    let searchBar = SearchBar(shouldShowLocationImage: false, placeholder: K.Strings.searchVisitedDestinationsPlaceholder)
     lazy var destinationsCollectionsView: UICollectionView = {
         let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         let layout = UICollectionViewFlowLayout()

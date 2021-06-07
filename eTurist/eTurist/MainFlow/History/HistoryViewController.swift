@@ -66,6 +66,10 @@ extension HistoryViewController: SearchBarDelegate {
             self.viewModel.filterDestinations(filter: value)
         }
     }
+    
+    func searchBar(_ searchBar: SearchBar, didSelectCityPicker value: Bool) {
+        
+    }
 }
 
 extension HistoryViewController: UICollectionViewDelegateFlowLayout {

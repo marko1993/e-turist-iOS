@@ -82,6 +82,14 @@
 		AD7B7546266D62760062F86B /* VisitedDestinationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B7545266D62760062F86B /* VisitedDestinationsResponseModel.swift */; };
 		AD7B754B266D62C60062F86B /* MainRepository+Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B754A266D62C60062F86B /* MainRepository+Destinations.swift */; };
 		AD7B75A7266D6E390062F86B /* DestinationCollectionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75A6266D6E390062F86B /* DestinationCollectionsViewCell.swift */; };
+		AD7B75AE266E72FC0062F86B /* CityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75AD266E72FC0062F86B /* CityPickerViewController.swift */; };
+		AD7B75B3266E73260062F86B /* CityPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75B2266E73260062F86B /* CityPickerViewModel.swift */; };
+		AD7B75B8266E735A0062F86B /* CityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75B7266E735A0062F86B /* CityPickerView.swift */; };
+		AD7B75C0266E74230062F86B /* ChangePasswordDialogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75BF266E74230062F86B /* ChangePasswordDialogDelegate.swift */; };
+		AD7B75C5266E74510062F86B /* CityPickerDialogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75C4266E74510062F86B /* CityPickerDialogDelegate.swift */; };
+		AD7B75CD266E7C940062F86B /* CititesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75CC266E7C940062F86B /* CititesResponseModel.swift */; };
+		AD7B75D2266E7F240062F86B /* CityPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75D1266E7F240062F86B /* CityPickerTableViewCell.swift */; };
+		AD7B75D7266E82140062F86B /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75D6266E82140062F86B /* RadioButton.swift */; };
 		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
 		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
 		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
@@ -192,6 +200,14 @@
 		AD7B7545266D62760062F86B /* VisitedDestinationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedDestinationsResponseModel.swift; sourceTree = "<group>"; };
 		AD7B754A266D62C60062F86B /* MainRepository+Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRepository+Destinations.swift"; sourceTree = "<group>"; };
 		AD7B75A6266D6E390062F86B /* DestinationCollectionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCollectionsViewCell.swift; sourceTree = "<group>"; };
+		AD7B75AD266E72FC0062F86B /* CityPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerViewController.swift; sourceTree = "<group>"; };
+		AD7B75B2266E73260062F86B /* CityPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerViewModel.swift; sourceTree = "<group>"; };
+		AD7B75B7266E735A0062F86B /* CityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerView.swift; sourceTree = "<group>"; };
+		AD7B75BF266E74230062F86B /* ChangePasswordDialogDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordDialogDelegate.swift; sourceTree = "<group>"; };
+		AD7B75C4266E74510062F86B /* CityPickerDialogDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerDialogDelegate.swift; sourceTree = "<group>"; };
+		AD7B75CC266E7C940062F86B /* CititesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CititesResponseModel.swift; sourceTree = "<group>"; };
+		AD7B75D1266E7F240062F86B /* CityPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerTableViewCell.swift; sourceTree = "<group>"; };
+		AD7B75D6266E82140062F86B /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -419,6 +435,7 @@
 				AD7B744D26667BC00062F86B /* ButtonGradient.swift */,
 				AD7B74B3266A7BB90062F86B /* UnderlinedLabel.swift */,
 				AD7B7540266D461C0062F86B /* SearchBar.swift */,
+				AD7B75D6266E82140062F86B /* RadioButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,6 +489,7 @@
 				AD7B74F4266BDB510062F86B /* UserResponseModel.swift */,
 				AD7B751A266CF8770062F86B /* RoutesResponseModel.swift */,
 				AD7B7545266D62760062F86B /* VisitedDestinationsResponseModel.swift */,
+				AD7B75CC266E7C940062F86B /* CititesResponseModel.swift */,
 			);
 			path = NetworkResponseModel;
 			sourceTree = "<group>";
@@ -560,6 +578,7 @@
 		AD7B74C7266AF1110062F86B /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
+				AD7B75AB266E72D20062F86B /* CityPicker */,
 				AD7B74C8266AF1190062F86B /* ChangePassword */,
 			);
 			path = Dialog;
@@ -570,6 +589,7 @@
 			children = (
 				AD7B74C9266AF1FA0062F86B /* ChangePasswordViewController.swift */,
 				AD7B74D8266AF22B0062F86B /* ChangePasswordViewModel.swift */,
+				AD7B75BF266E74230062F86B /* ChangePasswordDialogDelegate.swift */,
 				AD7B74DD266AF23B0062F86B /* View */,
 			);
 			path = ChangePassword;
@@ -597,6 +617,26 @@
 			isa = PBXGroup;
 			children = (
 				AD7B7508266C0BD50062F86B /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD7B75AB266E72D20062F86B /* CityPicker */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B75AD266E72FC0062F86B /* CityPickerViewController.swift */,
+				AD7B75B2266E73260062F86B /* CityPickerViewModel.swift */,
+				AD7B75C4266E74510062F86B /* CityPickerDialogDelegate.swift */,
+				AD7B75AC266E72E80062F86B /* View */,
+			);
+			path = CityPicker;
+			sourceTree = "<group>";
+		};
+		AD7B75AC266E72E80062F86B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B75B7266E735A0062F86B /* CityPickerView.swift */,
+				AD7B75D1266E7F240062F86B /* CityPickerTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -842,12 +882,15 @@
 				AD3D19042664008C00F853CC /* BaseView.swift in Sources */,
 				AD7B74DF266AF24E0062F86B /* ChangePasswordView.swift in Sources */,
 				AD7B751B266CF8770062F86B /* RoutesResponseModel.swift in Sources */,
+				AD7B75AE266E72FC0062F86B /* CityPickerViewController.swift in Sources */,
 				AD3D18572663F1EB00F853CC /* SceneDelegate.swift in Sources */,
 				AD7B74492666659D0062F86B /* UserSingleton.swift in Sources */,
+				AD7B75B8266E735A0062F86B /* CityPickerView.swift in Sources */,
 				AD7B742D26665BE40062F86B /* LoginViewModel.swift in Sources */,
 				AD7B752A266CF9AD0062F86B /* Destination.swift in Sources */,
 				AD7B74B9266A900F0062F86B /* ImagePickerController.swift in Sources */,
 				AD8914212665152800B960FD /* HistoryViewController.swift in Sources */,
+				AD7B75D7266E82140062F86B /* RadioButton.swift in Sources */,
 				AD7B74F0266BD1330062F86B /* MainRepository+User.swift in Sources */,
 				AD7B7511266C236B0062F86B /* LocationViewController.swift in Sources */,
 				AD7B74FB266C0B900062F86B /* MapViewController.swift in Sources */,
@@ -875,6 +918,7 @@
 				AD27F5DA2665596400268AA2 /* UIColor+Extensions.swift in Sources */,
 				AD3D18CD2663FC5400F853CC /* UITextField+Extensions.swift in Sources */,
 				AD7B74732666C9060062F86B /* RegistrationView.swift in Sources */,
+				AD7B75CD266E7C940062F86B /* CititesResponseModel.swift in Sources */,
 				AD7B74842667C9320062F86B /* CodeValidationViewModel.swift in Sources */,
 				AD3D1918266401C100F853CC /* MainRepository.swift in Sources */,
 				AD7B7525266CF9320062F86B /* Route.swift in Sources */,
@@ -885,6 +929,7 @@
 				AD7B744E26667BC00062F86B /* ButtonGradient.swift in Sources */,
 				AD7B7454266689C60062F86B /* LoginRequestModel.swift in Sources */,
 				AD7B7534266CFAA90062F86B /* MainRepository+Routes.swift in Sources */,
+				AD7B75B3266E73260062F86B /* CityPickerViewModel.swift in Sources */,
 				AD3D18ED2663FEFF00F853CC /* Assembler+Extensions.swift in Sources */,
 				AD7B7441266664AB0062F86B /* User.swift in Sources */,
 				AD7B74AA266968770062F86B /* EmptyNetworkResponse.swift in Sources */,
@@ -893,7 +938,9 @@
 				AD3D192E2664053A00F853CC /* NetworkService.swift in Sources */,
 				AD7B745926668AA20062F86B /* NetworkResponse.swift in Sources */,
 				AD3D18B42663F40B00F853CC /* Constants.swift in Sources */,
+				AD7B75C0266E74230062F86B /* ChangePasswordDialogDelegate.swift in Sources */,
 				AD7B74A026691F310062F86B /* String+Extensions.swift in Sources */,
+				AD7B75C5266E74510062F86B /* CityPickerDialogDelegate.swift in Sources */,
 				AD7B753C266D04830062F86B /* RoutesTableViewCell.swift in Sources */,
 				AD3D19132664019800F853CC /* Repository.swift in Sources */,
 				AD89143D2665162000B960FD /* ProfileView.swift in Sources */,
@@ -903,6 +950,7 @@
 				AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */,
 				AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */,
 				AD27F5F02665623200268AA2 /* TabBarItem.swift in Sources */,
+				AD7B75D2266E7F240062F86B /* CityPickerTableViewCell.swift in Sources */,
 				AD7B7546266D62760062F86B /* VisitedDestinationsResponseModel.swift in Sources */,
 				AD7B742826665BB70062F86B /* LoginViewCotroller.swift in Sources */,
 				AD3D18DE2663FDFD00F853CC /* Coordinator.swift in Sources */,

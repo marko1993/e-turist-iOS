@@ -19,8 +19,9 @@ final class AppAssembly: Assembly {
         self.assembleLoginViewController(container)
         self.assembleRegistrationViewController(container)
         self.assembleCodeValidationViewController(container)
-        self.assembleCodeChangePasswordViewController(container)
+        self.assembleChangePasswordViewController(container)
         self.assembleMapViewController(container)
+        self.assembleCityPickerViewController(container)
     }
     
     private func assembleRepository(_ container: Container) {
@@ -145,7 +146,7 @@ final class AppAssembly: Assembly {
         }.inObjectScope(.transient)
     }
     
-    private func assembleCodeChangePasswordViewController(_ container: Container) {
+    private func assembleChangePasswordViewController(_ container: Container) {
         container.register(ChangePasswordViewModel.self) { (resolver, coordinator: AppCoordinator) in
             let viewModel = ChangePasswordViewModel()
             viewModel.coordinator = coordinator
@@ -177,5 +178,22 @@ final class AppAssembly: Assembly {
         }.inObjectScope(.transient)
     }
     
+    private func assembleCityPickerViewController(_ container: Container) {
+        container.register(CityPickerViewModel.self) { (resolver, coordinator: AppCoordinator, currentCity: City?, cities: [City]) in
+            let viewModel = CityPickerViewModel()
+            viewModel.currentCity = currentCity
+            viewModel.citiesRelay.accept(cities)
+            viewModel.coordinator = coordinator
+            viewModel.repository = container.resolve(Repository.self, name: "main") as? MainRepository
+            return viewModel
+        }.inObjectScope(.transient)
+        
+        container.register(CityPickerViewController.self) { (resolver, coordinator: AppCoordinator, currentCity: City?, cities: [City], delegate: CityPickerDialogDelegate) in
+            let controller = CityPickerViewController()
+            controller.delegate = delegate
+            controller.viewModel = container.resolve(CityPickerViewModel.self, arguments: coordinator, currentCity, cities)
+            return controller
+        }.inObjectScope(.transient)
+    }
     
 }

@@ -38,6 +38,9 @@ struct K {
         static let passwordSaved = "Password saved successfully"
         static let userUpdatedSuccessfully = "User successfully updated"
         static let enableLocation = "Please enable location services in your settings."
+        static let selectCity = "Please select a city"
+        static let searchRoutesPlaceholder = "Search routes in city"
+        static let searchVisitedDestinationsPlaceholder = "Search visited destinations"
     }
     
     struct Endpoints {
@@ -52,6 +55,7 @@ struct K {
         static let updateUserRoute = "api/user/profile/update"
         static let getRoutesForCityRoute = "api/user/initial-data"
         static let getVisistedDestinationsRoute = "api/user/destinations/visited-by-user"
+        static let getCitiesRoute = "api/user/cities"
     }
     
     struct ApiParams {

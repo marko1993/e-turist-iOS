@@ -40,6 +40,7 @@ class RoutesViewController: LocationViewController {
         super.viewDidLoad()
         setupView(routesView)
         setupBinding()
+        viewModel.getAllCities()
         locationViewControlleDelegate = self
         routesView.searchBar.delegate = self
         checkLocationServices()
@@ -66,10 +67,22 @@ extension RoutesViewController: RoutesTableViewCellDelegate {
 }
 
 extension RoutesViewController: SearchBarDelegate {
+    func searchBar(_ searchBar: SearchBar, didSelectCityPicker value: Bool) {
+        if value {
+            self.viewModel.presentCityPicker(delegate: self)
+        }
+    }
+    
     func searchBar(_ searchBar: SearchBar, valueDidChange value: String?) {
         if let value = value {
             self.viewModel.filterRoutes(filter: value)
         }
+    }
+}
+
+extension RoutesViewController: CityPickerDialogDelegate {
+    func ChangePasswordDialog(_ dialog: CityPickerViewController, didSelectCity city: City) {
+        self.viewModel.getRoutesForCity(city.identifier)
     }
 }
 
