@@ -90,6 +90,9 @@
 		AD7B75CD266E7C940062F86B /* CititesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75CC266E7C940062F86B /* CititesResponseModel.swift */; };
 		AD7B75D2266E7F240062F86B /* CityPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75D1266E7F240062F86B /* CityPickerTableViewCell.swift */; };
 		AD7B75D7266E82140062F86B /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75D6266E82140062F86B /* RadioButton.swift */; };
+		AD7B75DC266FF9C20062F86B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75DB266FF9C20062F86B /* ProgressBar.swift */; };
+		AD7B75E126700BA40062F86B /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7B75E026700BA40062F86B /* RatingView.swift */; };
+		AD7B75F2267014F10062F86B /* rewardbadge.json in Resources */ = {isa = PBXBuildFile; fileRef = AD7B75F1267014F10062F86B /* rewardbadge.json */; };
 		AD89141026650F4000B960FD /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89140F26650F4000B960FD /* RoutesViewController.swift */; };
 		AD89141526650F8600B960FD /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141426650F8600B960FD /* RoutesViewModel.swift */; };
 		AD89141B26650FA900B960FD /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89141A26650FA900B960FD /* RoutesView.swift */; };
@@ -208,6 +211,9 @@
 		AD7B75CC266E7C940062F86B /* CititesResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CititesResponseModel.swift; sourceTree = "<group>"; };
 		AD7B75D1266E7F240062F86B /* CityPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPickerTableViewCell.swift; sourceTree = "<group>"; };
 		AD7B75D6266E82140062F86B /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		AD7B75DB266FF9C20062F86B /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		AD7B75E026700BA40062F86B /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		AD7B75F1267014F10062F86B /* rewardbadge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rewardbadge.json; sourceTree = "<group>"; };
 		AD89140F26650F4000B960FD /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		AD89141426650F8600B960FD /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		AD89141A26650FA900B960FD /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -429,6 +435,7 @@
 		AD3D18B02663F3E600F853CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD7B75F0267014C00062F86B /* Animations */,
 				AD7B74C7266AF1110062F86B /* Dialog */,
 				AD7B749126691CAC0062F86B /* PinView */,
 				AD7B743726665EC30062F86B /* TextField.swift */,
@@ -436,6 +443,8 @@
 				AD7B74B3266A7BB90062F86B /* UnderlinedLabel.swift */,
 				AD7B7540266D461C0062F86B /* SearchBar.swift */,
 				AD7B75D6266E82140062F86B /* RadioButton.swift */,
+				AD7B75DB266FF9C20062F86B /* ProgressBar.swift */,
+				AD7B75E026700BA40062F86B /* RatingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -641,6 +650,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AD7B75F0267014C00062F86B /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B75F1267014F10062F86B /* rewardbadge.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		AD89140E26650F0E00B960FD /* Routes */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,6 +819,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD7B75F2267014F10062F86B /* rewardbadge.json in Resources */,
 				AD3D18612663F1EC00F853CC /* LaunchScreen.storyboard in Resources */,
 				AD3D185E2663F1EC00F853CC /* Assets.xcassets in Resources */,
 				AD27F5D1266558F800268AA2 /* StackItemView.xib in Resources */,
@@ -882,6 +900,7 @@
 				AD3D19042664008C00F853CC /* BaseView.swift in Sources */,
 				AD7B74DF266AF24E0062F86B /* ChangePasswordView.swift in Sources */,
 				AD7B751B266CF8770062F86B /* RoutesResponseModel.swift in Sources */,
+				AD7B75E126700BA40062F86B /* RatingView.swift in Sources */,
 				AD7B75AE266E72FC0062F86B /* CityPickerViewController.swift in Sources */,
 				AD3D18572663F1EB00F853CC /* SceneDelegate.swift in Sources */,
 				AD7B74492666659D0062F86B /* UserSingleton.swift in Sources */,
@@ -944,6 +963,7 @@
 				AD7B753C266D04830062F86B /* RoutesTableViewCell.swift in Sources */,
 				AD3D19132664019800F853CC /* Repository.swift in Sources */,
 				AD89143D2665162000B960FD /* ProfileView.swift in Sources */,
+				AD7B75DC266FF9C20062F86B /* ProgressBar.swift in Sources */,
 				AD3D190E2664014100F853CC /* BaseViewModel.swift in Sources */,
 				AD7B75A7266D6E390062F86B /* DestinationCollectionsViewCell.swift in Sources */,
 				AD7B7503266C0BB40062F86B /* MapViewModel.swift in Sources */,

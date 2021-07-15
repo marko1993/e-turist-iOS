@@ -75,8 +75,8 @@ extension HistoryViewController: SearchBarDelegate {
 extension HistoryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfItemsPerRow:CGFloat = 2
-        let spacingBetweenCells:CGFloat = 4
-        let spacing:CGFloat = 12.0
+        let spacingBetweenCells:CGFloat = 2
+        let spacing:CGFloat = 6.0
         
         let totalSpacing = (2 * spacing) + ((numberOfItemsPerRow - 1) * spacingBetweenCells)
         

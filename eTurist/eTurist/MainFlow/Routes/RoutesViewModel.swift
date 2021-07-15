@@ -21,25 +21,25 @@ class RoutesViewModel: BaseViewModel {
     private var cities: [City]?
     
     func getRoutesForCity(_ city: String) {
-        self.repository?.getRoutesForCity(city, completion: { [weak self] responseModel, errorMessage in
+        self.repository?.getRoutesForCity(city, completion: { [weak self] response, errorMessage in
             if let error = errorMessage {
-                self?.errorRelay.accept(error)
+                self?.handleNetworkError(error: error, responseCode: response?.status)
             }
-            if let response = responseModel {
-                self?.routes = response.cityRoutes
-                self?.routesRelay.accept(response.cityRoutes)
-                self?.city = response.city
+            if let responseModel = response?.data {
+                self?.routes = responseModel.cityRoutes
+                self?.routesRelay.accept(responseModel.cityRoutes)
+                self?.city = responseModel.city
             }
         })
     }
     
     func getAllCities(shouldOpenCityPicker: Bool = false, delegate: CityPickerDialogDelegate? = nil) {
-        self.repository?.getAllCities() { [weak self] responseModel, errorMessage in
+        self.repository?.getAllCities() { [weak self] response, errorMessage in
             if let error = errorMessage {
-                self?.errorRelay.accept(error)
+                self?.handleNetworkError(error: error, responseCode: response?.status)
             }
-            if let response = responseModel {
-                self?.cities = response.cities
+            if let responseModel = response?.data {
+                self?.cities = responseModel.cities
                 if shouldOpenCityPicker {
                     if let delegate = delegate {
                         self?.presentCityPicker(delegate: delegate)

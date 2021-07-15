@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 protocol RoutesTableViewCellDelegate {
     func routesTableViewCell(_ cell: RoutesTableViewCell, didPressPlayButtonFor route: Route)
@@ -21,6 +22,9 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
     let playImage = UIImageView(image: UIImage(named: "play")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor(named: K.Color.main)!))
     let routeName = UILabel()
     let routeDescriptrion = UILabel()
+    let progressBar = ProgressBar(cornerRadius: 10)
+    let ratingView = RatingView()
+    let badgeAnimation = AnimationView(name: "rewardbadge")
     
     var route : Route!
     var delegate: RoutesTableViewCellDelegate?
@@ -48,6 +52,9 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
         addSubview(playImage)
         addSubview(routeName)
         addSubview(routeDescriptrion)
+        addSubview(progressBar)
+        addSubview(ratingView)
+        addSubview(badgeAnimation)
     }
     
     func styleSubviews() {
@@ -68,6 +75,9 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
         self.cornerRadius = 15
         self.dropShadow()
         routeImage.roundCorners(corners: [.topLeft, .topRight], radius: 15)
+        
+        badgeAnimation.contentMode = .scaleAspectFit
+        badgeAnimation.animationSpeed = 1
     }
     
     func positionSubviews() {
@@ -83,6 +93,17 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
         routeName.constrainHeight(30)
         
         routeDescriptrion.anchor(top: routeName.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: playImage.leadingAnchor, padding: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8))
+        
+        progressBar.anchor(top: routeImage.topAnchor, leading: routeImage.leadingAnchor, trailing: routeImage.trailingAnchor, padding: UIEdgeInsets(top: 3, left: 3, bottom: 0, right: 3))
+        progressBar.constrainHeight(15)
+        
+        ratingView.anchor(bottom: routeImage.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 8))
+        ratingView.constrainHeight(50)
+        ratingView.constrainWidth(70)
+        
+        badgeAnimation.anchor(top: self.topAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: -20, left: 0, bottom: 0, right: -35))
+        badgeAnimation.constrainHeight(90)
+        badgeAnimation.constrainWidth(90)
     }
     
     func setupBindings(disposeBag: DisposeBag) {
@@ -102,6 +123,10 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
         self.delegate = delegate
         self.routeName.text = route.name
         self.routeDescriptrion.text = route.description
+        
+        self.setupProgresAndRating(route: route)
+        self.setupAnimation(route: route)
+        
         self.setupView()
         if let picturePath = route.picturePath {
             routeImage.sd_setImage(with: URL(string: K.Endpoints.imageEndpoint + picturePath)) { [weak self] (image, error, cache, url) in
@@ -109,6 +134,27 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
             }
             
         }
+    }
+    
+    private func setupProgresAndRating(route: Route) {
+        let progres = CGFloat(route.routeDestinations.filter{ ($0.userVisited ?? false) }.count) / CGFloat(route.routeDestinations.count)
+        
+        progressBar.isHidden = progres >= 1
+        self.progressBar.setProgress(progres)
+        
+        if let rating = route.averageRating {
+            self.ratingView.setRating(rating: rating)
+            self.ratingView.isHidden = false
+        } else {
+            self.ratingView.clearRating()
+            self.ratingView.isHidden = true
+        }
+    }
+    
+    private func setupAnimation(route: Route) {
+        let progres = CGFloat(route.routeDestinations.filter{ ($0.userVisited ?? false) }.count) / CGFloat(route.routeDestinations.count)
+        self.badgeAnimation.isHidden = progres < 1
+        self.badgeAnimation.play()
     }
     
 }

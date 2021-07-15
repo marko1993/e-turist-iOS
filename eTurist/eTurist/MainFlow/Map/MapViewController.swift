@@ -25,14 +25,26 @@ class MapViewController: LocationViewController {
 }
 
 extension MapViewController: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        self.mapView.resetMap()
+        let polylineRenderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        polylineRenderer.lineWidth = 4
+        let renderer = polylineRenderer
+        renderer.strokeColor = UIColor(named: K.Color.main)
+        return renderer
+    }
 }
 
 extension MapViewController: LocationViewControllerDelegate {
     func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?) {
         mapView.setupMapView()
+        mapView.setupMarkers(items: self.viewModel.getDestinationsCoordinates())
         if let userLocation = getUserLocation()?.coordinate {
             mapView.zoomInToLocation(location: userLocation, radius: K.MapKeys.zoomRadius)
+            
+            if let destinationCoordinates = viewModel.getNextUnvisitedDestination(userLocation: CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude))?.coordinates.coordinates {
+                mapView.connectLocations(start: userLocation, end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]), transportType: .walking)
+            }
         }
         startUpdatingLocation()
     }

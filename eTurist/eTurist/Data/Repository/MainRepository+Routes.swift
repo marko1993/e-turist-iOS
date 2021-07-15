@@ -9,7 +9,7 @@ import UIKit
 
 extension MainRepository {
     
-    func getRoutesForCity(_ city: String, limit: Int = 12, completion: @escaping (RoutesResponseModel?, String?) -> Void) {
+    func getRoutesForCity(_ city: String, limit: Int = 12, completion: @escaping (NetworkResponse<RoutesResponseModel>?, String?) -> Void) {
         let resources = Resources<NetworkResponse<RoutesResponseModel>, Empty>(
             path: K.Endpoints.getRoutesForCityRoute,
             requestType: .GET,
@@ -20,7 +20,7 @@ extension MainRepository {
         self.performRequest(resources: resources, retryCount: 1, needsAuthorization: true, completion: completion)
     }
     
-    func getAllCities(completion: @escaping (CititesResponseModel?, String?) -> Void) {
+    func getAllCities(completion: @escaping (NetworkResponse<CititesResponseModel>?, String?) -> Void) {
         let resources = Resources<NetworkResponse<CititesResponseModel>, Empty>(
             path: K.Endpoints.getCitiesRoute,
             requestType: .GET,

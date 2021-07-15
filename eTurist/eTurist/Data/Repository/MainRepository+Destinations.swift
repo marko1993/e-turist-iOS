@@ -8,7 +8,7 @@
 import UIKit
 
 extension MainRepository {
-    func getVisitedDestinations(limit: Int = 12, completion: @escaping (VisitedDestinationsResponseModel?, String?) -> Void) {
+    func getVisitedDestinations(limit: Int = 12, completion: @escaping (NetworkResponse<VisitedDestinationsResponseModel>?, String?) -> Void) {
         let resources = Resources<NetworkResponse<VisitedDestinationsResponseModel>, Empty>(
             path: K.Endpoints.getVisistedDestinationsRoute,
             requestType: .GET,

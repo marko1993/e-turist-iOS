@@ -37,7 +37,7 @@ class RoutesView: UIView, BaseView {
         routesTableView.allowsSelection = false
         
         routesTableView.tableHeaderView = nil
-        routesTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
+        routesTableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 90, right: 0)
         
         routesTableView.register(RoutesTableViewCell.self, forCellReuseIdentifier: RoutesTableViewCell.cellIdentifier)
         

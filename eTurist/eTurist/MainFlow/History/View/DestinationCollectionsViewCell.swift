@@ -20,28 +20,27 @@ class DestinationCollectionsViewCell: UICollectionViewCell, BaseView {
     func addSubviews() {
         addSubview(destinationImage)
         addSubview(gradientView)
-        addSubview(destinationName)
         addSubview(destinationDescriptrion)
+        addSubview(destinationName)
     }
 
     func styleSubviews() {
-        self.destinationName.font = UIFont.boldSystemFont(ofSize: 14)
-        self.destinationDescriptrion.font = UIFont.systemFont(ofSize: 10.0)
-        
+        self.destinationName.font = UIFont.boldSystemFont(ofSize: 16.0)
         self.destinationName.textColor = .white
+        self.destinationName.numberOfLines = 2
+        
+        self.destinationDescriptrion.font = UIFont.systemFont(ofSize: 14.0)
+        self.destinationDescriptrion.numberOfLines = 3
         self.destinationDescriptrion.textColor = .white
         
-        self.destinationName.numberOfLines = 2
-        self.destinationDescriptrion.numberOfLines = 0
+        self.destinationImage.cornerRadius = 15
         
-        destinationImage.cornerRadius = 15
-        
-        addGradientToView(gradientView, colors: [UIColor.black.withAlphaComponent(0.2).cgColor, UIColor.black.withAlphaComponent(0.7).cgColor], cornerRadius: 15, frame: self.bounds)
+        self.addGradientToView(gradientView, colors: [UIColor.black.withAlphaComponent(0.2).cgColor, UIColor.black.withAlphaComponent(0.7).cgColor], cornerRadius: 15, frame: self.bounds)
         
         self.isUserInteractionEnabled = true
-        contentView.isUserInteractionEnabled = false
+        self.contentView.isUserInteractionEnabled = false
         
-        backgroundColor = .white
+        self.backgroundColor = .white
         self.cornerRadius = 15
         self.dropShadow(offsetSize: CGSize(width: 3, height: 3))
     }
@@ -49,13 +48,12 @@ class DestinationCollectionsViewCell: UICollectionViewCell, BaseView {
     func positionSubviews() {
         destinationImage.fillSuperview()
         
-        gradientView.anchor(leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
-        gradientView.constrainHeight(100)
+        destinationDescriptrion.anchor(leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 4, bottom: 4, right: 4))
         
-        self.destinationName.anchor(leading: self.leadingAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
-        destinationName.centerY(inView: self)
+        self.destinationName.anchor(leading: self.leadingAnchor, bottom: destinationDescriptrion.topAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
         
-        destinationDescriptrion.anchor(top: destinationName.bottomAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
+        gradientView.anchor(top: destinationName.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
+        
     }
     
     func setup(with destination: Destination) {

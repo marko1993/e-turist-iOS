@@ -18,13 +18,13 @@ class HistoryViewModel: BaseViewModel {
     }
     
     func getVisitedDestinations() {
-        self.repository?.getVisitedDestinations(completion: { [weak self] responseModel, errorMessage in
+        self.repository?.getVisitedDestinations(completion: { [weak self] response, errorMessage in
             if let error = errorMessage {
-                self?.errorRelay.accept(error)
+                self?.handleNetworkError(error: error, responseCode: response?.status)
             }
-            if let response = responseModel {
-                self?.destinations = response.visitedDestinations
-                self?.destinationsRelay.accept(response.visitedDestinations)
+            if let responseModel = response?.data {
+                self?.destinations = responseModel.visitedDestinations
+                self?.destinationsRelay.accept(responseModel.visitedDestinations)
             }
         })
     }

@@ -11,5 +11,6 @@ target 'eTurist' do
   pod 'SDWebImage', '~>4.4.2'
   pod 'IQKeyboardManagerSwift'
   pod 'Swinject'
+  pod 'lottie-ios'
 
 end
