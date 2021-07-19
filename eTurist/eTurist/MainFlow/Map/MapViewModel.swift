@@ -10,6 +10,7 @@ import CoreLocation
 
 class MapViewModel: BaseViewModel {
     var route: Route!
+    var currentDestination: Destination? = nil
     
     func getNextUnvisitedDestination(userLocation: CLLocation) -> Destination? {
         let shortestDistance = route.routeDestinations
@@ -19,11 +20,12 @@ class MapViewModel: BaseViewModel {
             .first
         
         let destination = route.routeDestinations.first(where: {userLocation.distance(from: CLLocation(latitude: $0.coordinates.coordinates[0], longitude: $0.coordinates.coordinates[1])) == shortestDistance})
+        self.currentDestination = destination
         return destination
     }
     
-    func getDestinationsCoordinates() -> [CLLocationCoordinate2D] {
-        return route.routeDestinations.map{CLLocationCoordinate2D(latitude: $0.coordinates.coordinates[0], longitude: $0.coordinates.coordinates[1])}
+    func getDestinations() -> [Destination]? {
+        return route.routeDestinations
     }
     
 }
