@@ -88,6 +88,7 @@ struct K {
     
     struct MapKeys {
         static let zoomRadius: Double = 5000
+        static let geofenceRadius = 50.0
     }
     
 }

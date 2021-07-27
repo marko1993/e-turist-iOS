@@ -11,6 +11,7 @@ import CoreLocation
 protocol LocationViewControllerDelegate {
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?)
     func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?)
+    func locationViewController(_ controller: LocationViewController, manager: CLLocationManager, didEnterRegion region: CLRegion)
 }
 
 class LocationViewController: BaseViewController {
@@ -36,7 +37,7 @@ class LocationViewController: BaseViewController {
     func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
             break
         case .restricted:
             presentInfoDialog(message: K.Strings.enableLocation)
@@ -74,6 +75,16 @@ class LocationViewController: BaseViewController {
         locationManager.stopUpdatingLocation()
     }
     
+    func addGeofenceRegion(region: CLRegion) {
+        self.locationManager.startMonitoring(for: region)
+    }
+    
+    func removeGeofenceRegions() {
+        self.locationManager.monitoredRegions.forEach { [weak self] region in
+            self?.locationManager.stopMonitoring(for: region)
+        }
+    }
+    
 }
 
 extension LocationViewController: CLLocationManagerDelegate {
@@ -84,6 +95,10 @@ extension LocationViewController: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        locationViewControlleDelegate?.locationViewController(self, manager: manager, didEnterRegion: region)
     }
     
 }

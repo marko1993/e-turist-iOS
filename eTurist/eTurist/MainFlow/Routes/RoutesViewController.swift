@@ -88,6 +88,10 @@ extension RoutesViewController: CityPickerDialogDelegate {
 
 extension RoutesViewController: LocationViewControllerDelegate {
     
+    func locationViewController(_ controller: LocationViewController, manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        
+    }
+    
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
         
     }

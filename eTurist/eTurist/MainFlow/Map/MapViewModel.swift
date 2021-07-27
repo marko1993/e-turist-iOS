@@ -36,9 +36,17 @@ class MapViewModel: BaseViewModel {
         return route.routeDestinations
     }
     
+    func getDestinationById(_ id: Int) -> Destination? {
+        return self.route.routeDestinations.first{ $0.id == id }
+    }
+    
     func getUpdatedCurrentDestination(indexPath: IndexPath) -> Destination? {
         self.currentDestination = route.routeDestinations[indexPath.row]
         return self.currentDestination
+    }
+    
+    func visitDestination(_ destination: Destination) {
+        
     }
     
 }

@@ -41,6 +41,11 @@ class MapViewController: LocationViewController {
         checkLocationServices()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeGeofenceRegions()
+    }
+    
     private func setupBindings() {
         mapView.backButton.onTap(disposeBag: disposeBag) {
             if let navController = self.navigationController {
@@ -60,12 +65,11 @@ class MapViewController: LocationViewController {
         
         self.mapView.destinationsCollectionsView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             if let userLocation = self?.getUserLocation()?.coordinate {
-                if let destinationCoordinates = self?.viewModel.getUpdatedCurrentDestination(indexPath: indexPath)?.coordinates.coordinates {
-                    self?.mapView.connectLocations(
-                        start: userLocation,
-                        end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
-                        transportType: (self?.mapView.travelModeSC.selectedSegmentIndex == 0) ? .walking : .automobile)
-                }
+                guard let destinationCoordinates = self?.viewModel.getUpdatedCurrentDestination(indexPath: indexPath)?.coordinates.coordinates else { return }
+                self?.mapView.connectLocations(
+                    start: userLocation,
+                    end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
+                    transportType: (self?.mapView.travelModeSC.selectedSegmentIndex == 0) ? .walking : .automobile)
             }
         }).disposed(by: disposeBag)
     }
@@ -78,12 +82,11 @@ class MapViewController: LocationViewController {
     
     @objc func segmentedValueChanged(_ sender:UISegmentedControl!) {
         if let userLocation = getUserLocation()?.coordinate {
-            if let destinationCoordinates = self.viewModel.currentDestination?.coordinates.coordinates {
-                mapView.connectLocations(
-                    start: userLocation,
-                    end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
-                    transportType: (sender.selectedSegmentIndex == 0) ? .walking : .automobile)
-            }
+            guard let destinationCoordinates = self.viewModel.currentDestination?.coordinates.coordinates else { return }
+            mapView.connectLocations(
+                start: userLocation,
+                end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
+                transportType: (sender.selectedSegmentIndex == 0) ? .walking : .automobile)
         }
     }
    
@@ -129,21 +132,41 @@ extension MapViewController: LocationViewControllerDelegate {
     func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?) {
         mapView.setupMapView()
         mapView.setupMarkers(items: self.viewModel.getDestinations())
+        self.setupGeofencesForDestinations(destinations: self.viewModel.getDestinations())
         if let userLocation = getUserLocation()?.coordinate {
             mapView.zoomInToLocation(location: userLocation, radius: K.MapKeys.zoomRadius)
-            
-            if let destinationCoordinates = viewModel.getNextUnvisitedDestination(userLocation: CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude))?.coordinates.coordinates {
-                
-                mapView.connectLocations(start: userLocation, end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]), transportType: .walking)
-            }
+            guard let destinationCoordinates = viewModel.getNextUnvisitedDestination(userLocation: CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude))?.coordinates.coordinates else { return }
+            mapView.connectLocations(
+                start: userLocation,
+                end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
+                transportType: .walking)
         }
         startUpdatingLocation()
     }
     
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
-//        guard let location = location else { return }
-//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        mapView.zoomInToLocation(location: center, radius: K.MapKeys.zoomRadius)
+        guard let location = location else { return }
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        guard let destinationCoordinates = self.viewModel.currentDestination?.coordinates.coordinates else { return }
+        self.mapView.connectLocations(
+            start: center,
+            end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
+            transportType: (self.mapView.travelModeSC.selectedSegmentIndex == 0) ? .walking : .automobile)
+    }
+    
+    func locationViewController(_ controller: LocationViewController, manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        guard let destination = self.viewModel.getDestinationById(Int(region.identifier) ?? -1) else { return }
+        if !(destination.userVisited ?? false) {
+            self.viewModel.visitDestination(destination)
+        }
+    }
+    
+    private func setupGeofencesForDestinations(destinations: [Destination]?) {
+        destinations?.forEach { [weak self] destination in
+            let coordinate = CLLocationCoordinate2D(latitude: destination.coordinates.coordinates[0], longitude: destination.coordinates.coordinates[1])
+            let geofenceRegion = CLCircularRegion(center: coordinate, radius: K.MapKeys.geofenceRadius, identifier: String(destination.id))
+            self?.addGeofenceRegion(region: geofenceRegion)
+        }
     }
     
 }
