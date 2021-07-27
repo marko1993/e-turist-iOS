@@ -13,6 +13,18 @@ class MapView: UIView, BaseView {
     let mapView = MKMapView()
     let backButton = UIButton()
     let travelModeSC = UISegmentedControl()
+    let arrowImage = UIImageView(image: UIImage(named: "downArrow")?.withRenderingMode(.alwaysTemplate))
+    lazy var destinationsCollectionsView: UICollectionView = {
+        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        let cv = UICollectionView(frame: frame, collectionViewLayout: layout)
+        return cv
+    }()
+    
+    private var shouldAnimateDestinationsDown: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +39,8 @@ class MapView: UIView, BaseView {
         addSubview(mapView)
         addSubview(backButton)
         addSubview(travelModeSC)
+        addSubview(arrowImage)
+        addSubview(destinationsCollectionsView)
     }
     
     func styleSubviews() {
@@ -39,6 +53,19 @@ class MapView: UIView, BaseView {
         travelModeSC.selectedSegmentIndex = 0
         travelModeSC.backgroundColor = UIColor(named: K.Color.mainLightTransparent)
         travelModeSC.setDimensions(height: 40, width: 100)
+        
+        arrowImage.tintColor = UIColor(named: K.Color.main)
+        
+        destinationsCollectionsView.delaysContentTouches = false
+        destinationsCollectionsView.translatesAutoresizingMaskIntoConstraints = false
+        destinationsCollectionsView.isScrollEnabled = true
+        destinationsCollectionsView.showsVerticalScrollIndicator = false
+        destinationsCollectionsView.showsHorizontalScrollIndicator = false
+        destinationsCollectionsView.backgroundColor = .clear
+        destinationsCollectionsView.isPagingEnabled = true
+        destinationsCollectionsView.backgroundView?.backgroundColor = .clear
+        destinationsCollectionsView.register(DestinationCollectionsViewCell.self, forCellWithReuseIdentifier: DestinationCollectionsViewCell.cellIdentifier)
+        
     }
     
     func positionSubviews() {
@@ -50,6 +77,16 @@ class MapView: UIView, BaseView {
         
         travelModeSC.anchor(top: safeAreaLayoutGuide.topAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
         travelModeSC.centerX(inView: self)
+        
+        arrowImage.anchor(bottom: destinationsCollectionsView.topAnchor)
+        arrowImage.centerX(inView: self)
+        arrowImage.constrainHeight(50)
+        arrowImage.constrainWidth(50)
+        
+        destinationsCollectionsView.anchor(leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
+        
+        destinationsCollectionsView.constrainHeight(220)
+        
     }
     
     func setMapViewDelegate(delegate: MKMapViewDelegate) {
@@ -90,6 +127,24 @@ class MapView: UIView, BaseView {
                 self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
             }
         }
+    }
+    
+    func animateDestinaitonsCollectionView() {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveLinear) {
+            if self.shouldAnimateDestinationsDown {
+                self.destinationsCollectionsView.center.y += (self.destinationsCollectionsView.bounds.height)
+                self.arrowImage.center.y += self.destinationsCollectionsView.bounds.height
+                self.arrowImage.transform = CGAffineTransform(rotationAngle: .pi)
+            } else {
+                self.destinationsCollectionsView.center.y -= self.destinationsCollectionsView.bounds.height
+                self.arrowImage.center.y -= self.destinationsCollectionsView.bounds.height
+                self.arrowImage.transform = CGAffineTransform(rotationAngle: 0)
+            }
+            self.layoutIfNeeded()
+        } completion: { [weak self] isCompleted in
+            self?.shouldAnimateDestinationsDown = !(self?.shouldAnimateDestinationsDown ?? true)
+        }
+
     }
     
     private func createDirectionsRequest(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, transportType: MKDirectionsTransportType) -> MKDirections.Request {

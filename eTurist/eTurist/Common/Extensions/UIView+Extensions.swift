@@ -193,6 +193,7 @@ extension UIView {
     }
     
     open func setupShadow(opacity: Float = 0, radius: CGFloat = 0, offset: CGSize = .zero, color: UIColor = .black) {
+        layer.masksToBounds = false
         layer.shadowOpacity = opacity
         layer.shadowRadius = radius
         layer.shadowOffset = offset
@@ -230,6 +231,17 @@ extension UIView {
         mask.path = path.cgPath
         mask.frame = self.bounds
         self.layer.mask = mask
+    }
+    
+    func addGradientToView(colors: [CGColor], cornerRadius: CGFloat, frame: CGRect) {
+        self.layer.sublayers?.removeAll()
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = frame
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
 }

@@ -35,14 +35,14 @@ class DestinationCollectionsViewCell: UICollectionViewCell, BaseView {
         
         self.destinationImage.cornerRadius = 15
         
-        self.addGradientToView(gradientView, colors: [UIColor.black.withAlphaComponent(0.2).cgColor, UIColor.black.withAlphaComponent(0.7).cgColor], cornerRadius: 15, frame: self.bounds)
+        gradientView.addGradientToView(colors: [UIColor.black.withAlphaComponent(0.2).cgColor, UIColor.black.withAlphaComponent(0.7).cgColor], cornerRadius: 15, frame: self.bounds)
         
         self.isUserInteractionEnabled = true
         self.contentView.isUserInteractionEnabled = false
         
         self.backgroundColor = .white
         self.cornerRadius = 15
-        self.dropShadow(offsetSize: CGSize(width: 3, height: 3))
+        
     }
     
     func positionSubviews() {
@@ -56,26 +56,21 @@ class DestinationCollectionsViewCell: UICollectionViewCell, BaseView {
         
     }
     
-    func setup(with destination: Destination) {
+    func setup(with destination: Destination, shouldIndicateVisitedState: Bool = false) {
         self.destination = destination
         self.destinationName.text = destination.name
         self.destinationDescriptrion.text = destination.description
         self.setupView()
+        if shouldIndicateVisitedState {
+            self.setupShadow(opacity: 0.5, radius: 2.0, offset: CGSize(width: 1.5, height: 2), color: destination.userVisited ?? false ? UIColor(named: K.Color.main)! : .red)
+        } else {
+            self.dropShadow(offsetSize: CGSize(width: 3, height: 3))
+        }
         if let picturePath = destination.picturePath {
             destinationImage.sd_setImage(with: URL(string: K.Endpoints.imageEndpoint + picturePath)) {[weak self] (image, error, cache, url) in
                 self?.gradientView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 15)
             }
         }
     }
-    
-    private func addGradientToView(_ view: UIView, colors: [CGColor], cornerRadius: CGFloat, frame: CGRect) {
-        view.layer.sublayers?.removeAll()
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = frame
-        gradientLayer.colors = colors
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        
-        view.layer.insertSublayer(gradientLayer, at: 0)
-    }
+
 }

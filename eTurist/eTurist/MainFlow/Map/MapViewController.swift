@@ -8,11 +8,29 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 class MapViewController: LocationViewController {
     
     private let mapView = MapView()
     var viewModel: MapViewModel!
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setDelegate(for: mapView.destinationsCollectionsView)
+        viewModel
+            .destinationsObservable
+            .observeOn(MainScheduler.instance)
+            .bind(to: mapView.destinationsCollectionsView
+                .rx
+                .items) { cv, row, data in
+                let cell = cv.dequeueReusableCell(withReuseIdentifier: DestinationCollectionsViewCell.cellIdentifier, for: IndexPath.init(row: row, section: 0)) as! DestinationCollectionsViewCell
+                
+                cell.setup(with: data, shouldIndicateVisitedState: true)
+                return cell
+            }.disposed(by: disposeBag)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +47,33 @@ class MapViewController: LocationViewController {
                 navController.popViewController(animated: true)
             }
         }
+        
+        viewModel.destinationsObservable.subscribe { destinations in
+            self.mapView.destinationsCollectionsView.reloadData()
+        }.disposed(by: disposeBag)
+        
+        mapView.arrowImage.onTap(disposeBag: disposeBag) { [weak self] in
+            self?.mapView.animateDestinaitonsCollectionView()
+        }
+        
         mapView.travelModeSC.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
+        
+        self.mapView.destinationsCollectionsView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            if let userLocation = self?.getUserLocation()?.coordinate {
+                if let destinationCoordinates = self?.viewModel.getUpdatedCurrentDestination(indexPath: indexPath)?.coordinates.coordinates {
+                    self?.mapView.connectLocations(
+                        start: userLocation,
+                        end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
+                        transportType: (self?.mapView.travelModeSC.selectedSegmentIndex == 0) ? .walking : .automobile)
+                }
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    func setDelegate(for collectionView: UICollectionView) {
+        collectionView.delegate = nil
+        collectionView.dataSource = nil
+        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
     @objc func segmentedValueChanged(_ sender:UISegmentedControl!) {
@@ -44,6 +88,20 @@ class MapViewController: LocationViewController {
     }
    
 }
+
+extension MapViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfItemsPerRow:CGFloat = 2
+        let spacingBetweenCells:CGFloat = 2
+        let spacing:CGFloat = 6.0
+        
+        let totalSpacing = (2 * spacing) + ((numberOfItemsPerRow - 1) * spacingBetweenCells)
+        
+        let width = (mapView.destinationsCollectionsView.bounds.width - totalSpacing)/numberOfItemsPerRow
+        return CGSize(width: width - 10, height: 200)
+    }
+}
+
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -83,9 +141,9 @@ extension MapViewController: LocationViewControllerDelegate {
     }
     
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
-        guard let location = location else { return }
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        mapView.zoomInToLocation(location: center, radius: K.MapKeys.zoomRadius)
+//        guard let location = location else { return }
+//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//        mapView.zoomInToLocation(location: center, radius: K.MapKeys.zoomRadius)
     }
     
 }
