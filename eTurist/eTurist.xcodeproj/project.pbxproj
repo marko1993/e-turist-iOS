@@ -103,6 +103,7 @@
 		AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8914362665160100B960FD /* ProfileViewModel.swift */; };
 		AD89143D2665162000B960FD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89143C2665162000B960FD /* ProfileView.swift */; };
 		AD9FED9726B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FED9626B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift */; };
+		AD9FED9C26BDEA2C00AA8634 /* successAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = AD9FED9B26BDEA2C00AA8634 /* successAnimation.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		AD8914362665160100B960FD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		AD89143C2665162000B960FD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AD9FED9626B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDestinationToVisitedRequestModel.swift; sourceTree = "<group>"; };
+		AD9FED9B26BDEA2C00AA8634 /* successAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = successAnimation.json; sourceTree = "<group>"; };
 		D64A30EC32407D02DB89C5D7 /* Pods_eTurist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eTurist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80E4094506AA5CE3235B5BE /* Pods-eTurist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eTurist.release.xcconfig"; path = "Target Support Files/Pods-eTurist/Pods-eTurist.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -656,6 +658,7 @@
 		AD7B75F0267014C00062F86B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				AD9FED9B26BDEA2C00AA8634 /* successAnimation.json */,
 				AD7B75F1267014F10062F86B /* rewardbadge.json */,
 			);
 			path = Animations;
@@ -825,6 +828,7 @@
 				AD7B75F2267014F10062F86B /* rewardbadge.json in Resources */,
 				AD3D18612663F1EC00F853CC /* LaunchScreen.storyboard in Resources */,
 				AD3D185E2663F1EC00F853CC /* Assets.xcassets in Resources */,
+				AD9FED9C26BDEA2C00AA8634 /* successAnimation.json in Resources */,
 				AD27F5D1266558F800268AA2 /* StackItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

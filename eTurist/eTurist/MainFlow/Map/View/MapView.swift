@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Lottie
 
 class MapView: UIView, BaseView {
     
@@ -14,6 +15,7 @@ class MapView: UIView, BaseView {
     let backButton = UIButton()
     let travelModeSC = UISegmentedControl()
     let arrowImage = UIImageView(image: UIImage(named: "downArrow")?.withRenderingMode(.alwaysTemplate))
+    let successAnimation = AnimationView(name: "successAnimation")
     lazy var destinationsCollectionsView: UICollectionView = {
         let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         let layout = UICollectionViewFlowLayout()
@@ -41,6 +43,7 @@ class MapView: UIView, BaseView {
         addSubview(travelModeSC)
         addSubview(arrowImage)
         addSubview(destinationsCollectionsView)
+        addSubview(successAnimation)
     }
     
     func styleSubviews() {
@@ -66,6 +69,10 @@ class MapView: UIView, BaseView {
         destinationsCollectionsView.backgroundView?.backgroundColor = .clear
         destinationsCollectionsView.register(DestinationCollectionsViewCell.self, forCellWithReuseIdentifier: DestinationCollectionsViewCell.cellIdentifier)
         
+        successAnimation.isHidden = true
+        successAnimation.contentMode = .scaleAspectFit
+        successAnimation.animationSpeed = 0.5
+        
     }
     
     func positionSubviews() {
@@ -86,6 +93,10 @@ class MapView: UIView, BaseView {
         destinationsCollectionsView.anchor(leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: self.safeAreaLayoutGuide.bottomAnchor, trailing: self.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
         
         destinationsCollectionsView.constrainHeight(220)
+        
+        successAnimation.centerInSuperview()
+        successAnimation.constrainHeight(250)
+        successAnimation.constrainWidth(250)
         
     }
     
@@ -145,6 +156,16 @@ class MapView: UIView, BaseView {
             self?.shouldAnimateDestinationsDown = !(self?.shouldAnimateDestinationsDown ?? true)
         }
 
+    }
+    
+    func showSuccessAnimation() {
+        successAnimation.isHidden = false
+        successAnimation.play { [weak self] isCompleted in
+            if isCompleted {
+                self?.successAnimation.stop()
+                self?.successAnimation.isHidden = true
+            }
+        }
     }
     
     private func createDirectionsRequest(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, transportType: MKDirectionsTransportType) -> MKDirections.Request {

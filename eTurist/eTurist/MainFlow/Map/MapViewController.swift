@@ -184,7 +184,7 @@ extension MapViewController: LocationViewControllerDelegate {
                     end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
                     transportType: .walking)
             } else {
-                self.presentInfoDialog(message: "All routes visited")
+                self.mapView.showSuccessAnimation()
             }
         }
     }
