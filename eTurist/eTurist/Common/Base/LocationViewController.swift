@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-protocol LocationViewControllerDelegate {
+protocol LocationViewControllerDelegate: class {
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?)
     func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?)
     func locationViewController(_ controller: LocationViewController, manager: CLLocationManager, didEnterRegion region: CLRegion)
@@ -19,7 +19,7 @@ class LocationViewController: BaseViewController {
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     
-    var locationViewControlleDelegate: LocationViewControllerDelegate?
+    weak var locationViewControlleDelegate: LocationViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class LocationViewController: BaseViewController {
     func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
         case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
             presentInfoDialog(message: K.Strings.enableLocation)

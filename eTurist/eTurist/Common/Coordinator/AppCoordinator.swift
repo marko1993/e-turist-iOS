@@ -82,4 +82,9 @@ class AppCoordinator: Coordinator {
         self.navigationController.pushViewController(viewController, animated: true)
     }
     
+    func popTopViewController() {
+        self.navigationController.popViewController(animated: true)
+        self.currentViewController = self.navigationController.topViewController
+    }
+    
 }

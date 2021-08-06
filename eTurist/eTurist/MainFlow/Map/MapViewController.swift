@@ -15,21 +15,26 @@ class MapViewController: LocationViewController {
     
     private let mapView = MapView()
     var viewModel: MapViewModel!
+    var firstLoad: Bool = true
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setDelegate(for: mapView.destinationsCollectionsView)
-        viewModel
-            .destinationsObservable
-            .observeOn(MainScheduler.instance)
-            .bind(to: mapView.destinationsCollectionsView
-                .rx
-                .items) { cv, row, data in
-                let cell = cv.dequeueReusableCell(withReuseIdentifier: DestinationCollectionsViewCell.cellIdentifier, for: IndexPath.init(row: row, section: 0)) as! DestinationCollectionsViewCell
-                
-                cell.setup(with: data, shouldIndicateVisitedState: true)
-                return cell
-            }.disposed(by: disposeBag)
+        if firstLoad {
+            self.firstLoad = false
+            self.setDelegate(for: mapView.destinationsCollectionsView)
+            self.viewModel
+                .destinationsObservable
+                .observeOn(MainScheduler.instance)
+                .bind(to: mapView.destinationsCollectionsView
+                    .rx
+                    .items) { cv, row, data in
+                    let cell = cv.dequeueReusableCell(withReuseIdentifier: DestinationCollectionsViewCell.cellIdentifier, for: IndexPath.init(row: row, section: 0)) as! DestinationCollectionsViewCell
+                    
+                    cell.setup(with: data, shouldIndicateVisitedState: true)
+                    return cell
+                }.disposed(by: disposeBag)
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -47,15 +52,19 @@ class MapViewController: LocationViewController {
     }
     
     private func setupBindings() {
-        mapView.backButton.onTap(disposeBag: disposeBag) {
-            if let navController = self.navigationController {
-                navController.popViewController(animated: true)
-            }
+        mapView.backButton.onTap(disposeBag: disposeBag) { [weak self] in
+            self?.viewModel.exitMapViewController()
         }
         
-        viewModel.destinationsObservable.subscribe { destinations in
-            self.mapView.destinationsCollectionsView.reloadData()
+        viewModel.destinationsObservable.subscribe { [weak self] destinations in
+            self?.mapView.destinationsCollectionsView.reloadData()
+            print(destinations)
         }.disposed(by: disposeBag)
+        
+        viewModel.visitedDestinationObservable.subscribe (onNext: { [weak self] destination in
+            guard let _ = destination else { return }
+            self?.connectNextUnvisitedDestination()
+        }).disposed(by: disposeBag)
         
         mapView.arrowImage.onTap(disposeBag: disposeBag) { [weak self] in
             self?.mapView.animateDestinaitonsCollectionView()
@@ -130,24 +139,20 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: LocationViewControllerDelegate {
     func locationViewController(_ controller: LocationViewController, didGetAuthorized: Bool?) {
-        mapView.setupMapView()
-        mapView.setupMarkers(items: self.viewModel.getDestinations())
+        self.mapView.setupMapView()
+        self.mapView.setupMarkers(items: self.viewModel.getDestinations())
         self.setupGeofencesForDestinations(destinations: self.viewModel.getDestinations())
-        if let userLocation = getUserLocation()?.coordinate {
-            mapView.zoomInToLocation(location: userLocation, radius: K.MapKeys.zoomRadius)
-            guard let destinationCoordinates = viewModel.getNextUnvisitedDestination(userLocation: CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude))?.coordinates.coordinates else { return }
-            mapView.connectLocations(
-                start: userLocation,
-                end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
-                transportType: .walking)
-        }
-        startUpdatingLocation()
+        self.connectNextUnvisitedDestination()
+        self.startUpdatingLocation()
     }
     
     func locationViewController(_ controller: LocationViewController, didReceive location: CLLocation?) {
         guard let location = location else { return }
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        guard let destinationCoordinates = self.viewModel.currentDestination?.coordinates.coordinates else { return }
+        guard let destinationCoordinates = self.viewModel.currentDestination?.coordinates.coordinates else {
+            self.mapView.zoomInToLocation(location: center, radius: K.MapKeys.zoomRadius)
+            return
+        }
         self.mapView.connectLocations(
             start: center,
             end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
@@ -156,8 +161,8 @@ extension MapViewController: LocationViewControllerDelegate {
     
     func locationViewController(_ controller: LocationViewController, manager: CLLocationManager, didEnterRegion region: CLRegion) {
         guard let destination = self.viewModel.getDestinationById(Int(region.identifier) ?? -1) else { return }
-        if !(destination.userVisited ?? false) {
-            self.viewModel.visitDestination(destination)
+        if !(destination.userVisited ?? false) && destination.id != 0 {
+            self.viewModel.addDestinationToVisited(destination)
         }
     }
     
@@ -166,6 +171,21 @@ extension MapViewController: LocationViewControllerDelegate {
             let coordinate = CLLocationCoordinate2D(latitude: destination.coordinates.coordinates[0], longitude: destination.coordinates.coordinates[1])
             let geofenceRegion = CLCircularRegion(center: coordinate, radius: K.MapKeys.geofenceRadius, identifier: String(destination.id))
             self?.addGeofenceRegion(region: geofenceRegion)
+        }
+    }
+    
+    private func connectNextUnvisitedDestination() {
+        if let userLocation = getUserLocation()?.coordinate {
+            mapView.zoomInToLocation(location: userLocation, radius: K.MapKeys.zoomRadius)
+            if let destinationCoordinates = viewModel.getNextUnvisitedDestination(userLocation: CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude))?.coordinates.coordinates {
+                
+                mapView.connectLocations(
+                    start: userLocation,
+                    end: CLLocationCoordinate2D(latitude: destinationCoordinates[0], longitude: destinationCoordinates[1]),
+                    transportType: .walking)
+            } else {
+                self.presentInfoDialog(message: "All routes visited")
+            }
         }
     }
     

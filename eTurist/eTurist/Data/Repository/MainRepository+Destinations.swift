@@ -18,4 +18,15 @@ extension MainRepository {
         )
         self.performRequest(resources: resources, retryCount: 1, needsAuthorization: true, completion: completion)
     }
+    
+    func addDestinationToVisited(destinationId: Int, completion: @escaping (String?, Int?) -> Void) {
+        let resources = Resources<EmptyNetworkResponse, AddDestinationToVisitedRequestModel>(
+            path: K.Endpoints.addDestinationToVisited,
+            requestType: .POST,
+            bodyParameters: AddDestinationToVisitedRequestModel(destinationId: destinationId),
+            httpHeaderFields: nil,
+            queryParameters: nil
+        )
+        self.performRequest(resources: resources, retryCount: 1, needsAuthorization: true, completion: completion)
+    }
 }

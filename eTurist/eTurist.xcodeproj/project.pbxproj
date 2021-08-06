@@ -102,6 +102,7 @@
 		AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD891431266515DD00B960FD /* ProfileViewController.swift */; };
 		AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8914362665160100B960FD /* ProfileViewModel.swift */; };
 		AD89143D2665162000B960FD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89143C2665162000B960FD /* ProfileView.swift */; };
+		AD9FED9726B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FED9626B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +224,7 @@
 		AD891431266515DD00B960FD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AD8914362665160100B960FD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		AD89143C2665162000B960FD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AD9FED9626B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDestinationToVisitedRequestModel.swift; sourceTree = "<group>"; };
 		D64A30EC32407D02DB89C5D7 /* Pods_eTurist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eTurist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80E4094506AA5CE3235B5BE /* Pods-eTurist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eTurist.release.xcconfig"; path = "Target Support Files/Pods-eTurist/Pods-eTurist.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -535,6 +537,7 @@
 				AD7B7453266689C60062F86B /* LoginRequestModel.swift */,
 				AD7B74AE26696CCB0062F86B /* ValidateCodeRequestModel.swift */,
 				AD7B74EA266BCD430062F86B /* ChangePasswordRequestModel.swift */,
+				AD9FED9626B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift */,
 			);
 			path = NetworkRequestModel;
 			sourceTree = "<group>";
@@ -947,6 +950,7 @@
 				AD7B74B4266A7BB90062F86B /* UnderlinedLabel.swift in Sources */,
 				AD7B744E26667BC00062F86B /* ButtonGradient.swift in Sources */,
 				AD7B7454266689C60062F86B /* LoginRequestModel.swift in Sources */,
+				AD9FED9726B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift in Sources */,
 				AD7B7534266CFAA90062F86B /* MainRepository+Routes.swift in Sources */,
 				AD7B75B3266E73260062F86B /* CityPickerViewModel.swift in Sources */,
 				AD3D18ED2663FEFF00F853CC /* Assembler+Extensions.swift in Sources */,

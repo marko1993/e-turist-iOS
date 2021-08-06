@@ -19,6 +19,11 @@ class MapViewModel: BaseViewModel {
         return destinationsRelay.asObservable()
     }
     
+    private var visitedDestinationRelay: BehaviorRelay<Destination?> = BehaviorRelay(value: nil)
+    var visitedDestinationObservable: Observable<Destination?> {
+        return visitedDestinationRelay.asObservable()
+    }
+    
     func getNextUnvisitedDestination(userLocation: CLLocation) -> Destination? {
         let shortestDistance = route.routeDestinations
             .filter{$0.userVisited != nil && !$0.userVisited!}
@@ -45,8 +50,27 @@ class MapViewModel: BaseViewModel {
         return self.currentDestination
     }
     
-    func visitDestination(_ destination: Destination) {
-        
+    func addDestinationToVisited(_ destination: Destination) {
+        repository?.addDestinationToVisited(destinationId: destination.id, completion: { [weak self] error, resposneCode in
+            if let error = error {
+                self?.handleNetworkError(error: error, responseCode: resposneCode)
+            } else {
+                self?.visitedDestinationRelay.accept(destination)
+                
+                guard var destinations: [Destination] = self?.destinationsRelay.value else { return }
+                destinations.enumerated().forEach({ index, item in
+                    if item.id == destination.id {
+                        destinations[index].userVisited = true
+                    }
+                })
+                self?.route.routeDestinations = destinations
+                self?.destinationsRelay.accept(destinations)
+            }
+        })
+    }
+    
+    func exitMapViewController() {
+        self.coordinator?.popTopViewController()
     }
     
 }

@@ -56,6 +56,7 @@ struct K {
         static let getRoutesForCityRoute = "api/user/initial-data"
         static let getVisistedDestinationsRoute = "api/user/destinations/visited-by-user"
         static let getCitiesRoute = "api/user/cities"
+        static let addDestinationToVisited = "api/user/destinations/add-visited"
     }
     
     struct ApiParams {

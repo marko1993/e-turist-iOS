@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import Lottie
 
-protocol RoutesTableViewCellDelegate {
+protocol RoutesTableViewCellDelegate: class {
     func routesTableViewCell(_ cell: RoutesTableViewCell, didPressPlayButtonFor route: Route)
     func routesTableViewCell(_ cell: RoutesTableViewCell, didSelectCellFor route: Route)
 }
@@ -27,7 +27,7 @@ class RoutesTableViewCell: UITableViewCell, BaseView {
     let badgeAnimation = AnimationView(name: "rewardbadge")
     
     var route : Route!
-    var delegate: RoutesTableViewCellDelegate?
+    weak var delegate: RoutesTableViewCellDelegate?
     
     static let cellIdentifier = "RoutesTableViewCell"
     static let rowHeight: CGFloat = 300.0

@@ -13,7 +13,7 @@ struct Route: Codable {
     let description: String?
     let picturePath: String?
     let cityId: Int
-    let routeDestinations: [Destination]
+    var routeDestinations: [Destination]
     var myRating: Double? = 0.0
     var averageRating: Double?
 }
