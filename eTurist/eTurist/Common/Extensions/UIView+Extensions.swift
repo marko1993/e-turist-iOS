@@ -244,5 +244,16 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func setBlur(style: UIBlurEffect.Style = UIBlurEffect.Style.light, cornerRadius: CGFloat = 0) {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.layer.cornerRadius = cornerRadius
+        blurEffectView.cornerRadius = cornerRadius
+        self.addSubview(blurEffectView)
+    }
+    
 }
 

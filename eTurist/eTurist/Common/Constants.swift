@@ -23,6 +23,7 @@ struct K {
         static let oldPassword = "Old password"
         static let newPassword = "New password"
         static let logIn = "Log In"
+        static let comment = "Comment"
         static let logOut = "Log Out"
         static let save = "Save"
         static let register = "Register"

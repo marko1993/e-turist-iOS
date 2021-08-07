@@ -42,7 +42,7 @@ class HistoryViewModel: BaseViewModel {
     }
     
     func presentDestinationDetails(index: Int) {
-        print(destinationsRelay.value[index].name)
+        self.coordinator?.presentDestinationDetialsScreen(destination: destinationsRelay.value[index])
     }
     
 }
