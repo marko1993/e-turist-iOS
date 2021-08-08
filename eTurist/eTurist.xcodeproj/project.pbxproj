@@ -107,6 +107,15 @@
 		AD9FEDA226BEFA1600AA8634 /* DestinationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDA126BEFA1600AA8634 /* DestinationDetailsViewController.swift */; };
 		AD9FEDA726BEFA5500AA8634 /* DestinationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDA626BEFA5500AA8634 /* DestinationDetailsViewModel.swift */; };
 		AD9FEDAD26BEFA9500AA8634 /* DestinationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDAC26BEFA9500AA8634 /* DestinationDetailsView.swift */; };
+		AD9FEDB626C000FE00AA8634 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDB526C000FE00AA8634 /* CommentsViewController.swift */; };
+		AD9FEDBE26C0013100AA8634 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDBD26C0013100AA8634 /* CommentsViewModel.swift */; };
+		AD9FEDC426C0015900AA8634 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDC326C0015900AA8634 /* CommentsView.swift */; };
+		AD9FEDC926C005AE00AA8634 /* MainRepository+Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDC826C005AE00AA8634 /* MainRepository+Comments.swift */; };
+		AD9FEDD326C006E000AA8634 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDD226C006E000AA8634 /* Comment.swift */; };
+		AD9FEDD826C0070100AA8634 /* CommentsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDD726C0070100AA8634 /* CommentsResponseModel.swift */; };
+		AD9FEDE026C0294B00AA8634 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDDF26C0294B00AA8634 /* CommentsTableViewCell.swift */; };
+		AD9FEDE526C048A300AA8634 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDE426C048A300AA8634 /* PostComment.swift */; };
+		AD9FEDEA26C0492900AA8634 /* PostCommentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FEDE926C0492900AA8634 /* PostCommentResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +242,15 @@
 		AD9FEDA126BEFA1600AA8634 /* DestinationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewController.swift; sourceTree = "<group>"; };
 		AD9FEDA626BEFA5500AA8634 /* DestinationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsViewModel.swift; sourceTree = "<group>"; };
 		AD9FEDAC26BEFA9500AA8634 /* DestinationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailsView.swift; sourceTree = "<group>"; };
+		AD9FEDB526C000FE00AA8634 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		AD9FEDBD26C0013100AA8634 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		AD9FEDC326C0015900AA8634 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		AD9FEDC826C005AE00AA8634 /* MainRepository+Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainRepository+Comments.swift"; sourceTree = "<group>"; };
+		AD9FEDD226C006E000AA8634 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		AD9FEDD726C0070100AA8634 /* CommentsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseModel.swift; sourceTree = "<group>"; };
+		AD9FEDDF26C0294B00AA8634 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		AD9FEDE426C048A300AA8634 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
+		AD9FEDE926C0492900AA8634 /* PostCommentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentResponseModel.swift; sourceTree = "<group>"; };
 		D64A30EC32407D02DB89C5D7 /* Pods_eTurist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eTurist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80E4094506AA5CE3235B5BE /* Pods-eTurist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eTurist.release.xcconfig"; path = "Target Support Files/Pods-eTurist/Pods-eTurist.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -372,6 +390,7 @@
 				AD7B74EF266BD1330062F86B /* MainRepository+User.swift */,
 				AD7B7533266CFAA90062F86B /* MainRepository+Routes.swift */,
 				AD7B754A266D62C60062F86B /* MainRepository+Destinations.swift */,
+				AD9FEDC826C005AE00AA8634 /* MainRepository+Comments.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -396,6 +415,7 @@
 				AD7B7524266CF9320062F86B /* Route.swift */,
 				AD7B7529266CF9AD0062F86B /* Destination.swift */,
 				AD7B752E266CFA520062F86B /* Point.swift */,
+				AD9FEDD226C006E000AA8634 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -510,6 +530,8 @@
 				AD7B751A266CF8770062F86B /* RoutesResponseModel.swift */,
 				AD7B7545266D62760062F86B /* VisitedDestinationsResponseModel.swift */,
 				AD7B75CC266E7C940062F86B /* CititesResponseModel.swift */,
+				AD9FEDD726C0070100AA8634 /* CommentsResponseModel.swift */,
+				AD9FEDE926C0492900AA8634 /* PostCommentResponseModel.swift */,
 			);
 			path = NetworkResponseModel;
 			sourceTree = "<group>";
@@ -547,6 +569,7 @@
 				AD7B74AE26696CCB0062F86B /* ValidateCodeRequestModel.swift */,
 				AD7B74EA266BCD430062F86B /* ChangePasswordRequestModel.swift */,
 				AD9FED9626B087F300AA8634 /* AddDestinationToVisitedRequestModel.swift */,
+				AD9FEDE426C048A300AA8634 /* PostComment.swift */,
 			);
 			path = NetworkRequestModel;
 			sourceTree = "<group>";
@@ -599,6 +622,7 @@
 		AD7B74C7266AF1110062F86B /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
+				AD9FEDB126C000AC00AA8634 /* Comments */,
 				AD7B75AB266E72D20062F86B /* CityPicker */,
 				AD7B74C8266AF1190062F86B /* ChangePassword */,
 			);
@@ -741,6 +765,25 @@
 			isa = PBXGroup;
 			children = (
 				AD9FEDAC26BEFA9500AA8634 /* DestinationDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD9FEDB126C000AC00AA8634 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				AD9FEDB526C000FE00AA8634 /* CommentsViewController.swift */,
+				AD9FEDBD26C0013100AA8634 /* CommentsViewModel.swift */,
+				AD9FEDC226C0014400AA8634 /* View */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		AD9FEDC226C0014400AA8634 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD9FEDC326C0015900AA8634 /* CommentsView.swift */,
+				AD9FEDDF26C0294B00AA8634 /* CommentsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -927,10 +970,13 @@
 				AD89142C2665157300B960FD /* HistoryView.swift in Sources */,
 				AD27F5D5266558F800268AA2 /* StackItemView.swift in Sources */,
 				AD3D1924266403E800F853CC /* HomeViewController.swift in Sources */,
+				AD9FEDBE26C0013100AA8634 /* CommentsViewModel.swift in Sources */,
 				AD7B7520266CF8A20062F86B /* City.swift in Sources */,
 				AD7B74F5266BDB510062F86B /* UserResponseModel.swift in Sources */,
 				AD3D19042664008C00F853CC /* BaseView.swift in Sources */,
 				AD7B74DF266AF24E0062F86B /* ChangePasswordView.swift in Sources */,
+				AD9FEDD826C0070100AA8634 /* CommentsResponseModel.swift in Sources */,
+				AD9FEDEA26C0492900AA8634 /* PostCommentResponseModel.swift in Sources */,
 				AD7B751B266CF8770062F86B /* RoutesResponseModel.swift in Sources */,
 				AD7B75E126700BA40062F86B /* RatingView.swift in Sources */,
 				AD7B75AE266E72FC0062F86B /* CityPickerViewController.swift in Sources */,
@@ -944,6 +990,7 @@
 				AD7B75D7266E82140062F86B /* RadioButton.swift in Sources */,
 				AD7B74F0266BD1330062F86B /* MainRepository+User.swift in Sources */,
 				AD7B7511266C236B0062F86B /* LocationViewController.swift in Sources */,
+				AD9FEDB626C000FE00AA8634 /* CommentsViewController.swift in Sources */,
 				AD7B74FB266C0B900062F86B /* MapViewController.swift in Sources */,
 				AD7B746C2666C8DC0062F86B /* RegistrationViewModel.swift in Sources */,
 				AD7B754B266D62C60062F86B /* MainRepository+Destinations.swift in Sources */,
@@ -961,6 +1008,7 @@
 				AD7B7541266D461C0062F86B /* SearchBar.swift in Sources */,
 				AD9FEDA226BEFA1600AA8634 /* DestinationDetailsViewController.swift in Sources */,
 				AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */,
+				AD9FEDE026C0294B00AA8634 /* CommentsTableViewCell.swift in Sources */,
 				AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */,
 				AD7B74EB266BCD430062F86B /* ChangePasswordRequestModel.swift in Sources */,
 				AD7B740F2665709E0062F86B /* HomeViewController+Extensions.swift in Sources */,
@@ -992,10 +1040,14 @@
 				AD3D192E2664053A00F853CC /* NetworkService.swift in Sources */,
 				AD7B745926668AA20062F86B /* NetworkResponse.swift in Sources */,
 				AD3D18B42663F40B00F853CC /* Constants.swift in Sources */,
+				AD9FEDD326C006E000AA8634 /* Comment.swift in Sources */,
 				AD7B75C0266E74230062F86B /* ChangePasswordDialogDelegate.swift in Sources */,
+				AD9FEDE526C048A300AA8634 /* PostComment.swift in Sources */,
 				AD7B74A026691F310062F86B /* String+Extensions.swift in Sources */,
 				AD7B75C5266E74510062F86B /* CityPickerDialogDelegate.swift in Sources */,
 				AD7B753C266D04830062F86B /* RoutesTableViewCell.swift in Sources */,
+				AD9FEDC426C0015900AA8634 /* CommentsView.swift in Sources */,
+				AD9FEDC926C005AE00AA8634 /* MainRepository+Comments.swift in Sources */,
 				AD3D19132664019800F853CC /* Repository.swift in Sources */,
 				AD89143D2665162000B960FD /* ProfileView.swift in Sources */,
 				AD7B75DC266FF9C20062F86B /* ProgressBar.swift in Sources */,

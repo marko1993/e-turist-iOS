@@ -11,7 +11,7 @@ class ChangePasswordViewController: BaseViewController {
     
     private let changePasswordView = ChangePasswordView()
     var viewModel: ChangePasswordViewModel!
-    var delegate: ChangePasswordDialogDelegate!
+    weak var delegate: ChangePasswordDialogDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

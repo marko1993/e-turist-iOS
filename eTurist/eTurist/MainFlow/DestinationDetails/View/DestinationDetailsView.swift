@@ -39,10 +39,11 @@ class DestinationDetailsView: UIView, BaseView {
         
         self.destinationImage.cornerRadius = 15
         
-        self.blurView.setBlur(cornerRadius: 15)
+        self.blurView.setBlur(cornerRadius: 5)
         
         self.backButton.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.backButton.imageView?.tintColor = UIColor(named: K.Color.main)
+        self.backButton.dropShadow(offsetSize: CGSize(width: 2, height: 2), shadowOpacity: 0.5, shadowColor: .white)
         
         self.destinationTitle.font = UIFont.boldSystemFont(ofSize: 30)
         self.destinationTitle.textColor = UIColor(named: K.Color.main)
@@ -53,6 +54,8 @@ class DestinationDetailsView: UIView, BaseView {
         self.destinationDescription.textColor = UIColor(named: K.Color.main)
         self.destinationDescription.isScrollEnabled = true
         self.destinationDescription.textAlignment = .justified
+        self.destinationDescription.isUserInteractionEnabled = false
+        self.destinationDescription.isEditable = false
         
         self.commentButton.setTitle(K.Strings.comment, for: .normal)
         self.commentButton.titleLabel?.font = .boldSystemFont(ofSize: 24)

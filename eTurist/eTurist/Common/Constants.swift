@@ -42,6 +42,7 @@ struct K {
         static let selectCity = "Please select a city"
         static let searchRoutesPlaceholder = "Search routes in city"
         static let searchVisitedDestinationsPlaceholder = "Search visited destinations"
+        static let addCommentPlaceholder = "Add comment..."
     }
     
     struct Endpoints {
@@ -58,6 +59,9 @@ struct K {
         static let getVisistedDestinationsRoute = "api/user/destinations/visited-by-user"
         static let getCitiesRoute = "api/user/cities"
         static let addDestinationToVisited = "api/user/destinations/add-visited"
+        static let getComments = "api/user/comments"
+        static let postCommentToDestination = "api/user/comments/add-to-destination"
+        static let postCommentToRoute = "api/user/comments/add-to-route"
     }
     
     struct ApiParams {
@@ -66,6 +70,9 @@ struct K {
         static let email = "email"
         static let fullName = "fullName"
         static let password = "password"
+        static let routeId = "routeId"
+        static let destinationId = "destinationId"
+        static let page = "page"
     }
     
     struct Color {

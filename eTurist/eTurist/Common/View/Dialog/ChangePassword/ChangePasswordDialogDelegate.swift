@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ChangePasswordDialogDelegate {
+protocol ChangePasswordDialogDelegate: class {
     func ChangePasswordDialog(_ dialog: ChangePasswordViewController, didFinishChangingPassword didFinish: Bool, errorMessage: String?)
 }

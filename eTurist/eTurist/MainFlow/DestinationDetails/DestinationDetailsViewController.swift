@@ -23,6 +23,10 @@ class DestinationDetailsViewController: BaseViewController {
         self.destinationDetailsView.backButton.onTap(disposeBag: disposeBag) { [weak self] in
             self?.viewModel.exitDetailsScreen()
         }
+        
+        self.destinationDetailsView.commentButton.onTap(disposeBag: disposeBag) { [weak self] in
+            self?.viewModel.showCommentsScreen()
+        }
     }
     
 }

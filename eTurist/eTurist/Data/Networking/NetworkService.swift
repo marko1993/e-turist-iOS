@@ -35,7 +35,7 @@ struct Resources<T: Decodable, P: Encodable> {
     let requestType: RequestType
     let bodyParameters: P?
     let httpHeaderFields: [String : String]?
-    let queryParameters: [String : Codable]?
+    var queryParameters: [String : Codable]?
 }
 
 struct FormDataResources<T: Decodable> {

@@ -590,9 +590,9 @@
             filePath = "eTurist/MainFlow/DestinationDetails/View/DestinationDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "positionSubviews()"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "setup(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

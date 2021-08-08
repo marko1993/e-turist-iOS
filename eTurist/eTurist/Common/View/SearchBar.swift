@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SearchBarDelegate {
+protocol SearchBarDelegate: class {
     func searchBar(_ searchBar: SearchBar, valueDidChange value: String?)
     func searchBar(_ searchBar: SearchBar, didSelectCityPicker value: Bool)
 }
@@ -20,7 +20,7 @@ class SearchBar: UIView, BaseView {
     let deleteImage = UIImageView(image: UIImage(named: "cancel")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor(named: K.Color.main)!))
     let citiesImage = UIImageView(image: UIImage(named: "location")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColor(named: K.Color.main)!))
     
-    var delegate: SearchBarDelegate?
+    weak var delegate: SearchBarDelegate?
     let shouldShowLocationImage: Bool
     var placeholder: String = ""
     

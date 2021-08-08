@@ -13,4 +13,8 @@ class DestinationDetailsViewModel: BaseViewModel {
     func exitDetailsScreen() {
         self.coordinator?.popTopViewController()
     }
+    
+    func showCommentsScreen() {
+        self.coordinator?.presentCommentsScreen(destinationId: destination.id, routeId: destination.routeId)
+    }
 }

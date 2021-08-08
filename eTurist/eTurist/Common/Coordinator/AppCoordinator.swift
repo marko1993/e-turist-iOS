@@ -52,14 +52,12 @@ class AppCoordinator: Coordinator {
     
     func presentRegistrationScreen() {
         let viewController = Assembler.sharedAssembler.resolver.resolve(RegistrationViewController.self, argument: self)!
-        self.currentViewController = viewController
-        self.navigationController.pushViewController(viewController, animated: true)
+        self.setAsCurrent(viewController: viewController)
     }
     
     func presentCodeValidationScreen(email: String, password: String) {
         let viewController = Assembler.sharedAssembler.resolver.resolve(CodeValidationViewController.self, arguments: self, email, password)!
-        self.currentViewController = viewController
-        self.navigationController.pushViewController(viewController, animated: true)
+        self.setAsCurrent(viewController: viewController)
     }
     
     func presentChangePasswordViewController(delegate: ChangePasswordDialogDelegate) {
@@ -78,19 +76,29 @@ class AppCoordinator: Coordinator {
     
     func presentMapScreen(route: Route) {
         let viewController = Assembler.sharedAssembler.resolver.resolve(MapViewController.self, arguments: self, route)!
-        self.currentViewController = viewController
-        self.navigationController.pushViewController(viewController, animated: true)
+        self.setAsCurrent(viewController: viewController)
     }
     
     func presentDestinationDetialsScreen(destination: Destination) {
         let viewController = Assembler.sharedAssembler.resolver.resolve(DestinationDetailsViewController.self, arguments: self, destination)!
-        self.currentViewController = viewController
-        self.navigationController.pushViewController(viewController, animated: true)
+        self.setAsCurrent(viewController: viewController)
+    }
+    
+    func presentCommentsScreen(destinationId: Int?, routeId: Int) {
+        let viewController = Assembler.sharedAssembler.resolver.resolve(CommentsViewController.self, arguments: self, destinationId, routeId)!
+        viewController.modalPresentationStyle = .custom
+        viewController.modalTransitionStyle = .crossDissolve
+        self.currentViewController?.present(viewController, animated: true, completion: nil)
     }
     
     func popTopViewController() {
         self.navigationController.popViewController(animated: true)
         self.currentViewController = self.navigationController.topViewController
+    }
+    
+    private func setAsCurrent(viewController: UIViewController) {
+        self.currentViewController = viewController
+        self.navigationController.pushViewController(viewController, animated: true)
     }
     
 }

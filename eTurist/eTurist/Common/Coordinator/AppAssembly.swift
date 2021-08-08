@@ -23,6 +23,7 @@ final class AppAssembly: Assembly {
         self.assembleMapViewController(container)
         self.assembleCityPickerViewController(container)
         self.assembleDestinationDetailsViewController(container)
+        self.assembleCommentsViewController(container)
     }
     
     private func assembleRepository(_ container: Container) {
@@ -209,6 +210,23 @@ final class AppAssembly: Assembly {
             let controller = DestinationDetailsViewController()
             controller.viewModel = container.resolve(DestinationDetailsViewModel.self, argument: coordinator)
             controller.viewModel.destination = destination
+            return controller
+        }.inObjectScope(.transient)
+    }
+    
+    private func assembleCommentsViewController(_ container: Container) {
+        container.register(CommentsViewModel.self) { (resolver, coordinator: AppCoordinator) in
+            let viewModel = CommentsViewModel()
+            viewModel.coordinator = coordinator
+            viewModel.repository = container.resolve(Repository.self, name: "main") as? MainRepository
+            return viewModel
+        }.inObjectScope(.transient)
+        
+        container.register(CommentsViewController.self) { (resolver, coordinator: AppCoordinator, destinationId: Int?, routeId: Int ) in
+            let controller = CommentsViewController()
+            controller.viewModel = container.resolve(CommentsViewModel.self, argument: coordinator)
+            controller.viewModel.destinationId = destinationId
+            controller.viewModel.routeId = routeId
             return controller
         }.inObjectScope(.transient)
     }
