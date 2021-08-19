@@ -31,4 +31,15 @@ extension MainRepository {
         self.performRequest(resources: resources, retryCount: 1, needsAuthorization: true, completion: completion)
     }
     
+    func postRating(routeId: Int, rating: Int, completion: @escaping (NetworkResponse<PostRatingResponseModel>?, String?) -> Void) {
+        let resources = Resources<NetworkResponse<PostRatingResponseModel>, PostRatingRequestModel>(
+            path: K.Endpoints.postRating,
+            requestType: .POST,
+            bodyParameters: PostRatingRequestModel(routeId: routeId, destinationId: nil, rating: rating),
+            httpHeaderFields: nil,
+            queryParameters: nil
+        )
+        self.performRequest(resources: resources, retryCount: 1, needsAuthorization: true, completion: completion)
+    }
+    
 }

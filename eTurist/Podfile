@@ -12,5 +12,6 @@ target 'eTurist' do
   pod 'IQKeyboardManagerSwift'
   pod 'Swinject'
   pod 'lottie-ios'
+  pod 'HCSStarRatingView', '~> 1.5'
 
 end

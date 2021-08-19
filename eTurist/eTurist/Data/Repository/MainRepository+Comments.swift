@@ -43,7 +43,7 @@ extension MainRepository {
     func postCommentToRoute(routeId: Int, comment: String, completion: @escaping (NetworkResponse<PostCommentResponseModel>?, String?) -> Void) {
         
         let resources = Resources<NetworkResponse<PostCommentResponseModel>, PostCommentToRoute>(
-            path: K.Endpoints.postCommentToDestination,
+            path: K.Endpoints.postCommentToRoute,
             requestType: .POST,
             bodyParameters: PostCommentToRoute(routeId: routeId, comment: comment),
             httpHeaderFields: nil,

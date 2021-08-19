@@ -15,27 +15,6 @@ class MapViewController: LocationViewController {
     
     private let mapView = MapView()
     var viewModel: MapViewModel!
-    var firstLoad: Bool = true
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if firstLoad {
-            self.firstLoad = false
-            self.setDelegate(for: mapView.destinationsCollectionsView)
-            self.viewModel
-                .destinationsObservable
-                .observeOn(MainScheduler.instance)
-                .bind(to: mapView.destinationsCollectionsView
-                    .rx
-                    .items) { cv, row, data in
-                    let cell = cv.dequeueReusableCell(withReuseIdentifier: DestinationCollectionsViewCell.cellIdentifier, for: IndexPath.init(row: row, section: 0)) as! DestinationCollectionsViewCell
-                    
-                    cell.setup(with: data, shouldIndicateVisitedState: true)
-                    return cell
-                }.disposed(by: disposeBag)
-        }
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +31,26 @@ class MapViewController: LocationViewController {
     }
     
     private func setupBindings() {
+        
+        self.setDelegate(for: mapView.destinationsCollectionsView)
+        self.viewModel
+            .destinationsObservable
+            .observeOn(MainScheduler.instance)
+            .bind(to: mapView.destinationsCollectionsView
+                .rx
+                .items) { cv, row, data in
+                let cell = cv.dequeueReusableCell(withReuseIdentifier: DestinationCollectionsViewCell.cellIdentifier, for: IndexPath.init(row: row, section: 0)) as! DestinationCollectionsViewCell
+                
+                cell.setup(with: data, shouldIndicateVisitedState: true)
+                return cell
+            }.disposed(by: disposeBag)
+        
         mapView.backButton.onTap(disposeBag: disposeBag) { [weak self] in
             self?.viewModel.exitMapViewController()
         }
         
         viewModel.destinationsObservable.subscribe { [weak self] destinations in
             self?.mapView.destinationsCollectionsView.reloadData()
-            print(destinations)
         }.disposed(by: disposeBag)
         
         viewModel.visitedDestinationObservable.subscribe (onNext: { [weak self] destination in

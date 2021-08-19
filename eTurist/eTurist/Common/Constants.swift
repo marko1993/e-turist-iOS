@@ -24,6 +24,7 @@ struct K {
         static let newPassword = "New password"
         static let logIn = "Log In"
         static let comment = "Comment"
+        static let start = "Start"
         static let logOut = "Log Out"
         static let save = "Save"
         static let register = "Register"
@@ -62,6 +63,7 @@ struct K {
         static let getComments = "api/user/comments"
         static let postCommentToDestination = "api/user/comments/add-to-destination"
         static let postCommentToRoute = "api/user/comments/add-to-route"
+        static let postRating = "api/user/ratings"
     }
     
     struct ApiParams {

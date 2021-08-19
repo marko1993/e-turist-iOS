@@ -84,10 +84,14 @@ class AppCoordinator: Coordinator {
         self.setAsCurrent(viewController: viewController)
     }
     
+    func presentRouteDetialsScreen(route: Route) {
+        let viewController = Assembler.sharedAssembler.resolver.resolve(RouteDetailsViewController.self, arguments: self, route)!
+        self.setAsCurrent(viewController: viewController)
+    }
+    
     func presentCommentsScreen(destinationId: Int?, routeId: Int) {
         let viewController = Assembler.sharedAssembler.resolver.resolve(CommentsViewController.self, arguments: self, destinationId, routeId)!
-        viewController.modalPresentationStyle = .custom
-        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .automatic
         self.currentViewController?.present(viewController, animated: true, completion: nil)
     }
     

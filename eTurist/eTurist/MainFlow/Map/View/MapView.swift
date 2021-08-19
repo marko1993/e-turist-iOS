@@ -142,16 +142,17 @@ class MapView: UIView, BaseView {
     
     func animateDestinaitonsCollectionView() {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveLinear) { [weak self] in
-            if ((self?.shouldAnimateDestinationsDown) != nil) {
-                self?.destinationsCollectionsView.center.y += (self?.destinationsCollectionsView.bounds.height)!
-                self?.arrowImage.center.y += (self?.destinationsCollectionsView.bounds.height)!
-                self?.arrowImage.transform = CGAffineTransform(rotationAngle: .pi)
+            guard let self = self else { return }
+            if (self.shouldAnimateDestinationsDown) {
+                self.destinationsCollectionsView.center.y += (self.destinationsCollectionsView.bounds.height)
+                self.arrowImage.center.y += (self.destinationsCollectionsView.bounds.height)
+                self.arrowImage.transform = CGAffineTransform(rotationAngle: .pi)
             } else {
-                self?.destinationsCollectionsView.center.y -= (self?.destinationsCollectionsView.bounds.height)!
-                self?.arrowImage.center.y -= (self?.destinationsCollectionsView.bounds.height)!
-                self?.arrowImage.transform = CGAffineTransform(rotationAngle: 0)
+                self.destinationsCollectionsView.center.y -= (self.destinationsCollectionsView.bounds.height)
+                self.arrowImage.center.y -= (self.destinationsCollectionsView.bounds.height)
+                self.arrowImage.transform = CGAffineTransform(rotationAngle: 0)
             }
-            self?.layoutIfNeeded()
+            self.layoutIfNeeded()
         } completion: { [weak self] isCompleted in
             self?.shouldAnimateDestinationsDown = !(self?.shouldAnimateDestinationsDown ?? true)
         }

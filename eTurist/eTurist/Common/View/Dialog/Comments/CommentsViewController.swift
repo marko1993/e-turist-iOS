@@ -13,34 +13,6 @@ class CommentsViewController: BaseViewController {
     
     private let commentsView = CommentsView()
     var viewModel: CommentsViewModel!
-    var firstLoad = true
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if firstLoad {
-            firstLoad = false
-            viewModel?
-                .commentsObservable
-                .observeOn(MainScheduler.instance)
-                .bind(to:
-                        commentsView.commentsTableView
-                        .rx
-                        .items(
-                            cellIdentifier: CommentsTableViewCell.cellIdentifier,
-                            cellType: CommentsTableViewCell.self)) { index, data, cell in
-                    
-                    cell.setup(with: data)
-            }.disposed(by: disposeBag)
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.commentsView.animateContainerView(direction: .down, duration: 0.01) { [weak self] in
-            self?.commentsView.containerView.isHidden = false
-            self?.commentsView.animateContainerView(direction: .up)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +23,21 @@ class CommentsViewController: BaseViewController {
     
     private func setupBinding() {
         
-        self.commentsView.backgroundView.onTap(disposeBag: disposeBag) { [weak self] in
-            self?.commentsView.animateContainerView(direction: .down, completion: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            })
+        viewModel
+            .commentsObservable
+            .observeOn(MainScheduler.instance)
+            .bind(to:
+                    commentsView.commentsTableView
+                    .rx
+                    .items(
+                        cellIdentifier: CommentsTableViewCell.cellIdentifier,
+                        cellType: CommentsTableViewCell.self)) { index, data, cell in
+                
+                cell.setup(with: data)
+        }.disposed(by: disposeBag)
+        
+        self.commentsView.onTap(disposeBag: disposeBag) { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
         }
         
         self.commentsView.addCommentButton.onTap(disposeBag: disposeBag) { [weak self] in

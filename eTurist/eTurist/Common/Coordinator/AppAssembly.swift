@@ -24,6 +24,7 @@ final class AppAssembly: Assembly {
         self.assembleCityPickerViewController(container)
         self.assembleDestinationDetailsViewController(container)
         self.assembleCommentsViewController(container)
+        self.assembleRouteDetailsViewController(container)
     }
     
     private func assembleRepository(_ container: Container) {
@@ -210,6 +211,22 @@ final class AppAssembly: Assembly {
             let controller = DestinationDetailsViewController()
             controller.viewModel = container.resolve(DestinationDetailsViewModel.self, argument: coordinator)
             controller.viewModel.destination = destination
+            return controller
+        }.inObjectScope(.transient)
+    }
+    
+    private func assembleRouteDetailsViewController(_ container: Container) {
+        container.register(RouteDetailsViewModel.self) { (resolver, coordinator: AppCoordinator) in
+            let viewModel = RouteDetailsViewModel()
+            viewModel.coordinator = coordinator
+            viewModel.repository = container.resolve(Repository.self, name: "main") as? MainRepository
+            return viewModel
+        }.inObjectScope(.transient)
+        
+        container.register(RouteDetailsViewController.self) { (resolver, coordinator: AppCoordinator, route: Route) in
+            let controller = RouteDetailsViewController()
+            controller.viewModel = container.resolve(RouteDetailsViewModel.self, argument: coordinator)
+            controller.viewModel.route = route
             return controller
         }.inObjectScope(.transient)
     }

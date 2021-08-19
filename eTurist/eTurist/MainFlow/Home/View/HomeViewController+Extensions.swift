@@ -20,7 +20,7 @@ extension HomeViewController {
     func configureBotomNavigation() {
         view.addSubview(bottomTabContainer)
         view.addSubview(bottomBarTab)
-        bottomTabContainer.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
+        bottomTabContainer.anchor(leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10))
         bottomTabContainer.constrainHeight(80)
         bottomTabContainer.layer.cornerRadius = 30
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)

@@ -65,6 +65,10 @@ class RoutesViewModel: BaseViewModel {
         self.coordinator?.presentMapScreen(route: route)
     }
     
+    func presentRouteDetailsScreen(route: Route) {
+        self.coordinator?.presentRouteDetialsScreen(route: route)
+    }
+    
     func presentCityPicker(delegate: CityPickerDialogDelegate) {
         if let cities = cities {
             coordinator?.presentCityPickerViewController(currentCity: self.city, cities: cities, delegate: delegate)
