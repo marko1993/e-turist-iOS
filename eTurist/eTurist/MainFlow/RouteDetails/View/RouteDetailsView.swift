@@ -76,7 +76,7 @@ class RouteDetailsView: UIView, BaseView {
         self.routeTitle.font = UIFont.boldSystemFont(ofSize: 30)
         self.routeTitle.textColor = UIColor(named: K.Color.main)
         self.routeTitle.numberOfLines = 2
-        self.routeTitle.dropShadow(shadowRadius: 5, offsetSize: CGSize(width: 3, height: 3), shadowOpacity: 0.5, shadowColor: .black)
+        self.routeTitle.dropShadow(shadowRadius: 1, offsetSize: CGSize(width: 2, height: 0), shadowOpacity: 1.0, shadowColor: .white)
         
         self.starRatingView.minimumValue = 0
         self.starRatingView.maximumValue = 5
@@ -87,7 +87,7 @@ class RouteDetailsView: UIView, BaseView {
         self.routeDescription.textColor = UIColor(named: K.Color.main)
         self.routeDescription.isScrollEnabled = true
         self.routeDescription.textAlignment = .justified
-        self.routeDescription.isUserInteractionEnabled = false
+        self.routeDescription.isUserInteractionEnabled = true
         self.routeDescription.isEditable = false
         
         self.commentButton.setTitle(K.Strings.comment, for: .normal)
@@ -125,9 +125,10 @@ class RouteDetailsView: UIView, BaseView {
         backButton.constrainWidth(30)
         backButton.constrainHeight(30)
         
-        routeTitle.anchor(top: routeImage.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
+        routeTitle.anchor(leading: safeAreaLayoutGuide.leadingAnchor, trailing: ratingView.leadingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
+        routeTitle.centerY(inView: ratingView)
         
-        starRatingView.anchor(top: routeTitle.bottomAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
+        starRatingView.anchor(top: routeImage.bottomAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
         starRatingView.centerX(inView: self)
         starRatingView.constrainHeight(50)
         starRatingView.constrainWidth(200)
