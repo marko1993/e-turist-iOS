@@ -52,7 +52,8 @@ class DestinationCollectionsViewCell: UICollectionViewCell, BaseView {
         
         self.destinationName.anchor(leading: self.leadingAnchor, bottom: destinationDescriptrion.topAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
         
-        gradientView.anchor(top: destinationName.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
+        gradientView.anchor(leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
+        gradientView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
         
     }
     
