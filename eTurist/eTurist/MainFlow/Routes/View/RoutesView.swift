@@ -22,8 +22,8 @@ class RoutesView: UIView, BaseView {
     }
     
     func addSubviews() {
-        addSubview(searchBar)
         addSubview(routesTableView)
+        addSubview(searchBar)
     }
     
     func styleSubviews() {

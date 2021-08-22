@@ -28,8 +28,8 @@ class HistoryView: UIView, BaseView {
     }
     
     func addSubviews() {
-        addSubview(searchBar)
         addSubview(destinationsCollectionsView)
+        addSubview(searchBar)
     }
     
     func styleSubviews() {
