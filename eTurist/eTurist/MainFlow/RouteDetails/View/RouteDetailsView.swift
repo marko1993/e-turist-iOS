@@ -99,7 +99,7 @@ class RouteDetailsView: UIView, BaseView {
     }
     
     func positionSubviews() {
-        routeImage.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor)
+        routeImage.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20))
         routeImage.constrainHeight(270)
         
         starRatingView.anchor(top: routeImage.bottomAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
@@ -107,7 +107,7 @@ class RouteDetailsView: UIView, BaseView {
         starRatingView.constrainHeight(50)
         starRatingView.constrainWidth(200)
         
-        ratingView.anchor(bottom: routeImage.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 8))
+        ratingView.anchor(bottom: routeImage.bottomAnchor, trailing: routeImage.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 8))
         ratingView.constrainHeight(50)
         ratingView.constrainWidth(70)
         

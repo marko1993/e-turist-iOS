@@ -47,7 +47,7 @@ class DestinationDetailsView: UIView, BaseView {
     
     func positionSubviews() {
         
-        destinationImage.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor)
+        destinationImage.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20))
         destinationImage.constrainHeight(270)
         
         commentButton.centerX(inView: self)
