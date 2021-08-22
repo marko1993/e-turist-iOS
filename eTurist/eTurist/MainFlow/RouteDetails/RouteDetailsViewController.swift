@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class RouteDetailsViewController: BaseViewController {
+class RouteDetailsViewController: NavigationViewController {
     
     private let routueDetailsView = RouteDetailsView()
     var viewModel: RouteDetailsViewModel!
@@ -16,6 +16,7 @@ class RouteDetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(routueDetailsView)
+        setupNavigation(title: viewModel.route.name)
         self.routueDetailsView.setup(with: viewModel.route)
         self.setupBindings()
     }
@@ -40,10 +41,7 @@ class RouteDetailsViewController: BaseViewController {
                 cell.setup(with: data, shouldIndicateVisitedState: true)
                 return cell
             }.disposed(by: disposeBag)
-        
-        self.routueDetailsView.backButton.onTap(disposeBag: disposeBag) { [weak self] in
-            self?.viewModel.exitDetailsScreen()
-        }
+       
         
         self.routueDetailsView.commentButton.onTap(disposeBag: disposeBag) { [weak self] in
             self?.viewModel.showCommentsScreen()
@@ -76,6 +74,10 @@ class RouteDetailsViewController: BaseViewController {
             }
         }).disposed(by: disposeBag)
         
+    }
+    
+    override func backPressed(sender: AnyObject) {
+        self.viewModel.exitDetailsScreen()
     }
     
 }

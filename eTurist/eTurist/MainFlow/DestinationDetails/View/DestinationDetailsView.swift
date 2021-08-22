@@ -10,9 +10,6 @@ import UIKit
 class DestinationDetailsView: UIView, BaseView {
     
     let destinationImage = UIImageView()
-    let blurView = UIView()
-    let backButton = UIButton()
-    let destinationTitle = UILabel()
     let scrollView = UIScrollView()
     let destinationDescription = UITextView()
     let commentButton = ButtonGradient()
@@ -27,9 +24,6 @@ class DestinationDetailsView: UIView, BaseView {
     
     func addSubviews() {
         addSubview(destinationImage)
-        addSubview(blurView)
-        addSubview(backButton)
-        addSubview(destinationTitle)
         addSubview(destinationDescription)
         addSubview(commentButton)
     }
@@ -38,17 +32,6 @@ class DestinationDetailsView: UIView, BaseView {
         backgroundColor = .white
         
         self.destinationImage.cornerRadius = 15
-        
-        self.blurView.setBlur(cornerRadius: 5)
-        
-        self.backButton.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.backButton.imageView?.tintColor = UIColor(named: K.Color.main)
-        self.backButton.dropShadow(offsetSize: CGSize(width: 2, height: 2), shadowOpacity: 0.5, shadowColor: .white)
-        
-        self.destinationTitle.font = UIFont.boldSystemFont(ofSize: 30)
-        self.destinationTitle.textColor = UIColor(named: K.Color.main)
-        self.destinationTitle.numberOfLines = 2
-        self.destinationTitle.dropShadow(shadowRadius: 1, offsetSize: CGSize(width: 2, height: 0), shadowOpacity: 1.0, shadowColor: .white)
         
         self.destinationDescription.font = UIFont.systemFont(ofSize: 22.0)
         self.destinationDescription.textColor = UIColor(named: K.Color.main)
@@ -64,16 +47,8 @@ class DestinationDetailsView: UIView, BaseView {
     
     func positionSubviews() {
         
-        destinationImage.anchor(top: self.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor)
-        destinationImage.constrainHeight(350)
-        
-        blurView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: safeAreaLayoutGuide.topAnchor, trailing: self.trailingAnchor)
-        
-        backButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
-        backButton.constrainWidth(30)
-        backButton.constrainHeight(30)
-        
-        destinationTitle.anchor(leading: safeAreaLayoutGuide.leadingAnchor, bottom: destinationImage.bottomAnchor, trailing: safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15))
+        destinationImage.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor)
+        destinationImage.constrainHeight(270)
         
         commentButton.centerX(inView: self)
         commentButton.anchor(bottom: safeAreaLayoutGuide.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
@@ -89,7 +64,6 @@ class DestinationDetailsView: UIView, BaseView {
         if let picturePath = destination.picturePath {
             self.destinationImage.sd_setImage(with: URL(string: K.Endpoints.imageEndpoint + picturePath))
         }
-        destinationTitle.text = destination.name
         destinationDescription.text = destination.description
     }
 }

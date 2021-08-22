@@ -12,7 +12,6 @@ import Lottie
 class MapView: UIView, BaseView {
     
     let mapView = MKMapView()
-    let backButton = UIButton()
     let travelModeSC = UISegmentedControl()
     let arrowImage = UIImageView(image: UIImage(named: "downArrow")?.withRenderingMode(.alwaysTemplate))
     let successAnimation = AnimationView(name: "successAnimation")
@@ -39,7 +38,6 @@ class MapView: UIView, BaseView {
     
     func addSubviews() {
         addSubview(mapView)
-        addSubview(backButton)
         addSubview(travelModeSC)
         addSubview(arrowImage)
         addSubview(destinationsCollectionsView)
@@ -48,8 +46,6 @@ class MapView: UIView, BaseView {
     
     func styleSubviews() {
         backgroundColor = .white
-        backButton.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        backButton.imageView?.tintColor = UIColor(named: K.Color.main)
         
         travelModeSC.insertSegment(with: UIImage(named: "walking"), at: 0, animated: true)
         travelModeSC.insertSegment(with: UIImage(named: "driving"), at: 1, animated: true)
@@ -77,10 +73,6 @@ class MapView: UIView, BaseView {
     
     func positionSubviews() {
         mapView.fillSuperview()
-        
-        backButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
-        backButton.constrainWidth(30)
-        backButton.constrainHeight(30)
         
         travelModeSC.anchor(top: safeAreaLayoutGuide.topAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
         travelModeSC.centerX(inView: self)
@@ -130,9 +122,9 @@ class MapView: UIView, BaseView {
     func connectLocations(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, transportType: MKDirectionsTransportType) {
         let request = createDirectionsRequest(start: start, end: end, transportType: transportType)
         let diresctions = MKDirections(request: request)
-        resetMap()
         diresctions.calculate { [weak self] response, error in
             guard let response = response else { return }
+            self?.resetMap()
             for route in response.routes {
                 self?.mapView.addOverlay(route.polyline)
                 self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)

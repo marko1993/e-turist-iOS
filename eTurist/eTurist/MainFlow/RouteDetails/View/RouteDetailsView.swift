@@ -15,9 +15,6 @@ class RouteDetailsView: UIView, BaseView {
     private let destinationsTableViewHeight: CGFloat = 220.0
     
     let routeImage = UIImageView()
-    let blurView = UIView()
-    let backButton = UIButton()
-    let routeTitle = UILabel()
     let ratingView = RatingView()
     let starRatingView = HCSStarRatingView()
     let scrollView = UIScrollView()
@@ -49,9 +46,6 @@ class RouteDetailsView: UIView, BaseView {
     
     func addSubviews() {
         addSubview(routeImage)
-        addSubview(blurView)
-        addSubview(backButton)
-        addSubview(routeTitle)
         addSubview(starRatingView)
         addSubview(ratingView)
         addSubview(routeDescription)
@@ -66,17 +60,6 @@ class RouteDetailsView: UIView, BaseView {
         backgroundColor = .white
         
         self.routeImage.cornerRadius = 15
-        
-        self.blurView.setBlur(cornerRadius: 5)
-        
-        self.backButton.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.backButton.imageView?.tintColor = UIColor(named: K.Color.main)
-        self.backButton.dropShadow(offsetSize: CGSize(width: 2, height: 2), shadowOpacity: 0.5, shadowColor: .white)
-        
-        self.routeTitle.font = UIFont.boldSystemFont(ofSize: 30)
-        self.routeTitle.textColor = UIColor(named: K.Color.main)
-        self.routeTitle.numberOfLines = 2
-        self.routeTitle.dropShadow(shadowRadius: 1, offsetSize: CGSize(width: 2, height: 0), shadowOpacity: 1.0, shadowColor: .white)
         
         self.starRatingView.minimumValue = 0
         self.starRatingView.maximumValue = 5
@@ -116,17 +99,8 @@ class RouteDetailsView: UIView, BaseView {
     }
     
     func positionSubviews() {
-        routeImage.anchor(top: self.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor)
-        routeImage.constrainHeight(containerHeight)
-        
-        blurView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: safeAreaLayoutGuide.topAnchor, trailing: self.trailingAnchor)
-        
-        backButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
-        backButton.constrainWidth(30)
-        backButton.constrainHeight(30)
-        
-        routeTitle.anchor(leading: safeAreaLayoutGuide.leadingAnchor, trailing: ratingView.leadingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
-        routeTitle.centerY(inView: ratingView)
+        routeImage.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, trailing: safeAreaLayoutGuide.trailingAnchor)
+        routeImage.constrainHeight(270)
         
         starRatingView.anchor(top: routeImage.bottomAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0))
         starRatingView.centerX(inView: self)
@@ -165,7 +139,6 @@ class RouteDetailsView: UIView, BaseView {
         if let picturePath = route.picturePath {
             self.routeImage.sd_setImage(with: URL(string: K.Endpoints.imageEndpoint + picturePath))
         }
-        routeTitle.text = route.name
         routeDescription.text = route.description
         starRatingView.value = CGFloat(route.myRating ?? 0)
         

@@ -11,7 +11,7 @@ import CoreLocation
 import RxSwift
 import RxCocoa
 
-class MapViewController: LocationViewController {
+class MapViewController: NavigationViewController {
     
     private let mapView = MapView()
     var viewModel: MapViewModel!
@@ -19,6 +19,7 @@ class MapViewController: LocationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView(mapView)
+        setupNavigation(title: viewModel.route.name)
         mapView.setMapViewDelegate(delegate: self)
         locationViewControlleDelegate = self
         setupBindings()
@@ -44,11 +45,7 @@ class MapViewController: LocationViewController {
                 cell.setup(with: data, shouldIndicateVisitedState: true)
                 return cell
             }.disposed(by: disposeBag)
-        
-        mapView.backButton.onTap(disposeBag: disposeBag) { [weak self] in
-            self?.viewModel.exitMapViewController()
-        }
-        
+       
         viewModel.destinationsObservable.subscribe { [weak self] destinations in
             self?.mapView.destinationsCollectionsView.reloadData()
         }.disposed(by: disposeBag)
@@ -73,6 +70,10 @@ class MapViewController: LocationViewController {
                     transportType: (self?.mapView.travelModeSC.selectedSegmentIndex == 0) ? .walking : .automobile)
             }
         }).disposed(by: disposeBag)
+    }
+    
+    override func backPressed(sender: AnyObject) {
+        self.viewModel.exitMapViewController()
     }
     
     func setDelegate(for collectionView: UICollectionView) {
@@ -142,7 +143,9 @@ extension MapViewController: LocationViewControllerDelegate {
         guard let location = location else { return }
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         guard let destinationCoordinates = self.viewModel.currentDestination?.coordinates.coordinates else {
-            self.mapView.zoomInToLocation(location: center, radius: K.MapKeys.zoomRadius)
+            if self.viewModel.shouldZoomInToUserLocation() {
+                self.mapView.zoomInToLocation(location: center, radius: K.MapKeys.zoomRadius)
+            }
             return
         }
         self.mapView.connectLocations(

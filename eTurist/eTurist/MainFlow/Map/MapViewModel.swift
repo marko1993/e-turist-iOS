@@ -14,6 +14,8 @@ class MapViewModel: BaseViewModel {
     var route: Route!
     var currentDestination: Destination? = nil
     
+    private var didZoomInToUserLocation: Bool = false
+    
     private lazy var destinationsRelay: BehaviorRelay<[Destination]> = BehaviorRelay(value: self.route?.routeDestinations ?? [])
     var destinationsObservable: Observable<[Destination]> {
         return destinationsRelay.asObservable()
@@ -67,6 +69,14 @@ class MapViewModel: BaseViewModel {
                 self?.destinationsRelay.accept(destinations)
             }
         })
+    }
+    
+    func shouldZoomInToUserLocation() -> Bool {
+        if !self.didZoomInToUserLocation {
+            self.didZoomInToUserLocation = true
+            return true
+        }
+        return false
     }
     
     func exitMapViewController() {
