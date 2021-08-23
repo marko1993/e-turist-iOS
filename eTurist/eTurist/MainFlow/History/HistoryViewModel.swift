@@ -45,4 +45,8 @@ class HistoryViewModel: BaseViewModel {
         self.coordinator?.presentDestinationDetialsScreen(destination: destinationsRelay.value[index])
     }
     
+    func updateData() {
+        self.getVisitedDestinations()
+    }
+    
 }

@@ -78,4 +78,8 @@ class RoutesViewModel: BaseViewModel {
         
     }
     
+    func updateData() {
+        self.getRoutesForCity(city?.identifier ?? "")
+    }
+    
 }

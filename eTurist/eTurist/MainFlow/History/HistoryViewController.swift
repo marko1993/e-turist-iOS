@@ -48,6 +48,9 @@ class HistoryViewController: BaseViewController {
         self.historyView.destinationsCollectionsView.rx.itemSelected.subscribe(onNext: { indexPath in
             self.viewModel.presentDestinationDetails(index: indexPath.row)
         }).disposed(by: disposeBag)
+        
+        NotificationCenterService.receiveDataUpdates(observer: self, selector: #selector(dataDidChange))
+        
     }
     
     func setDelegate(for collectionView: UICollectionView) {
@@ -56,7 +59,9 @@ class HistoryViewController: BaseViewController {
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
-    
+    @objc func dataDidChange(_ notification: Notification){
+        self.viewModel.updateData()
+    }
     
 }
 

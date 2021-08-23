@@ -67,6 +67,7 @@ class MapViewModel: BaseViewModel {
                 })
                 self?.route.routeDestinations = destinations
                 self?.destinationsRelay.accept(destinations)
+                NotificationCenterService.postUpdateDataBroadcast()
             }
         })
     }

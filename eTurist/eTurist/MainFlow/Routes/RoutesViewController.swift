@@ -52,6 +52,13 @@ class RoutesViewController: LocationViewController {
                 self?.presentInfoDialog(message: error)
             }
         }).disposed(by: disposeBag)
+        
+        NotificationCenterService.receiveDataUpdates(observer: self, selector: #selector(dataDidChange))
+        
+    }
+    
+    @objc func dataDidChange(_ notification: Notification){
+        self.viewModel.updateData()
     }
     
 }

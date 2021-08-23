@@ -55,7 +55,8 @@ class PinView: UIView {
     fileprivate func setupTextFieldStyle(_ textField: UITextField) {
         textField.delegate = self
         textField.backgroundColor = .white
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .default
+        textField.autocapitalizationType = .none
         textField.textAlignment = .center
         textField.contentHorizontalAlignment = .center
         textField.layer.cornerRadius = 10

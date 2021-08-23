@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7FBA12718D71341FCB30B847 /* Pods_eTurist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D64A30EC32407D02DB89C5D7 /* Pods_eTurist.framework */; };
+		AD04EA9326D3B67A0072E4E2 /* NotificationCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD04EA9226D3B67A0072E4E2 /* NotificationCenterService.swift */; };
 		AD09F5D126C15F6B00082570 /* RouteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09F5D026C15F6B00082570 /* RouteDetailsViewController.swift */; };
 		AD09F5D626C15F9500082570 /* RouteDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09F5D526C15F9500082570 /* RouteDetailsViewModel.swift */; };
 		AD09F5DB26C15FB300082570 /* RouteDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09F5DA26C15FB300082570 /* RouteDetailsView.swift */; };
@@ -145,6 +146,7 @@
 
 /* Begin PBXFileReference section */
 		703F936134A68E31F54B1586 /* Pods-eTurist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eTurist.debug.xcconfig"; path = "Target Support Files/Pods-eTurist/Pods-eTurist.debug.xcconfig"; sourceTree = "<group>"; };
+		AD04EA9226D3B67A0072E4E2 /* NotificationCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterService.swift; sourceTree = "<group>"; };
 		AD09F5D026C15F6B00082570 /* RouteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsViewController.swift; sourceTree = "<group>"; };
 		AD09F5D526C15F9500082570 /* RouteDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsViewModel.swift; sourceTree = "<group>"; };
 		AD09F5DA26C15FB300082570 /* RouteDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailsView.swift; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				AD7B74482666659D0062F86B /* UserSingleton.swift */,
+				AD04EA9226D3B67A0072E4E2 /* NotificationCenterService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				AD8914372665160100B960FD /* ProfileViewModel.swift in Sources */,
 				AD09F5D126C15F6B00082570 /* RouteDetailsViewController.swift in Sources */,
 				AD9FEDE026C0294B00AA8634 /* CommentsTableViewCell.swift in Sources */,
+				AD04EA9326D3B67A0072E4E2 /* NotificationCenterService.swift in Sources */,
 				AD891432266515DD00B960FD /* ProfileViewController.swift in Sources */,
 				AD7B74EB266BCD430062F86B /* ChangePasswordRequestModel.swift in Sources */,
 				AD09F5DB26C15FB300082570 /* RouteDetailsView.swift in Sources */,
